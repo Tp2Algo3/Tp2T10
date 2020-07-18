@@ -1,3 +1,3 @@
-public class PreguntaVerdaderoOFaslo extends PreguntaOpcionMultiple {
+public class PreguntaVerdaderoOFaslo implements Pregunta{
 
 }
