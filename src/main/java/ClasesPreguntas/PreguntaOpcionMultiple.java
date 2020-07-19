@@ -12,12 +12,13 @@ public class PreguntaOpcionMultiple extends Pregunta{
         this.respuestasPosibles = respuestasPosibles;
     }
     
-    public int calcularPuntaje(List<Respuesta> respuestas) {
+    public int calcularPuntaje(List<Respuesta> respuestasDelUsuario) {
         int cantRespuestasCorrectas = 0;
-        for (Respuesta resp:respuestas){
+        for (Respuesta resp:respuestasDelUsuario){
             if (resp.pertenece(respuestasCorrectas))
                 cantRespuestasCorrectas++;
         }
-        return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectas, respuestasCorrectas.size()));
+        return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectas, respuestasCorrectas.size(), respuestasDelUsuario.size()));
     }
+
 }

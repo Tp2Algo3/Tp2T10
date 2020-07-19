@@ -1,11 +1,11 @@
 package ClasesPreguntas;
 
-import java.util.List;
+import java.util.ArrayList;
 import ClasesPreguntas.Puntajes.*;
 
 public class PreguntaVerdaderoOFalso extends Pregunta{
 
-    public PreguntaVerdaderoOFalso(List<Respuesta> respuestasCorrectas, Puntaje tipoPuntaje, List<Respuesta> respuestasPosibles, String pregunta){
+    public PreguntaVerdaderoOFalso(ArrayList<Respuesta> respuestasCorrectas, Puntaje tipoPuntaje, ArrayList<Respuesta> respuestasPosibles, String pregunta){
         this.respuestasCorrectas = respuestasCorrectas;
         this.tipoPuntaje = tipoPuntaje;
         this.contenido = pregunta;
@@ -13,12 +13,12 @@ public class PreguntaVerdaderoOFalso extends Pregunta{
     }
 
     @Override
-    public int calcularPuntaje(List<Respuesta> respuestas) {
+    public int calcularPuntaje(ArrayList<Respuesta> respuestasIngresadas) {
         int cantRespuestasCorrectas = 0;
-        for (Respuesta resp:respuestas){
+        for (Respuesta resp:respuestasIngresadas){
             if (resp.pertenece(respuestasCorrectas))
                 cantRespuestasCorrectas++;
         }
-        return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectas,respuestasPosibles.size()));
+        return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectas,respuestasCorrectas.size(),respuestasIngresadas.size()));
     }
 }

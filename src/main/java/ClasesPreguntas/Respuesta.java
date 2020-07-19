@@ -1,5 +1,5 @@
 package ClasesPreguntas;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Respuesta {
 
@@ -22,4 +22,3 @@ public class Respuesta {
         }
         return false;
     }
-}

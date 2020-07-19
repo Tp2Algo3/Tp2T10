@@ -35,7 +35,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         }
 
 
-        when(puntajeClasico.calcularPuntaje(3,3)).thenReturn(1);
+        when(puntajeClasico.calcularPuntaje(3,3,3)).thenReturn(1);
 
         Pregunta MC = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeClasico, respuestasCorrectas, "Soy una pregunta");
         assertEquals(MC.calcularPuntaje(respuestasIngresadas), 1);
@@ -56,7 +56,7 @@ public class PreguntaMultipleChoiceClasicoTest {
             when(respuestaIngresada.pertenece(respuestasCorrectas)).thenReturn(true);
         }
         when(respuestasIngresadas.get(1).pertenece(respuestasCorrectas)).thenReturn(false);
-        when(puntajeClasico.calcularPuntaje(2,3)).thenReturn(0);
+        when(puntajeClasico.calcularPuntaje(2,3,3)).thenReturn(0);
 
         Pregunta MC = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeClasico, respuestasCorrectas, "Soy una pregunta");    
         assertEquals(MC.calcularPuntaje(respuestasIngresadas), 0);
