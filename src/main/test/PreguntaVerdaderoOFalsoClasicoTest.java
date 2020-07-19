@@ -12,7 +12,6 @@ public class PreguntaVerdaderoOFalsoClasicoTest {
 
     @BeforeEach
     public void setUp{
-        VoF = new PreguntaVerdaderoOFalso();
         respuestas = new List();
     }
 
@@ -21,6 +20,7 @@ public class PreguntaVerdaderoOFalsoClasicoTest {
         Respuesta respuesta = mock(Respuesta);
         respuestas.add(respuesta)
         when(respuesta.esCorrecta(respuestas)).thenReturn(true);
+        VoF = new PreguntaVerdaderoOFalso(respuestas, new PuntajeClasico(), respuestas, "Soy una pregunta");
         assertEquals(VoF.calcularPuntaje(respuesta), 1);
     }
 
@@ -29,11 +29,15 @@ public class PreguntaVerdaderoOFalsoClasicoTest {
         Respuesta respuesta = mock(Respuesta);
         respuestas.add(respuesta);
         when(respuesta.esCorrecta(respuestas)).thenReturn(false);
+        VoF = new PreguntaVerdaderoOFalso(respuestas, new PuntajeClasico(), respuestas, "Soy una pregunta");
         assertEquals(VoF.calcularPuntaje(respuestas), 0);
     }
 
     public void test03SinRespuestaNoSumaPuntaje{
-        assertEquals(VoF.calcularPuntaje(respuestas), 0)
+        respuestas.add(new Respuesta("SOy una respuesta)"));
+        List<Respuesta> listaVacia = new List();
+        VoF = new PreguntaVerdaderoOFalso(respuestas, new PuntajeClasico(), respuestas, "Soy una pregunta");
+        assertEquals(VoF.calcularPuntaje(listaVacia), 0);
     }
 
 }
