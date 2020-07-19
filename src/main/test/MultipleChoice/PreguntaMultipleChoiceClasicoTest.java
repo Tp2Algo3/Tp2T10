@@ -34,7 +34,6 @@ public class PreguntaMultipleChoiceClasicoTest {
             when(respuestaIngresada.pertenece(respuestasCorrectas)).thenReturn(true);
         }
 
-
         when(puntajeClasico.calcularPuntaje(3,3,3)).thenReturn(1);
 
         Pregunta MC = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeClasico, respuestasCorrectas, "Soy una pregunta");
