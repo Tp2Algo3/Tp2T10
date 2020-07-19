@@ -1,2 +1,2 @@
 # Tp2T10
-Archivo por defecto.
+Archivo por defecto..
