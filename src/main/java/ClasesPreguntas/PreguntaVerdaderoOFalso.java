@@ -3,12 +3,7 @@ package ClasesPreguntas;
 import java.util.List;
 import ClasesPreguntas.Puntajes.*;
 
-public class PreguntaVerdaderoOFalso implements Pregunta{
-
-    private List<Respuesta> respuestasCorrectas;
-    private Puntaje tipoPuntaje;
-    private List<Respuesta> respuestasPosibles;
-    private String contenido;
+public class PreguntaVerdaderoOFalso extends Pregunta{
 
     public PreguntaVerdaderoOFalso(List<Respuesta> respuestasCorrectas, Puntaje tipoPuntaje, List<Respuesta> respuestasPosibles, String pregunta){
         this.respuestasCorrectas = respuestasCorrectas;
