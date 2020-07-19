@@ -9,7 +9,8 @@ public class Respuesta {
         this.respuesta = respuesta;
     }
 
-    public boolean esCorrecta(List<Respuesta> respuestas){
+// Revisar Disenio, esta bien que tenga la responsabilidad de san=ber si es correcta?
+    public boolean pertenece(List<Respuesta> respuestas){
         return respuestas.contains(this);
     }
 }

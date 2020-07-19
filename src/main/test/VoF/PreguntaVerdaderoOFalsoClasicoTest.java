@@ -13,36 +13,41 @@ import java.util.ArrayList;
 public class PreguntaVerdaderoOFalsoClasicoTest {
 
     private Pregunta VoF;
-    ArrayList <Respuesta> respuestas;
+    ArrayList <Respuesta> respuestasIngresadas;
 
     @BeforeEach
     public void setUp(){
-        respuestas = new ArrayList<Respuesta>();
+        respuestasIngresadas = new ArrayList<Respuesta>();
     }
 
     @Test
-    public void test01DadoUnaRespuestaCorrectaSumarPuntaje(){
-        Respuesta respuesta = mock(Respuesta.class);
-        respuestas.add(respuesta);
-        when(respuesta.esCorrecta(respuestas)).thenReturn(true);
-        VoF = new PreguntaVerdaderoOFalso(respuestas, new PuntajeClasico(), respuestas, "Soy una pregunta");
-        assertEquals(VoF.calcularPuntaje(respuestas), 1);
+    public void test01DadoUnaRespuestaCorrectaDevolverUnPunto(){
+        Respuesta respuestaCorrecta = mock(Respuesta.class);
+        PuntajeClasico puntajeClasico =  mock(PuntajeClasico.class);
+
+        respuestasIngresadas.add(respuestaCorrecta);
+
+        when(respuestaCorrecta.pertenece(respuestasIngresadas)).thenReturn(true);
+        when(puntajeClasico.calcularPuntaje(1,1)).thenReturn(1);
+
+        VoF = new PreguntaVerdaderoOFalso(respuestasIngresadas, puntajeClasico, respuestasIngresadas, "Soy una pregunta");
+        assertEquals(VoF.calcularPuntaje(respuestasIngresadas), 1);
     }
 
     @Test
     public void test02DadaUnaRespuestaIncorrectaNoSumaPuntaje(){
         Respuesta respuesta = mock(Respuesta.class);
-        respuestas.add(respuesta);
-        when(respuesta.esCorrecta(respuestas)).thenReturn(false);
-        VoF = new PreguntaVerdaderoOFalso(respuestas, new PuntajeClasico(), respuestas, "Soy una pregunta");
-        assertEquals(VoF.calcularPuntaje(respuestas), 0);
+        respuestasIngresadas.add(respuesta);
+        when(respuesta.pertenece(respuestasIngresadas)).thenReturn(false);
+        VoF = new PreguntaVerdaderoOFalso(respuestasIngresadas, new PuntajeClasico(), respuestasIngresadas, "Soy una pregunta");
+        assertEquals(VoF.calcularPuntaje(respuestasIngresadas), 0);
     }
 
     @Test
     public void test03SinRespuestaNoSumaPuntaje(){
-        respuestas.add(new Respuesta("Soy una respuesta)"));
+        respuestasIngresadas.add(new Respuesta("Soy una respuesta)"));
         List<Respuesta> listaVacia = new ArrayList();
-        VoF = new PreguntaVerdaderoOFalso(respuestas, new PuntajeClasico(), respuestas, "Soy una pregunta");
+        VoF = new PreguntaVerdaderoOFalso(respuestasIngresadas, new PuntajeClasico(), respuestasIngresadas, "Soy una pregunta");
         assertEquals(VoF.calcularPuntaje(listaVacia), 0);
     }
 

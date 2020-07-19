@@ -2,7 +2,6 @@ package ClasesPreguntas;
 
 import java.util.List;
 import ClasesPreguntas.Puntajes.*;
-import ClasesPreguntas.*;
 
 public class PreguntaVerdaderoOFalso implements Pregunta{
 
@@ -22,9 +21,9 @@ public class PreguntaVerdaderoOFalso implements Pregunta{
     public int calcularPuntaje(List<Respuesta> respuestas) {
         int cantRespuestasCorrectas = 0;
         for (Respuesta resp:respuestas){
-            if (resp.esCorrecta(respuestasCorrectas))
+            if (resp.pertenece(respuestasCorrectas))
                 cantRespuestasCorrectas++;
         }
-        return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectas));
+        return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectas,respuestasPosibles.size()));
     }
 }
