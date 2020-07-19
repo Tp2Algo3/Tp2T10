@@ -1,3 +1,5 @@
+package ClasesPreguntas.Puntajes;
+
 public class PuntajeClasico implements Puntaje{
 
     public int calcularPuntaje(int respCorrectas){
