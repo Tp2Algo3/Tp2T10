@@ -1,4 +1,5 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.mockito.InOrder;
 import ClasesPreguntas.*;
 import java.util.List;
@@ -33,6 +34,7 @@ public class PreguntaVerdaderoOFalsoClasicoTest {
         assertEquals(VoF.calcularPuntaje(respuestas), 0);
     }
 
+    @Test
     public void test03SinRespuestaNoSumaPuntaje{
         respuestas.add(new Respuesta("SOy una respuesta)"));
         List<Respuesta> listaVacia = new List();
