@@ -9,8 +9,17 @@ public class Respuesta {
         this.respuesta = respuesta;
     }
 
+    public String getRespuesta() {
+        return this.respuesta;
+    }
+
 // Revisar Disenio, esta bien que tenga la responsabilidad de san=ber si es correcta?
     public boolean pertenece(List<Respuesta> respuestas){
-        return respuestas.contains(this);
+        for (Respuesta respuesta_posible : respuestas) {
+            if (respuesta_posible.getRespuesta() == this.respuesta){
+                return true;
+            }
+        }
+        return false;
     }
 }
