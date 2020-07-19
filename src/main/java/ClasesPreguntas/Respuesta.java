@@ -1,5 +1,5 @@
 package ClasesPreguntas;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Respuesta {
 
@@ -9,8 +9,8 @@ public class Respuesta {
         this.respuesta = respuesta;
     }
 
-// Revisar Disenio, esta bien que tenga la responsabilidad de san=ber si es correcta?
-    public boolean pertenece(List<Respuesta> respuestas){
+// Revisar Disenio, esta bien que tenga la responsabilidad de saber si es correcta?
+    public boolean pertenece(ArrayList<Respuesta> respuestas){
         return respuestas.contains(this);
     }
 }

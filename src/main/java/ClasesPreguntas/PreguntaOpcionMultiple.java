@@ -1,11 +1,11 @@
 package ClasesPreguntas;
 
-import java.util.List;
+import java.util.ArrayList;
 import ClasesPreguntas.*;
 
-public class PreguntaOpcionMultiple implements Pregunta{
+public class PreguntaOpcionMultiple extends Pregunta{
     @Override
-    public int calcularPuntaje(List<Respuesta> respuestas) {
+    public int calcularPuntaje(ArrayList<Respuesta> respuestas) {
         return 0;
     }
 }

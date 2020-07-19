@@ -1,14 +1,14 @@
 package ClasesPreguntas;
 
-import java.util.List;
+import java.util.ArrayList;
 import ClasesPreguntas.Puntajes.Puntaje;
 
 public abstract class Pregunta{
 
-    protected List<Respuesta> respuestasCorrectas;
+    protected ArrayList<Respuesta> respuestasCorrectas;
     protected Puntaje tipoPuntaje;
-    protected List<Respuesta> respuestasPosibles;
+    protected ArrayList<Respuesta> respuestasPosibles;
     protected String contenido;
 
-    public abstract int calcularPuntaje(List<Respuesta> respuestas);
+    public abstract int calcularPuntaje(ArrayList<Respuesta> respuestas);
 }
