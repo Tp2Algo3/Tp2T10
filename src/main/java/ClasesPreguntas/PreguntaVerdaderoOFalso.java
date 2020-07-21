@@ -6,10 +6,7 @@ import ClasesPreguntas.Puntajes.*;
 public class PreguntaVerdaderoOFalso extends Pregunta{
 
     public PreguntaVerdaderoOFalso(ArrayList<Respuesta> respuestasCorrectas, Puntaje tipoPuntaje, ArrayList<Respuesta> respuestasPosibles, String pregunta){
-        this.respuestasCorrectas = respuestasCorrectas;
-        this.tipoPuntaje = tipoPuntaje;
-        this.contenido = pregunta;
-        this.respuestasPosibles = respuestasPosibles;
+        super(respuestasCorrectas, tipoPuntaje, respuestasPosibles, pregunta);
     }
 
     @Override

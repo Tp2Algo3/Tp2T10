@@ -7,10 +7,7 @@ import ClasesPreguntas.Puntajes.*;
 public class PreguntaOpcionMultiple extends Pregunta{
 
     public PreguntaOpcionMultiple(ArrayList<Respuesta> respuestasCorrectas, Puntaje tipoPuntaje, ArrayList<Respuesta> respuestasPosibles, String pregunta){
-        this.respuestasCorrectas = respuestasCorrectas;
-        this.tipoPuntaje = tipoPuntaje;
-        this.contenido = pregunta;
-        this.respuestasPosibles = respuestasPosibles;
+        super(respuestasCorrectas, tipoPuntaje, respuestasPosibles, pregunta);
     }
 
     public int calcularPuntaje(ArrayList<Respuesta> respuestasDelUsuario) {
