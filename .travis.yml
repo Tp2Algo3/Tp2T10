@@ -1,0 +1,4 @@
+language: java
+rvm:
+ - 14
+ - junit 5
