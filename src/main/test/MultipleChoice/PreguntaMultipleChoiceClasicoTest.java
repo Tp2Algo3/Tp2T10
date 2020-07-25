@@ -1,5 +1,6 @@
 package MultipleChoice;
 
+import Jugador.Jugador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +23,7 @@ public class PreguntaMultipleChoiceClasicoTest {
     PreguntaOpcionMultiple MChoice;
     Respuesta respuestaIncorrecta;
     ArrayList<Respuesta> respuestasPosibles;
+    Jugador jugador;
 
 
     @Test
@@ -219,5 +221,33 @@ public class PreguntaMultipleChoiceClasicoTest {
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
         assertEquals(0,MChoice.calcularPuntaje(respuestasIngresadas));
+    }
+
+    @Test
+    public void test10DadoCualquierPuntajeAsignaSuCorrespondientePuntajeAlJugador(){
+        //Inicialización
+        respuestasIngresadas = new ArrayList<>();
+        respuestasCorrectas = new ArrayList<>();
+        respuestasPosibles = new ArrayList<>();
+        puntajeClasico = new PuntajeClasico();
+        jugador = mock(Jugador.class);
+
+        //Carga de respuestas
+        for (int i = 0 ; i < 3 ; i++){
+            respuestaCorrecta = new RespuestaCorrecta("Soy correcta");
+            respuestasCorrectas.add(respuestaCorrecta);
+            respuestasIngresadas.add(respuestaCorrecta);
+            respuestasPosibles.add(respuestaCorrecta);
+        }
+
+        //Creación de la pregunta
+        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeClasico, respuestasPosibles, "Soy una pregunta");
+
+        //Mock de jugador
+        when(jugador.getPuntos()).thenReturn(1);
+        jugador.aumentarPuntaje(MChoice.calcularPuntaje(respuestasIngresadas));
+
+        //Assert
+        assertEquals(MChoice.calcularPuntaje(respuestasIngresadas), jugador.getPuntos());
     }
 }
