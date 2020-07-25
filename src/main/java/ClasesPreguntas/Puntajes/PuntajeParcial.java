@@ -1,6 +1,6 @@
 package ClasesPreguntas.Puntajes;
 
-public class PuntajeClasico implements Puntaje{
+public class PuntajeParcial implements Puntaje{
 
     private boolean usuarioContestoErroneamente(int respTotalesUsuario, int respCorrectasUsuario){
         return (respTotalesUsuario>respCorrectasUsuario);
@@ -8,8 +8,8 @@ public class PuntajeClasico implements Puntaje{
 
     @Override
     public int calcularPuntaje(int respCorrectasDelUsuario, int respCorrectasDeLaPregunta, int respuestasTotalesDelUsuario) {
-        if ((respCorrectasDelUsuario == respCorrectasDeLaPregunta) && (!usuarioContestoErroneamente(respuestasTotalesDelUsuario,respCorrectasDelUsuario)))
-            return 1;
-        else return 0;
+        if (usuarioContestoErroneamente(respuestasTotalesDelUsuario, respCorrectasDelUsuario))
+            return 0;
+        else return respCorrectasDelUsuario;
     }
 }

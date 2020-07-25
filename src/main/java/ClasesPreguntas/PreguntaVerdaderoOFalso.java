@@ -13,7 +13,7 @@ public class PreguntaVerdaderoOFalso extends Pregunta{
     public int calcularPuntaje(ArrayList<Respuesta> respuestasIngresadas) {
         int cantRespuestasCorrectas = 0;
         for (Respuesta resp:respuestasIngresadas){
-            if (resp.pertenece(respuestasCorrectas))
+            if (resp.esCorrecta())
                 cantRespuestasCorrectas++;
         }
         return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectas,respuestasCorrectas.size(),respuestasIngresadas.size()));
