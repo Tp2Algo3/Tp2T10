@@ -9,9 +9,5 @@ public abstract class Respuesta {
         this.respuesta = respuesta;
     }
 
-    public String getRespuesta() {
-        return this.respuesta;
-    }
-
     public abstract boolean esCorrecta();
 }
