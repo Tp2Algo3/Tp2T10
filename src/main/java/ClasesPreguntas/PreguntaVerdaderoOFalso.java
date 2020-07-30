@@ -11,11 +11,8 @@ public class PreguntaVerdaderoOFalso extends Pregunta{
 
     @Override
     public int calcularPuntaje(ArrayList<Respuesta> respuestasIngresadas) {
-        int cantRespuestasCorrectas = 0;
-        for (Respuesta resp:respuestasIngresadas){
-            if (resp.esCorrecta())
-                cantRespuestasCorrectas++;
-        }
+        int cantRespuestasCorrectas;
+        cantRespuestasCorrectas = (int) respuestasIngresadas.stream().filter(respuesta -> respuesta.esCorrecta()).count();
         return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectas,respuestasCorrectas.size(),respuestasIngresadas.size()));
     }
 }
