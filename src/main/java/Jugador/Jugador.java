@@ -41,8 +41,17 @@ public class Jugador {
         this.potenciadorActual = new MultiplicadorDefecto();
     }
 
-    public void utilizarPotenciador(Potenciador potenciadorAUsar){
-        //FALTA IMPLEMENTAR
+    public void utilizarPotenciador(Class potenciadorAUsar) {
+        Potenciador potenciador = potenciadores
+                .stream()
+                .filter(pot -> pot.getClass() == potenciadorAUsar)
+                .findFirst()
+                .orElse(null);
+
+        if (potenciador != null) {
+            potenciadorActual = potenciador;
+            potenciadores.remove(potenciador);
+        }
     }
 
     public int getPuntos(){
