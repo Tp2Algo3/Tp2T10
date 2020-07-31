@@ -5,16 +5,20 @@ import ClasesPreguntas.Puntajes.Puntaje;
 
 public abstract class Pregunta {
 
-    protected ArrayList<Respuesta> respuestasCorrectas;
     protected Puntaje tipoPuntaje;
     protected ArrayList<Respuesta> respuestasPosibles;
     protected String contenido;
 
-    public Pregunta(ArrayList<Respuesta> respuestasCorrectas, Puntaje tipoPuntaje, ArrayList<Respuesta> respuestasPosibles, String pregunta) {
-        this.respuestasCorrectas = respuestasCorrectas;
+    public Pregunta(Puntaje tipoPuntaje, ArrayList<Respuesta> respuestasPosibles, String pregunta) {
         this.tipoPuntaje = tipoPuntaje;
         this.contenido = pregunta;
         this.respuestasPosibles = respuestasPosibles;
     }
-    public abstract int calcularPuntaje(ArrayList<Respuesta> respuestas);
+
+    public int calcularPuntaje(ArrayList<Respuesta> respuestasDelUsuario) {
+        int cantRespuestasCorrectasDelUsuario, cantRespuestasCorrectasDeLaPregunta;
+        cantRespuestasCorrectasDeLaPregunta =(int) respuestasPosibles.stream().filter(respuesta -> respuesta.esCorrecta()).count();
+        cantRespuestasCorrectasDelUsuario =(int) respuestasDelUsuario.stream().filter(respuesta -> respuesta.esCorrecta()).count();
+        return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectasDelUsuario, cantRespuestasCorrectasDeLaPregunta, respuestasDelUsuario.size()));
+    }
 }

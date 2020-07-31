@@ -15,7 +15,6 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     private PreguntaOpcionMultiple multipleChoice;
     ArrayList <Respuesta> respuestasIngresadas;
-    ArrayList<Respuesta> respuestasCorrectas;
     PuntajeClasico puntajeClasico;
     PuntajeParcial puntajeParcial;
     PuntajePenalizacion puntajePenalizacion;
@@ -30,20 +29,18 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test01AcertarCompletamenteUnMultipleChoiceClasicoTeDaElPunto(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
             respuestaCorrecta = new RespuestaCorrecta("Soy correcta");
-            respuestasCorrectas.add(respuestaCorrecta);
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
 
         //Creación de la pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeClasico, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
         assertEquals(1,MChoice.calcularPuntaje(respuestasIngresadas));
     }
     
@@ -51,14 +48,12 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test02AcertarParcialmenteUnMultipleChoiceClasicoNoTeDaPunto(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
             respuestaCorrecta = new RespuestaCorrecta("Soy correcta");
-            respuestasCorrectas.add(respuestaCorrecta);
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
@@ -67,7 +62,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         respuestasIngresadas.add(respuestaIncorrecta);
 
         //Creación de pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeClasico, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
         assertEquals(0, MChoice.calcularPuntaje(respuestasIngresadas));
     }
 
@@ -75,21 +70,19 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test03DadoUnMultipleChoiceClasicoResponderAlgunasRespuestasCorrectasSinQueSeanTodasNoDaPunto(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
             respuestaCorrecta = new RespuestaCorrecta("Soy correcta");
-            respuestasCorrectas.add(respuestaCorrecta);
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
         respuestasIngresadas.remove(2);
 
         //Creación de pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeClasico, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
         assertEquals(0, MChoice.calcularPuntaje(respuestasIngresadas));
     }
 
@@ -97,20 +90,18 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test04AcertarCompletamenteUnMultipleChoiceParcialTeDaLosPuntosCorrespondientes(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeParcial = new PuntajeParcial();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
             respuestaCorrecta = new RespuestaCorrecta("Soy correcta");
-            respuestasCorrectas.add(respuestaCorrecta);
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
 
         //Creación de la pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeParcial, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
         assertEquals(respuestasIngresadas.size(),MChoice.calcularPuntaje(respuestasIngresadas));
     }
 
@@ -118,22 +109,19 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test05AcertarParcialmenteUnMultipleChoiceParcialTeDaLosPuntosCorrespondientes(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeParcial = new PuntajeParcial();
 
         //Carga de respuestas
         for (int i = 0 ; i < 2 ; i++){
             respuestaCorrecta = new RespuestaCorrecta("Soy correcta");
-            respuestasCorrectas.add(respuestaCorrecta);
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
-        respuestasCorrectas.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaCorrecta);
 
         //Creación de la pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeParcial, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
         assertEquals(respuestasIngresadas.size(),MChoice.calcularPuntaje(respuestasIngresadas));
     }
 
@@ -141,20 +129,18 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test06DadoUnMultipleChoiceParcialErrarEnAlgunaRespuestaNoSumaPuntos(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeParcial = new PuntajeParcial();
 
         //Carga de respuestas
         respuestaCorrecta = new RespuestaCorrecta("Soy Correcta");
-        respuestasCorrectas.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaCorrecta);
         respuestaIncorrecta = new RespuestaIncorrecta ("Soy Incorrecta");
         respuestasPosibles.add(respuestaIncorrecta);
         respuestasIngresadas.add(respuestaIncorrecta);
 
         //Creación de la pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeParcial, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
         assertEquals(0,MChoice.calcularPuntaje(respuestasIngresadas));
     }
 
@@ -162,20 +148,18 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test07DadoUnMultipleChoiceConPenalizacionErrarUnaRespuestaResta1Punto(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajePenalizacion = new PuntajePenalizacion();
 
         //Carga de respuestas
         respuestaCorrecta = new RespuestaCorrecta("Soy Correcta");
-        respuestasCorrectas.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaCorrecta);
         respuestaIncorrecta = new RespuestaIncorrecta ("Soy Incorrecta");
         respuestasPosibles.add(respuestaIncorrecta);
         respuestasIngresadas.add(respuestaIncorrecta);
 
         //Creación de la pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
         assertEquals(-1,MChoice.calcularPuntaje(respuestasIngresadas));
     }
 
@@ -183,21 +167,19 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test08DadoUnMultipleChoiceConPenalizacionAcertarParcialmenteNoDaPunto() {
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajePenalizacion = new PuntajePenalizacion();
 
         //Carga de respuestas
         for (int i=0; i<3; i++){
             respuestaCorrecta = new RespuestaCorrecta("Soy Correcta");
-            respuestasCorrectas.add(respuestaCorrecta);
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
         respuestasIngresadas.remove(2);
 
         //Creación de la pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
         assertEquals(0,MChoice.calcularPuntaje(respuestasIngresadas));
     }
 
@@ -205,21 +187,19 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test09DadoUnMultipleChoiceConPenalizacionAcertarTotalmenteDaPunto() {
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajePenalizacion = new PuntajePenalizacion();
 
         //Carga de respuestas
         for (int i=0; i<3; i++){
             respuestaCorrecta = new RespuestaCorrecta("Soy Correcta");
-            respuestasCorrectas.add(respuestaCorrecta);
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
         respuestasIngresadas.remove(2);
 
         //Creación de la pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
         assertEquals(0,MChoice.calcularPuntaje(respuestasIngresadas));
     }
 
@@ -227,7 +207,6 @@ public class PreguntaMultipleChoiceClasicoTest {
     public void test10DadoCualquierPuntajeAsignaSuCorrespondientePuntajeAlJugador(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
-        respuestasCorrectas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
         jugador = mock(Jugador.class);
@@ -235,13 +214,12 @@ public class PreguntaMultipleChoiceClasicoTest {
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
             respuestaCorrecta = new RespuestaCorrecta("Soy correcta");
-            respuestasCorrectas.add(respuestaCorrecta);
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
 
         //Creación de la pregunta
-        MChoice = new PreguntaOpcionMultiple(respuestasCorrectas, puntajeClasico, respuestasPosibles, "Soy una pregunta");
+        MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
 
         //Mock de jugador
         when(jugador.getPuntos()).thenReturn(1);
