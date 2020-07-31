@@ -110,11 +110,11 @@ public class PreguntaVerdaderoOFalsoTest {
         respuestasPosibles.add(respuestaIncorrecta);
 
         //Mock al jugador
-        when(jugador.responderPregunta(respuestasPosibles)).thenReturn(respuestasIngresadas);
+        when(jugador.responderPregunta()).thenReturn(respuestasIngresadas);
         when(jugador.getPuntos()).thenReturn(1);
 
         //Creacion de pregunta y assert
         VoF = new PreguntaVerdaderoOFalso(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(VoF.calcularPuntaje(jugador.responderPregunta(respuestasPosibles)),jugador.getPuntos());
+        assertEquals(VoF.calcularPuntaje(jugador.responderPregunta()),jugador.getPuntos());
     }
 }

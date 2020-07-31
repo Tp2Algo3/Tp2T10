@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: VoF.PreguntaVerdaderoOFalsoTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in VoF.PreguntaVerdaderoOFalsoTest
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in VoF.PreguntaVerdaderoOFalsoTest
+test05UnJugadorEnviaUnaListaDeRespuestasALaPreguntaYRecibePuntosCorrectamente  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoSuchMethodError: 'java.util.ArrayList Jugador.Jugador.responderPregunta(java.util.ArrayList)'
+	at VoF.PreguntaVerdaderoOFalsoTest.test05UnJugadorEnviaUnaListaDeRespuestasALaPreguntaYRecibePuntosCorrectamente(PreguntaVerdaderoOFalsoTest.java:113)
+
