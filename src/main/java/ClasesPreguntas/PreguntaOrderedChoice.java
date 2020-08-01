@@ -16,10 +16,6 @@ public class PreguntaOrderedChoice extends Pregunta{
     public int calcularPuntaje(ArrayList<Respuesta> respuestasDelUsuario) {
         boolean estaOrdenada = true;
 
-        while (estaOrdenada){
-
-        }
-
         return 2;
     }
 }
