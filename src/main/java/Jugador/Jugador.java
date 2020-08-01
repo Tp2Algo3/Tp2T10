@@ -15,6 +15,7 @@ public class Jugador {
     public Jugador(String nombre){
         this.puntaje = 0;
         this.nombre = nombre;
+        this.respuestasElegidas = new ArrayList<>();
         this.potenciadorActual = new MultiplicadorDefecto();
         this.potenciadores = new ArrayList<>();
         this.potenciadores.add(new MultiplicadorPorDos());
