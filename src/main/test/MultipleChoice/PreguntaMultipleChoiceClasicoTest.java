@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class PreguntaMultipleChoiceClasicoTest {
 
-    private PreguntaOpcionMultiple multipleChoice;
     ArrayList <Respuesta> respuestasIngresadas;
     PuntajeClasico puntajeClasico;
     PuntajeParcial puntajeParcial;
