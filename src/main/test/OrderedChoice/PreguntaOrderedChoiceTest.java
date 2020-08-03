@@ -1,9 +1,9 @@
 package OrderedChoice;
 
-import ClasesPreguntas.PreguntaOrderedChoice;
+import ClasesPreguntas.Preguntas.PreguntaOrderedChoice;
 import ClasesPreguntas.Puntajes.PuntajeClasico;
-import ClasesPreguntas.Respuesta;
-import ClasesPreguntas.RespuestaOrdenada;
+import ClasesPreguntas.Respuestas.Respuesta;
+import ClasesPreguntas.Respuestas.RespuestaOrdenada;
 import Jugador.Jugador;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

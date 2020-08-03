@@ -1,6 +1,6 @@
 package Jugador;
 
-import ClasesPreguntas.Respuesta;
+import ClasesPreguntas.Respuestas.Respuesta;
 import Jugador.Potenciadores.*;
 import java.util.ArrayList;
 
@@ -58,5 +58,6 @@ public class Jugador {
     public int getPuntos(){
         return this.puntaje;
     }
+    public String getNombre() { return this.nombre;}
 
 }

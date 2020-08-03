@@ -1,8 +1,11 @@
 package Respuesta;
 
+import ClasesPreguntas.Respuestas.Respuesta;
+import ClasesPreguntas.Respuestas.RespuestaCorrecta;
+import ClasesPreguntas.Respuestas.RespuestaIncorrecta;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import ClasesPreguntas.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RespuestaTest {
 
@@ -11,13 +14,13 @@ public class RespuestaTest {
     @Test
     public void test01RespuestaCorrectaMeDevuelveQueEsCorrecta(){
         respuesta = new RespuestaCorrecta("Soy correcta");
-        assertEquals(true,respuesta.esCorrecta());
+        assertTrue(respuesta.esCorrecta());
     }
 
 
     @Test
     public void test02RespuestaIncorrectaMeDevuelveQueEsIncorrecta(){
         respuesta = new RespuestaIncorrecta("Soy incorrecta");
-        assertEquals(false,respuesta.esCorrecta());
+        assertFalse(respuesta.esCorrecta());
     }
 }

@@ -1,11 +1,13 @@
 package MultipleChoice;
 
+import ClasesPreguntas.Preguntas.PreguntaOpcionMultiple;
+import ClasesPreguntas.Respuestas.Respuesta;
+import ClasesPreguntas.Respuestas.RespuestaCorrecta;
+import ClasesPreguntas.Respuestas.RespuestaIncorrecta;
 import Jugador.Jugador;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import ClasesPreguntas.Puntajes.*;
-import ClasesPreguntas.*;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -56,7 +58,7 @@ public class PreguntaMultipleChoiceClasicoTest {
             respuestasIngresadas.add(respuestaCorrecta);
             respuestasPosibles.add(respuestaCorrecta);
         }
-        respuestaIncorrecta = new RespuestaIncorrecta ("Soy incorrecta");
+        respuestaIncorrecta = new RespuestaIncorrecta("Soy incorrecta");
         respuestasPosibles.add(respuestaIncorrecta);
         respuestasIngresadas.add(respuestaIncorrecta);
 

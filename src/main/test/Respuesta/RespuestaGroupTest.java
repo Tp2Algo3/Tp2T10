@@ -1,6 +1,6 @@
 package Respuesta;
 
-import ClasesPreguntas.RespuestaGroup;
+import ClasesPreguntas.Respuestas.RespuestaGroup;
 import org.junit.jupiter.api.Test;
 
 public class RespuestaGroupTest {

@@ -1,8 +1,7 @@
 package Jugador;
 
-import ClasesPreguntas.Respuesta;
-import ClasesPreguntas.RespuestaCorrecta;
-import Jugador.Potenciadores.Multiplicador;
+import ClasesPreguntas.Respuestas.Respuesta;
+import ClasesPreguntas.Respuestas.RespuestaCorrecta;
 import Jugador.Potenciadores.MultiplicadorPorDos;
 import Jugador.Potenciadores.MultiplicadorPorTres;
 import org.junit.jupiter.api.Test;
@@ -55,5 +54,16 @@ public class JugadorTest {
         jugador.utilizarPotenciador(MultiplicadorPorTres.class);
         jugador.aumentarPuntaje(2);
         assertEquals(8,jugador.getPuntos());
+    }
+
+    @Test
+    public void test06UnJugadorContestaLaPreguntaSuListaSeReseteaYPuedeAgregarNuevasRespuestas(){
+        jugador = new Jugador("Jugador");
+        respuesta = new RespuestaCorrecta("Soy Correcta");
+        jugador.aniadirRespuesta(respuesta);
+        jugador.responderPregunta(); //Se resetea
+        jugador.aniadirRespuesta(respuesta);
+        jugador.aniadirRespuesta(respuesta);
+        assertEquals(2,jugador.responderPregunta().size());
     }
 }
