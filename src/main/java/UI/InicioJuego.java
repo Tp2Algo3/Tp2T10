@@ -3,7 +3,6 @@ package UI;
 import Controladores.BotonJugarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,7 +23,9 @@ public class InicioJuego{
         HBox jugador2 = generar_hbox_jugador(2);
 
         Button boton_empezar = new Button("Jugar");
-        boton_empezar.setOnAction(new BotonJugarEventHandler(boton_empezar));
+        TextField nombre_jugador1 = (TextField) jugador1.getChildren().get(1);
+        TextField nombre_jugador2 = (TextField) jugador2.getChildren().get(1);
+        boton_empezar.setOnAction(new BotonJugarEventHandler(boton_empezar, nombre_jugador1, nombre_jugador2));
         boton_empezar.setPrefSize(100,50);
         HBox caja_boton = generar_hbox_boton(boton_empezar);
 

@@ -2,6 +2,7 @@ package UI;
 
 import ClasesPreguntas.Preguntas.Pregunta;
 import ClasesPreguntas.Respuestas.Respuesta;
+import Controladores.AniadirRespuestaEventHandler;
 import Jugador.Jugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -40,6 +41,7 @@ public class PreguntaYRespuesta{
         VBox panelRespuestas = new VBox();
         for (Respuesta respuesta: respuestas){
             Button boton = new Button(respuesta.getContenido());
+            boton.setOnAction(new AniadirRespuestaEventHandler(boton, respuesta, jugadores.get(0)));
             panelRespuestas.getChildren().add(boton);
         }
         panelRespuestas.setSpacing(25);

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -20,9 +21,13 @@ import java.util.ArrayList;
 
 public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
     private Button botonJugar;
+    private TextField nombre_jug1;
+    private TextField nombre_jug2;
 
-    public BotonJugarEventHandler(Button miBoton) {
+    public BotonJugarEventHandler(Button miBoton, TextField nombre_jug1, TextField nombre_jug2) {
         this.botonJugar = miBoton;
+        this.nombre_jug1 = nombre_jug1;
+        this.nombre_jug2 = nombre_jug2;
     }
 
     @Override
@@ -30,10 +35,10 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
         StackPane stackPane = new StackPane();
         VBox vbox = new VBox();
         stackPane.getChildren().add(vbox);
+        Jugador jugador1 = new Jugador(nombre_jug1.getText());
+        Jugador jugador2 = new Jugador(nombre_jug2.getText());
 
         //CAMBIARLO, ES TENTATIVO.
-        Jugador jugador1 = new Jugador("Pepe");
-        Jugador jugador2 = new Jugador("Jacinta");
         ArrayList<Jugador> jugadores = new ArrayList<>();
         jugadores.add(jugador1);
         jugadores.add(jugador2);
