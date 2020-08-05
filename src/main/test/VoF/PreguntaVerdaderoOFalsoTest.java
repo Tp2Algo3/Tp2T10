@@ -24,6 +24,7 @@ public class PreguntaVerdaderoOFalsoTest {
     Respuesta respuestaIncorrecta;
     Jugador jugador;
     PuntajePenalizacion puntajePenalizacion;
+    ArrayList<Integer> puntajes;
 
 
     @Test
@@ -42,7 +43,9 @@ public class PreguntaVerdaderoOFalsoTest {
 
         //Creación de la pregunta y assert
         VoF = new PreguntaVerdaderoOFalso(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(1,VoF.calcularPuntaje(respuestasIngresadas));
+        VoF.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = VoF.definirPuntajesDeJugadores();
+        assertEquals(1,puntajes.get(0));
     }
 
     @Test
@@ -61,7 +64,9 @@ public class PreguntaVerdaderoOFalsoTest {
 
         //Creación de pregunta y assert
         VoF = new PreguntaVerdaderoOFalso(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0, VoF.calcularPuntaje(respuestasIngresadas));
+        VoF.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = VoF.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
     @Test
@@ -79,7 +84,9 @@ public class PreguntaVerdaderoOFalsoTest {
 
         //Creación de pregunta y assert
         VoF = new PreguntaVerdaderoOFalso(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(VoF.calcularPuntaje(respuestasIngresadas), 0);
+        VoF.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = VoF.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
     @Test
@@ -98,7 +105,9 @@ public class PreguntaVerdaderoOFalsoTest {
 
         //Creación de pregunta y assert
         VoF = new PreguntaVerdaderoOFalso(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
-        assertEquals(-1,VoF.calcularPuntaje(respuestasIngresadas));
+        VoF.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = VoF.definirPuntajesDeJugadores();
+        assertEquals(-1,puntajes.get(0));
     }
 
     @Test
@@ -108,18 +117,20 @@ public class PreguntaVerdaderoOFalsoTest {
         puntajeClasico =  new PuntajeClasico();
         respuestaCorrecta = new RespuestaCorrecta ("Soy Correcta");
         respuestaIncorrecta = new RespuestaIncorrecta ("Soy Incorrecta");
-        jugador = mock(Jugador.class);
+        jugador = new Jugador("Heliodoro");
 
         respuestasIngresadas.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaCorrecta);
         respuestasPosibles.add(respuestaIncorrecta);
 
-        //Mock al jugador
-        when(jugador.responderPregunta()).thenReturn(respuestasIngresadas);
-        when(jugador.getPuntos()).thenReturn(1);
 
         //Creacion de pregunta y assert
         VoF = new PreguntaVerdaderoOFalso(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(VoF.calcularPuntaje(jugador.responderPregunta()),jugador.getPuntos());
+        VoF.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = VoF.definirPuntajesDeJugadores();
+        jugador.aumentarPuntaje(puntajes.get(0));
+        assertEquals(puntajes.get(0),jugador.getPuntos());
     }
+
+
 }

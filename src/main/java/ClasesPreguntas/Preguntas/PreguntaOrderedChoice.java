@@ -14,16 +14,9 @@ public class PreguntaOrderedChoice extends Pregunta{
             throw new RuntimeException("Cantidad de respuestas posibles inválida.");
     }
 
-//    @Override
-//    public int calcularPuntaje(ArrayList<Respuesta> respuestasDelUsuario) {
-//        int cantRespuestasCorrectasDeLaPregunta =(int) respuestasPosibles
-//                .stream()
-//                .filter(respuesta -> respuesta.esCorrecta())
-//                .count();
-//    }
 
     @Override
-    public int calcularPuntaje(ArrayList<Respuesta> respuestasDelUsuario) {
+    public void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasDelUsuario) {
         int cantRespuestasCorrectasDelUsuario = 0;
 
         for (int i = 0; i < respuestasDelUsuario.size(); i++) {
@@ -35,6 +28,7 @@ public class PreguntaOrderedChoice extends Pregunta{
 
         int cantOpcionesDeLaPregunta = this.respuestasPosibles.size();
 
-        return (this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectasDelUsuario, cantOpcionesDeLaPregunta, respuestasDelUsuario.size()));
+        puntajesJugadores.add(this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectasDelUsuario, cantOpcionesDeLaPregunta, respuestasDelUsuario.size()));
+        jugadoresContestaronCorrectamente.add(!this.tipoPuntaje.usuarioContestoErroneamente(cantRespuestasCorrectasDelUsuario,respuestasDelUsuario.size()));
     }
 }

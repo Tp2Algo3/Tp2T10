@@ -1,5 +1,6 @@
 package Jugador;
 
+import ClasesPreguntas.Preguntas.Pregunta;
 import ClasesPreguntas.Respuestas.Respuesta;
 import Jugador.Potenciadores.*;
 import java.util.ArrayList;
@@ -8,19 +9,20 @@ public class Jugador {
 
     private int puntaje;
     private String nombre;
-    private Potenciador potenciadorActual;
-    private ArrayList<Potenciador> potenciadores;
+    private Multiplicador multiplicadorActual;
+    private ArrayList<Multiplicador> multiplicadores;
+    private int usosRestantesExclusividadPuntajes;
     private ArrayList<Respuesta> respuestasElegidas;
 
     public Jugador(String nombre){
         this.puntaje = 0;
         this.nombre = nombre;
         this.respuestasElegidas = new ArrayList<>();
-        this.potenciadorActual = new MultiplicadorDefecto();
-        this.potenciadores = new ArrayList<>();
-        this.potenciadores.add(new MultiplicadorPorDos());
-        this.potenciadores.add(new MultiplicadorPorTres());
-        this.potenciadores.add(new ExclusividadPuntaje());
+        this.multiplicadorActual = new MultiplicadorDefecto();
+        this.multiplicadores = new ArrayList<>();
+        this.multiplicadores.add(new MultiplicadorPorDos());
+        this.multiplicadores.add(new MultiplicadorPorTres());
+        this.usosRestantesExclusividadPuntajes = 2;
     }
 
     public ArrayList<Respuesta> responderPregunta(){
@@ -38,20 +40,27 @@ public class Jugador {
     }
 
     public void aumentarPuntaje(int puntajeASumar){
-        this.puntaje += this.potenciadorActual.multiplicarPuntos(puntajeASumar);
-        this.potenciadorActual = new MultiplicadorDefecto();
+        this.puntaje += this.multiplicadorActual.multiplicarPuntos(puntajeASumar);
+        this.multiplicadorActual = new MultiplicadorDefecto();
     }
 
-    public void utilizarPotenciador(Class potenciadorAUsar) {
-        Potenciador potenciador = potenciadores
+    public void utilizarMultiplicador(Class potenciadorAUsar) {
+        Multiplicador potenciador = multiplicadores
                 .stream()
                 .filter(pot -> pot.getClass() == potenciadorAUsar)
                 .findFirst()
                 .orElse(null);
 
         if (potenciador != null) {
-            potenciadorActual = potenciador;
-            potenciadores.remove(potenciador);
+            multiplicadorActual = potenciador;
+            multiplicadores.remove(potenciador);
+        }
+    }
+
+    public void utilizarExclusividad(Pregunta pregunta){
+        if(usosRestantesExclusividadPuntajes>0){
+            pregunta.recibirExclusividad();
+            usosRestantesExclusividadPuntajes--;
         }
     }
 

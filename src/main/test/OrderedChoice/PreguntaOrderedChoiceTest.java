@@ -18,6 +18,7 @@ public class PreguntaOrderedChoiceTest {
     PuntajeClasico puntajeClasico;
     PreguntaOrderedChoice preguntaOC;
     RespuestaOrdenada respuestaOrdenada;
+    ArrayList<Integer> puntajes;
 
 
     @Test
@@ -40,7 +41,9 @@ public class PreguntaOrderedChoiceTest {
         preguntaOC = new PreguntaOrderedChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta.");
 
         respuestasIngresadas = jugador.responderPregunta();
-        jugador.aumentarPuntaje(preguntaOC.calcularPuntaje(respuestasIngresadas));
+        preguntaOC.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        jugador.aumentarPuntaje(puntajes.get(0));
 
         assertEquals(1, jugador.getPuntos());
     }
@@ -72,7 +75,9 @@ public class PreguntaOrderedChoiceTest {
         preguntaOC = new PreguntaOrderedChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta.");
 
         respuestasIngresadas = jugador.responderPregunta();
-        jugador.aumentarPuntaje(preguntaOC.calcularPuntaje(respuestasIngresadas));
+        preguntaOC.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        jugador.aumentarPuntaje(puntajes.get(0));
 
         assertEquals(0, jugador.getPuntos());
     }
@@ -101,8 +106,11 @@ public class PreguntaOrderedChoiceTest {
         preguntaOC = new PreguntaOrderedChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta.");
 
         respuestasIngresadas = jugador.responderPregunta();
-        jugador.aumentarPuntaje(preguntaOC.calcularPuntaje(respuestasIngresadas));
+        preguntaOC.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        jugador.aumentarPuntaje(puntajes.get(0));
 
         assertEquals(0, jugador.getPuntos());
     }
+
 }

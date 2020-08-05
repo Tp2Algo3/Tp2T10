@@ -41,7 +41,7 @@ public class JugadorTest {
     @Test
     public void test04UnJugadorUtilizaUnPotenciadorYEsteSeUtiliza(){
         jugador = new Jugador("Jugador");
-        jugador.utilizarPotenciador(MultiplicadorPorDos.class);
+        jugador.utilizarMultiplicador(MultiplicadorPorDos.class);
         jugador.aumentarPuntaje(2);
         assertEquals(4,jugador.getPuntos());
     }
@@ -49,9 +49,9 @@ public class JugadorTest {
     @Test
     public void test05UnJugadorQuiereUtilizarUnPotenciadorQueNoTieneYNoSeLeUtiliza(){
         jugador = new Jugador("Jugador");
-        jugador.utilizarPotenciador(MultiplicadorPorTres.class);
+        jugador.utilizarMultiplicador(MultiplicadorPorTres.class);
         jugador.aumentarPuntaje(2);
-        jugador.utilizarPotenciador(MultiplicadorPorTres.class);
+        jugador.utilizarMultiplicador(MultiplicadorPorTres.class);
         jugador.aumentarPuntaje(2);
         assertEquals(8,jugador.getPuntos());
     }

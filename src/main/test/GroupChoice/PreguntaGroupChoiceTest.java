@@ -17,6 +17,7 @@ public class PreguntaGroupChoiceTest {
     RespuestaGroup respuestaGroup;
     PreguntaGroupChoice pregGroupChoice;
     ArrayList<Respuesta> respuestasPosibles;
+    ArrayList<Integer> puntajes;
 
     @Test
     public void test01AcertarCompletamenteUnGroupChoiceTeDaElPunto(){
@@ -36,7 +37,10 @@ public class PreguntaGroupChoiceTest {
 
         //Creación de la pregunta y assert
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(1,pregGroupChoice.calcularPuntaje(respuestasIngresadas));
+        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes=pregGroupChoice.definirPuntajesDeJugadores();
+
+        assertEquals(1,puntajes.get(0));
     }
 
     @Test
@@ -58,7 +62,9 @@ public class PreguntaGroupChoiceTest {
 
         //Creación de la pregunta y assert
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0,pregGroupChoice.calcularPuntaje(respuestasIngresadas));
+        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
     @Test
@@ -79,7 +85,9 @@ public class PreguntaGroupChoiceTest {
 
         //Creación de la pregunta y assert
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0,pregGroupChoice.calcularPuntaje(respuestasIngresadas));
+        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
     @Test
@@ -99,7 +107,13 @@ public class PreguntaGroupChoiceTest {
 
         //Creación de la pregunta y assert
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0,pregGroupChoice.calcularPuntaje(respuestasIngresadas));
+        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
+    @Test
+    public void test05(){
+
+    }
 }

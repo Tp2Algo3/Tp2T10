@@ -1,10 +1,6 @@
 package ClasesPreguntas.Puntajes;
 
-public class PuntajeClasico implements Puntaje{
-
-    private boolean usuarioContestoErroneamente(int respTotalesUsuario, int respCorrectasUsuario){
-        return (respTotalesUsuario>respCorrectasUsuario);
-    }
+public class PuntajeClasico extends Puntaje{
 
     @Override
     public int calcularPuntaje(int respCorrectasDelUsuario, int respCorrectasDeLaPregunta, int respuestasTotalesDelUsuario) {

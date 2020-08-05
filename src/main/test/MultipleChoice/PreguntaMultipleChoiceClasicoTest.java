@@ -24,6 +24,7 @@ public class PreguntaMultipleChoiceClasicoTest {
     Respuesta respuestaIncorrecta;
     ArrayList<Respuesta> respuestasPosibles;
     Jugador jugador;
+    ArrayList<Integer> puntajes;
 
 
     @Test
@@ -42,9 +43,11 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(1,MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        assertEquals(1,puntajes.get(0));
     }
-    
+
     @Test
     public void test02AcertarParcialmenteUnMultipleChoiceClasicoNoTeDaPunto(){
         //Inicialización
@@ -64,7 +67,9 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Creación de pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0, MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
     @Test
@@ -84,7 +89,9 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Creación de pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0, MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
     @Test
@@ -103,7 +110,9 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
-        assertEquals(respuestasIngresadas.size(),MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        assertEquals(respuestasIngresadas.size(),puntajes.get(0));
     }
 
     @Test
@@ -123,7 +132,9 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
-        assertEquals(respuestasIngresadas.size(),MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        assertEquals(respuestasIngresadas.size(),puntajes.get(0));
     }
 
     @Test
@@ -142,7 +153,9 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0,MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
     @Test
@@ -161,7 +174,9 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
-        assertEquals(-1,MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        assertEquals(-1,puntajes.get(0));
     }
 
     @Test
@@ -181,36 +196,19 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0,MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        assertEquals(0,puntajes.get(0));
     }
 
-    @Test
-    public void test09DadoUnMultipleChoiceConPenalizacionAcertarTotalmenteDaPunto() {
-        //Inicialización
-        respuestasIngresadas = new ArrayList<>();
-        respuestasPosibles = new ArrayList<>();
-        puntajePenalizacion = new PuntajePenalizacion();
-
-        //Carga de respuestas
-        for (int i=0; i<3; i++){
-            respuestaCorrecta = new RespuestaCorrecta("Soy Correcta");
-            respuestasIngresadas.add(respuestaCorrecta);
-            respuestasPosibles.add(respuestaCorrecta);
-        }
-        respuestasIngresadas.remove(2);
-
-        //Creación de la pregunta y assert
-        MChoice = new PreguntaOpcionMultiple(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
-        assertEquals(0,MChoice.calcularPuntaje(respuestasIngresadas));
-    }
 
     @Test
-    public void test10DadoCualquierPuntajeAsignaSuCorrespondientePuntajeAlJugador(){
+    public void test09DadoCualquierPuntajeAsignaSuCorrespondientePuntajeAlJugador(){
         //Inicialización
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
-        jugador = mock(Jugador.class);
+        jugador = new Jugador("nombre");
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -219,14 +217,13 @@ public class PreguntaMultipleChoiceClasicoTest {
             respuestasPosibles.add(respuestaCorrecta);
         }
 
-        //Creación de la pregunta
+        //Creación de la pregunta y suma al jugador
         MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-
-        //Mock de jugador
-        when(jugador.getPuntos()).thenReturn(1);
-        jugador.aumentarPuntaje(MChoice.calcularPuntaje(respuestasIngresadas));
+        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+        jugador.aumentarPuntaje(puntajes.get(0));
 
         //Assert
-        assertEquals(MChoice.calcularPuntaje(respuestasIngresadas), jugador.getPuntos());
+        assertEquals(puntajes.get(0), jugador.getPuntos());
     }
 }

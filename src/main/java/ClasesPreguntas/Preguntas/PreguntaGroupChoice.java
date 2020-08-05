@@ -14,10 +14,12 @@ public class PreguntaGroupChoice extends Pregunta{
     }
 
 @Override
-    public int calcularPuntaje(ArrayList<Respuesta> respuestasUsuario){
+    public void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasUsuario){
 
-        int cantRespuestasCorrectasDeLaPregunta =(int) respuestasUsuario.stream().filter(respuesta -> respuesta.esCorrecta()).count();
-        return this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectasDeLaPregunta, respuestasPosibles.size(), respuestasUsuario.size());
+        int cantRespuestasCorrectasDelUsuario=(int) respuestasUsuario.stream().filter(respuesta -> respuesta.esCorrecta()).count();
+        int cantRespuestasCorrectasDeLaPregunta =(int) respuestasPosibles.stream().filter(respuesta -> respuesta.esCorrecta()).count();
+        puntajesJugadores.add(this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectasDelUsuario, cantRespuestasCorrectasDeLaPregunta, respuestasUsuario.size()));
+        jugadoresContestaronCorrectamente.add(!this.tipoPuntaje.usuarioContestoErroneamente(cantRespuestasCorrectasDelUsuario,respuestasUsuario.size()));
 
     }
 }
