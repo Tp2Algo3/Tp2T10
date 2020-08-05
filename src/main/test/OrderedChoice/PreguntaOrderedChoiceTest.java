@@ -178,7 +178,7 @@ public class PreguntaOrderedChoiceTest {
         // Creo la pregunta y el jugador la responde
         preguntaOC = new PreguntaOrderedChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta.");
 
-        // Un solo jugador uza exclusividad
+        // Un solo jugador usa exclusividad
         jugador1.utilizarExclusividad(preguntaOC);
 
         respuestIngresadasJ1 = jugador1.responderPregunta();

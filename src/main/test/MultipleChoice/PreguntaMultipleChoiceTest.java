@@ -13,9 +13,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 
-public class PreguntaMultipleChoiceClasicoTest {
+public class PreguntaMultipleChoiceTest {
 
     ArrayList <Respuesta> respuestasIngresadas;
+    ArrayList <Respuesta> respuestasJ1;
+    ArrayList <Respuesta> respuestasJ2;
     PuntajeClasico puntajeClasico;
     PuntajeParcial puntajeParcial;
     PuntajePenalizacion puntajePenalizacion;
@@ -24,6 +26,7 @@ public class PreguntaMultipleChoiceClasicoTest {
     Respuesta respuestaIncorrecta;
     ArrayList<Respuesta> respuestasPosibles;
     Jugador jugador;
+    Jugador jugador2;
     ArrayList<Integer> puntajes;
 
 
@@ -225,5 +228,106 @@ public class PreguntaMultipleChoiceClasicoTest {
 
         //Assert
         assertEquals(puntajes.get(0), jugador.getPuntos());
+    }
+
+    @Test
+    public void test10DadaLaActivacionDeUnaExclusividadYDosJugadoresQueContestanBienNingunoSumaPuntos(){
+        //Inicialización
+        jugador = new Jugador("Juan");
+        respuestasJ1 = new ArrayList<>();
+        respuestasJ2 = new ArrayList<>();
+        respuestasPosibles = new ArrayList<>();
+
+        //Genero las respuestas de la pregunta y de los jugadores
+        for (int i=0; i<2; i++) {
+            respuestaCorrecta = new RespuestaCorrecta("Soy una respuesta");
+            respuestasPosibles.add(respuestaCorrecta);
+            respuestasJ1.add(respuestaCorrecta);
+            respuestasJ2.add(respuestaCorrecta);
+        }
+
+        //Creo el Multiple Choice
+        MChoice = new PreguntaOpcionMultiple(new PuntajeClasico(),respuestasPosibles,"Que te pregunto?");
+        //Activo Exclusividad
+        jugador.utilizarExclusividad(MChoice);
+
+        //Calculo de Puntajes
+        MChoice.calcularPuntajeIndividual(respuestasJ1);
+        MChoice.calcularPuntajeIndividual(respuestasJ2);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+
+        //Assert
+        assertEquals(0,puntajes.get(0));
+        assertEquals(0,puntajes.get(0));
+    }
+
+    @Test
+    public void test11DadaLaActivacionDeUnaExclusividadYUnSoloJugadortestaBienSoloEsteMultiplicaPuntos(){
+        //Inicialización
+        jugador = new Jugador("Juan");
+        jugador2 = new Jugador("Pepito");
+        respuestasJ1 = new ArrayList<>();
+        respuestasJ2 = new ArrayList<>();
+        respuestasPosibles = new ArrayList<>();
+
+        //Genero las respuestas de la pregunta y de los jugadores
+        for (int i=0; i<2; i++) {
+            respuestaCorrecta = new RespuestaCorrecta("Soy una respuesta");
+            respuestasPosibles.add(respuestaCorrecta);
+            respuestasJ1.add(respuestaCorrecta);
+            respuestasJ2.add(respuestaCorrecta);
+        }
+        respuestaIncorrecta = new RespuestaIncorrecta("Soy incorrecta");
+        respuestasPosibles.add(respuestaIncorrecta);
+        respuestasJ2.add(respuestaIncorrecta);
+
+        //Creo el Multiple Choice
+        MChoice = new PreguntaOpcionMultiple(new PuntajeClasico(),respuestasPosibles,"Que te pregunto?");
+        //Activo Exclusividad
+        jugador.utilizarExclusividad(MChoice);
+        jugador2.utilizarExclusividad(MChoice);
+
+        //Calculo de Puntajes
+        MChoice.calcularPuntajeIndividual(respuestasJ1);
+        MChoice.calcularPuntajeIndividual(respuestasJ2);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+
+        //Assert
+        assertEquals(4,puntajes.get(0));
+        assertEquals(0,puntajes.get(1));
+    }
+
+    @Test
+    public void test12DadaLaActivacionDosExclusividadesYUnSoloJugadortestaBienSoloEsteMultiplicaPuntos(){
+        //Inicialización
+        jugador = new Jugador("Juan");
+        respuestasJ1 = new ArrayList<>();
+        respuestasJ2 = new ArrayList<>();
+        respuestasPosibles = new ArrayList<>();
+
+        //Genero las respuestas de la pregunta y de los jugadores
+        for (int i=0; i<2; i++) {
+            respuestaCorrecta = new RespuestaCorrecta("Soy una respuesta");
+            respuestasPosibles.add(respuestaCorrecta);
+            respuestasJ1.add(respuestaCorrecta);
+            respuestasJ2.add(respuestaCorrecta);
+        }
+        respuestaIncorrecta = new RespuestaIncorrecta("Soy incorrecta");
+        respuestasPosibles.add(respuestaIncorrecta);
+        respuestasJ2.add(respuestaIncorrecta);
+
+        //Creo el Multiple Choice
+        MChoice = new PreguntaOpcionMultiple(new PuntajeClasico(),respuestasPosibles,"Que te pregunto?");
+        //Activo Exclusividad
+        jugador.utilizarExclusividad(MChoice);
+
+        //Calculo de Puntajes
+        MChoice.calcularPuntajeIndividual(respuestasJ1);
+        MChoice.calcularPuntajeIndividual(respuestasJ2);
+        puntajes = MChoice.definirPuntajesDeJugadores();
+
+        //Assert
+        assertEquals(2,puntajes.get(0));
+        assertEquals(0,puntajes.get(1));
     }
 }

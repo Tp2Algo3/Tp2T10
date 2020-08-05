@@ -22,6 +22,7 @@ public class PreguntaGroupChoiceTest {
     ArrayList<Respuesta> respuestasPosibles;
     ArrayList<Integer> puntajes;
     Jugador jugador;
+    Jugador jugador2;
 
     @Test
     public void test01AcertarCompletamenteUnGroupChoiceTeDaElPunto(){
@@ -149,6 +150,72 @@ public class PreguntaGroupChoiceTest {
 
         //Assert
         assertEquals(2,puntajes.get(0));
+        assertEquals(0,puntajes.get(1));
+    }
+
+    @Test
+    public void test06UsarDosExclusividadesCuandoSoloUnJugadorContestaBienMultiplicaLosPuntosDosVeces(){
+        respuestasIngresadasJ1 = new ArrayList<>();
+        respuestasIngresadasJ2 = new ArrayList<>();
+        jugador = new Jugador("nombre");
+        jugador2 = new Jugador("J2");
+        respuestasPosibles = new ArrayList<>();
+        puntajeClasico = new PuntajeClasico();
+
+        //Carga de respuestas
+        for (int i = 0 ; i < 3 ; i++){
+            respuestaGroup = new RespuestaGroup("Soy correcta",1);
+            respuestasIngresadasJ1.add(respuestaGroup);
+            respuestasIngresadasJ2.add(respuestaGroup);
+            respuestasPosibles.add(respuestaGroup);
+            respuestaGroup.cambiarGrupo();
+        }
+
+        //Creo la pregunta
+        pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
+        jugador.utilizarExclusividad(pregGroupChoice);
+        jugador2.utilizarExclusividad(pregGroupChoice);
+        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ1);
+
+        //Calculo de puntajes individuales y final
+        ((RespuestaGroup)respuestasIngresadasJ2.get(2)).cambiarGrupo();
+        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ2);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+
+        //Assert
+        assertEquals(4,puntajes.get(0));
+        assertEquals(0,puntajes.get(1));
+    }
+
+    @Test
+    public void test07UsarUnaExclusividadCuandoAmbosJugadoresContestaBienNoDaPuntos(){
+        respuestasIngresadasJ1 = new ArrayList<>();
+        respuestasIngresadasJ2 = new ArrayList<>();
+        jugador = new Jugador("nombre");
+        respuestasPosibles = new ArrayList<>();
+        puntajeClasico = new PuntajeClasico();
+
+        //Carga de respuestas
+        for (int i = 0 ; i < 3 ; i++){
+            respuestaGroup = new RespuestaGroup("Soy correcta",1);
+            respuestasIngresadasJ1.add(respuestaGroup);
+            respuestasIngresadasJ2.add(respuestaGroup);
+            respuestasPosibles.add(respuestaGroup);
+            respuestaGroup.cambiarGrupo();
+        }
+
+        //Creo la pregunta
+        pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
+        jugador.utilizarExclusividad(pregGroupChoice);
+
+
+        //Calculo de puntajes individuales y final
+        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ1);
+        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ2);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+
+        //Assert
+        assertEquals(0,puntajes.get(0));
         assertEquals(0,puntajes.get(1));
     }
 }
