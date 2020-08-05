@@ -17,9 +17,9 @@ public class PreguntaGroupChoice extends Pregunta{
     public void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasUsuario){
 
         int cantRespuestasCorrectasDelUsuario=(int) respuestasUsuario.stream().filter(respuesta -> respuesta.esCorrecta()).count();
-        int cantRespuestasCorrectasDeLaPregunta =(int) respuestasPosibles.stream().filter(respuesta -> respuesta.esCorrecta()).count();
+        int cantRespuestasCorrectasDeLaPregunta = respuestasPosibles.size();
         puntajesJugadores.add(this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectasDelUsuario, cantRespuestasCorrectasDeLaPregunta, respuestasUsuario.size()));
-        jugadoresContestaronCorrectamente.add(!this.tipoPuntaje.usuarioContestoErroneamente(cantRespuestasCorrectasDelUsuario,respuestasUsuario.size()));
+        jugadoresContestaronCorrectamente.add(!this.tipoPuntaje.usuarioContestoErroneamente(respuestasUsuario.size(),cantRespuestasCorrectasDelUsuario));
 
     }
 }
