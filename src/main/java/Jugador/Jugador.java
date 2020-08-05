@@ -69,4 +69,7 @@ public class Jugador {
     }
     public String getNombre() { return this.nombre;}
 
+    //SOLO PARA FINALIDAD DE TESTING
+    public int getUsosExclusividad() { return this.usosRestantesExclusividadPuntajes;}
+
 }

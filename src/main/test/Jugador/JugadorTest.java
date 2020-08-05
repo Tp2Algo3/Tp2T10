@@ -1,10 +1,16 @@
 package Jugador;
 
+import ClasesPreguntas.Preguntas.PreguntaOpcionMultiple;
+import ClasesPreguntas.Preguntas.PreguntaVerdaderoOFalso;
+import ClasesPreguntas.Puntajes.PuntajeClasico;
 import ClasesPreguntas.Respuestas.Respuesta;
 import ClasesPreguntas.Respuestas.RespuestaCorrecta;
+import ClasesPreguntas.Respuestas.RespuestaIncorrecta;
 import Jugador.Potenciadores.MultiplicadorPorDos;
 import Jugador.Potenciadores.MultiplicadorPorTres;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -65,5 +71,23 @@ public class JugadorTest {
         jugador.aniadirRespuesta(respuesta);
         jugador.aniadirRespuesta(respuesta);
         assertEquals(2,jugador.responderPregunta().size());
+    }
+
+    @Test
+    public void test07AlUtilizarExclusividadElJugadorPierdeUnUsoDelMismo(){
+        //Inicializacion
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(new RespuestaIncorrecta("asd"));
+        respuestas.add(new RespuestaCorrecta("qwe"));
+        jugador = new Jugador("Juancito");
+        PreguntaVerdaderoOFalso vof = new PreguntaVerdaderoOFalso(new PuntajeClasico(), respuestas, "Hola");
+
+        //Act Y Assert
+        jugador.utilizarExclusividad(vof);
+        assertEquals(1,jugador.getUsosExclusividad());
+        jugador.utilizarExclusividad(vof);
+        assertEquals(0,jugador.getUsosExclusividad());
+        jugador.utilizarExclusividad(vof);
+        assertEquals(0,jugador.getUsosExclusividad());
     }
 }
