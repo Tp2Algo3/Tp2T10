@@ -29,6 +29,6 @@ public class PreguntaOrderedChoice extends Pregunta{
         int cantOpcionesDeLaPregunta = this.respuestasPosibles.size();
 
         puntajesJugadores.add(this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectasDelUsuario, cantOpcionesDeLaPregunta, respuestasDelUsuario.size()));
-        jugadoresContestaronCorrectamente.add(!this.tipoPuntaje.usuarioContestoErroneamente(cantRespuestasCorrectasDelUsuario,respuestasDelUsuario.size()));
+        jugadoresContestaronCorrectamente.add(!this.tipoPuntaje.usuarioContestoErroneamente(cantOpcionesDeLaPregunta,cantRespuestasCorrectasDelUsuario));
     }
 }
