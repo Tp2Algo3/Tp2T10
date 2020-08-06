@@ -15,6 +15,7 @@ public class RespuestaOrdenada extends Respuesta{
         return this.posicionCorrecta == this.posicionSegunElUsuario;
     }
 
+    //Ver el nombre
     public void setPosicionSegunElUsuario(int posicion) {
         this.posicionSegunElUsuario = posicion;
     }

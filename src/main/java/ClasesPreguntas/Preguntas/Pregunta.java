@@ -27,7 +27,10 @@ public abstract class Pregunta {
     public void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasDelUsuario) {
         int cantRespuestasCorrectasDelUsuario, cantRespuestasCorrectasDeLaPregunta;
         cantRespuestasCorrectasDeLaPregunta =(int) respuestasPosibles.stream().filter(respuesta -> respuesta.esCorrecta()).count();
-        cantRespuestasCorrectasDelUsuario =(int) respuestasDelUsuario.stream().filter(respuesta -> respuesta.esCorrecta()).count();
+        cantRespuestasCorrectasDelUsuario =(int) respuestasDelUsuario
+                .stream()
+                .filter(respuesta -> respuesta.esCorrecta())
+                .count();
         puntajesJugadores.add(this.tipoPuntaje.calcularPuntaje(cantRespuestasCorrectasDelUsuario, cantRespuestasCorrectasDeLaPregunta, respuestasDelUsuario.size()));
         jugadoresContestaronCorrectamente.add(!this.tipoPuntaje.usuarioContestoErroneamente(respuestasDelUsuario.size(), cantRespuestasCorrectasDelUsuario));
     }
@@ -40,7 +43,9 @@ public abstract class Pregunta {
     }
 
     public void recibirExclusividad(){
+        //Hacer admiteExclusividad al puntaje
         if (tipoPuntaje.getClass()== PuntajePenalizacion.class) {
+            //Crear excepcion especifica
             throw new RuntimeException("Preguntas con penalizacion no pueden tener exclusividad de puntaje");
         }
             exclusividadesPuntaje.add(new ExclusividadPuntaje());

@@ -32,9 +32,6 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        StackPane stackPane = new StackPane();
-        VBox vbox = new VBox();
-        stackPane.getChildren().add(vbox);
         Jugador jugador1 = new Jugador(nombre_jug1.getText());
         Jugador jugador2 = new Jugador(nombre_jug2.getText());
 

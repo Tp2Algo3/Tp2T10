@@ -9,7 +9,7 @@ public class RespuestaGroup extends Respuesta{
         grupoCorrecto = grupo;
         grupoElegidoPorJugador = 0;
         if(grupo>2 || grupo < 1){
-            throw new RuntimeException("Grupo de Respuesta invalido.Puto");
+            throw new RuntimeException("Grupo de Respuesta invalido."); //Cambiar por Illegal
         }
     }
 
