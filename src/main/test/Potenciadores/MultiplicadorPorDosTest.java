@@ -9,7 +9,7 @@ public class MultiplicadorPorDosTest {
     MultiplicadorPorDos multiplicador;
 
     @Test
-    public void test00DadoUnNumeroPositivoDevuelveElDobleDelNumero(){
+    public void test01DadoUnNumeroPositivoDevuelveElDobleDelNumero(){
         int resultado;
 
         multiplicador = new MultiplicadorPorDos();
@@ -17,7 +17,7 @@ public class MultiplicadorPorDosTest {
         assertEquals(4,resultado);
     }
     @Test
-    public void test01DadoUnNumeroNegativoDevueleElDobleDelNumero(){
+    public void test02DadoUnNumeroNegativoDevueleElDobleDelNumero(){
         int resultado;
 
         multiplicador = new MultiplicadorPorDos();
@@ -26,7 +26,7 @@ public class MultiplicadorPorDosTest {
     }
 
     @Test
-    public void test02DadoCeroSeDevolveraCero(){
+    public void test03DadoCeroSeDevolveraCero(){
         int resultado;
 
         multiplicador = new MultiplicadorPorDos();

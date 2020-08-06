@@ -9,7 +9,7 @@ public class MultiplicadorDefectoTest {
     MultiplicadorDefecto multiplicador;
 
     @Test
-    public void test00DadoUnNumeroPositivoDevuelveElMismoNumero(){
+    public void test01DadoUnNumeroPositivoDevuelveElMismoNumero(){
         int resultado;
 
         multiplicador = new MultiplicadorDefecto();
@@ -17,7 +17,7 @@ public class MultiplicadorDefectoTest {
         assertEquals(2,resultado);
     }
     @Test
-    public void test01DadoUnNumeroNegativoDevueleElMismoNumero(){
+    public void test02DadoUnNumeroNegativoDevueleElMismoNumero(){
         int resultado;
 
         multiplicador = new MultiplicadorDefecto();
@@ -26,7 +26,7 @@ public class MultiplicadorDefectoTest {
     }
 
     @Test
-    public void test02DadoCeroSeDevolveraCero(){
+    public void test03DadoCeroSeDevolveraCero(){
         int resultado;
 
         multiplicador = new MultiplicadorDefecto();

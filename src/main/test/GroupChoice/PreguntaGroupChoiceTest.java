@@ -188,7 +188,7 @@ public class PreguntaGroupChoiceTest {
     }
 
     @Test
-    public void test07UsarUnaExclusividadCuandoAmbosJugadoresContestaBienNoDaPuntos(){
+    public void test07UsarUnaExclusividadCuandoAmbosJugadoresContestanBienNoDaPuntos(){
         respuestasIngresadasJ1 = new ArrayList<>();
         respuestasIngresadasJ2 = new ArrayList<>();
         jugador = new Jugador("nombre");

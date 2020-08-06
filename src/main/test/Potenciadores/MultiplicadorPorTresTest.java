@@ -9,7 +9,7 @@ public class MultiplicadorPorTresTest {
     MultiplicadorPorTres multiplicador;
 
     @Test
-    public void test00DadoUnNumeroPositivoDevuelveElTripleDelNumero(){
+    public void test01DadoUnNumeroPositivoDevuelveElTripleDelNumero(){
         int resultado;
 
         multiplicador = new MultiplicadorPorTres();
@@ -17,7 +17,7 @@ public class MultiplicadorPorTresTest {
         assertEquals(6,resultado);
     }
     @Test
-    public void test01DadoUnNumeroNegativoDevueleElTripleDelNumero(){
+    public void test02DadoUnNumeroNegativoDevueleElTripleDelNumero(){
         int resultado;
 
         multiplicador = new MultiplicadorPorTres();
@@ -26,7 +26,7 @@ public class MultiplicadorPorTresTest {
     }
 
     @Test
-    public void test02DadoCeroSeDevolveraCero(){
+    public void test03DadoCeroSeDevolveraCero(){
         int resultado;
 
         multiplicador = new MultiplicadorPorTres();

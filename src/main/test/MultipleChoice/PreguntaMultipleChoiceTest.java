@@ -262,7 +262,7 @@ public class PreguntaMultipleChoiceTest {
     }
 
     @Test
-    public void test11DadaLaActivacionDeUnaExclusividadYUnSoloJugadortestaBienSoloEsteMultiplicaPuntos(){
+    public void test11DadaLaActivacionDeUnaExclusividadYUnSoloJugadorContestaBienSoloEsteMultiplicaPuntos(){
         //Inicialización
         jugador = new Jugador("Juan");
         jugador2 = new Jugador("Pepito");
@@ -298,7 +298,7 @@ public class PreguntaMultipleChoiceTest {
     }
 
     @Test
-    public void test12DadaLaActivacionDosExclusividadesYUnSoloJugadortestaBienSoloEsteMultiplicaPuntos(){
+    public void test12DadaLaActivacionDosExclusividadesYUnSoloJugadorContestaBienSoloEsteMultiplicaPuntos(){
         //Inicialización
         jugador = new Jugador("Juan");
         respuestasJ1 = new ArrayList<>();

@@ -7,14 +7,14 @@ public class RespuestaGroupTest {
     private RespuestaGroup respuesta;
 
     @Test
-    public void test00DadaUnaRespuestaMalElegidaDevuelveNoEsCorrecta(){
+    public void test01DadaUnaRespuestaMalElegidaDevuelveNoEsCorrecta(){
         respuesta = new RespuestaGroup("Soy UnaRespuesta",1);
 
         assert(!respuesta.esCorrecta());
     }
 
     @Test
-    public void test01DadaUnaRespuestaBienElegidaDevuelveEsCorrecta(){
+    public void test02DadaUnaRespuestaBienElegidaDevuelveEsCorrecta(){
         respuesta = new RespuestaGroup("Soy UnaRespuesta",1);
         respuesta.cambiarGrupo();
         assert(respuesta.esCorrecta());
