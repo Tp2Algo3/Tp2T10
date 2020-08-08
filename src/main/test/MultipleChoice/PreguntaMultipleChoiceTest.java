@@ -1,16 +1,18 @@
 package MultipleChoice;
 
-import ClasesPreguntas.Preguntas.PreguntaOpcionMultiple;
-import ClasesPreguntas.Respuestas.Respuesta;
-import ClasesPreguntas.Respuestas.RespuestaCorrecta;
-import ClasesPreguntas.Respuestas.RespuestaIncorrecta;
+import Preguntas.PreguntaOpcionMultiple;
+import Respuestas.Respuesta;
+import Respuestas.RespuestaCorrecta;
+import Respuestas.RespuestaIncorrecta;
 import Jugador.Jugador;
+import Puntajes.PuntajeClasico;
+import Puntajes.PuntajeParcial;
+import Puntajes.PuntajePenalizacion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import ClasesPreguntas.Puntajes.*;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 
 public class PreguntaMultipleChoiceTest {

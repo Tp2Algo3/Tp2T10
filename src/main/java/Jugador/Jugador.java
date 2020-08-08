@@ -1,8 +1,13 @@
 package Jugador;
 
-import ClasesPreguntas.Preguntas.Pregunta;
-import ClasesPreguntas.Respuestas.Respuesta;
-import Jugador.Potenciadores.*;
+import Potenciadores.Multiplicador;
+import Potenciadores.MultiplicadorDefecto;
+import Potenciadores.MultiplicadorPorDos;
+import Potenciadores.MultiplicadorPorTres;
+import Preguntas.Pregunta;
+import Respuestas.Respuesta;
+import ErrorHandler.ErrorHandler;
+
 import java.util.ArrayList;
 
 public class Jugador {
@@ -59,7 +64,11 @@ public class Jugador {
 
     public void utilizarExclusividad(Pregunta pregunta){
         if(usosRestantesExclusividadPuntajes>0){
-            pregunta.recibirExclusividad();
+            try{
+                pregunta.recibirExclusividad();
+            }catch(IllegalArgumentException excepcionArgumento){
+                ErrorHandler.cerrarPrograma(excepcionArgumento);
+            }
             usosRestantesExclusividadPuntajes--;
         }
     }
@@ -67,9 +76,11 @@ public class Jugador {
     public int getPuntos(){
         return this.puntaje;
     }
+
+    //Para finalidad de UI
     public String getNombre() { return this.nombre;}
 
-    //SOLO PARA FINALIDAD DE TESTING
+    //SOLO PARA FINALIDAD DE TESTING Y UI
     public int getUsosExclusividad() { return this.usosRestantesExclusividadPuntajes;}
 
 }

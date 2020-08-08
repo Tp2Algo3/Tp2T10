@@ -1,11 +1,10 @@
 package OrderedChoice;
 
-import ClasesPreguntas.Preguntas.PreguntaOrderedChoice;
-import ClasesPreguntas.Puntajes.PuntajeClasico;
-import ClasesPreguntas.Respuestas.Respuesta;
-import ClasesPreguntas.Respuestas.RespuestaOrdenada;
+import Preguntas.PreguntaOrderedChoice;
+import Puntajes.PuntajeClasico;
+import Respuestas.Respuesta;
+import Respuestas.RespuestaOrdenada;
 import Jugador.Jugador;
-import Jugador.Potenciadores.ExclusividadPuntaje;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

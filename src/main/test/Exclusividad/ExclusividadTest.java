@@ -1,6 +1,6 @@
 package Exclusividad;
 
-import Jugador.Potenciadores.ExclusividadPuntaje;
+import Potenciadores.ExclusividadPuntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

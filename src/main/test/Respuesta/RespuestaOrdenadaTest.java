@@ -1,6 +1,6 @@
 package Respuesta;
 
-import ClasesPreguntas.Respuestas.RespuestaOrdenada;
+import Respuestas.RespuestaOrdenada;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,7 +13,7 @@ public class RespuestaOrdenadaTest {
     public void test01RespuestaBienOrdenadaEsCorrecta() {
         respuestaOrdenada = new RespuestaOrdenada("Soy una opcion.", 0);
 
-        respuestaOrdenada.setPosicionSegunElUsuario(0);
+        respuestaOrdenada.setPosicionRespuesta(0);
 
         assertTrue(respuestaOrdenada.esCorrecta());
     }
@@ -22,7 +22,7 @@ public class RespuestaOrdenadaTest {
     public void test02RespuestaMalOrdenadaNoEsCorrecta() {
         respuestaOrdenada = new RespuestaOrdenada("Soy una opcion.", 0);
 
-        respuestaOrdenada.setPosicionSegunElUsuario(1);
+        respuestaOrdenada.setPosicionRespuesta(1);
 
         assertFalse(respuestaOrdenada.esCorrecta());
     }

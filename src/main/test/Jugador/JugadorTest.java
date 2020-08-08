@@ -1,13 +1,12 @@
 package Jugador;
 
-import ClasesPreguntas.Preguntas.PreguntaOpcionMultiple;
-import ClasesPreguntas.Preguntas.PreguntaVerdaderoOFalso;
-import ClasesPreguntas.Puntajes.PuntajeClasico;
-import ClasesPreguntas.Respuestas.Respuesta;
-import ClasesPreguntas.Respuestas.RespuestaCorrecta;
-import ClasesPreguntas.Respuestas.RespuestaIncorrecta;
-import Jugador.Potenciadores.MultiplicadorPorDos;
-import Jugador.Potenciadores.MultiplicadorPorTres;
+import Preguntas.PreguntaVerdaderoOFalso;
+import Puntajes.PuntajeClasico;
+import Respuestas.Respuesta;
+import Respuestas.RespuestaCorrecta;
+import Respuestas.RespuestaIncorrecta;
+import Potenciadores.MultiplicadorPorDos;
+import Potenciadores.MultiplicadorPorTres;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
