@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JugadorTest {
 
@@ -52,16 +51,10 @@ public class JugadorTest {
 
     @Test
     public void test05UnJugadorQuiereUtilizarUnPotenciadorQueNoTieneYNoSeLeUtiliza(){
-        boolean errorLanzado = false;
         jugador = new Jugador("Jugador");
         jugador.utilizarMultiplicador(3);
         jugador.aumentarPuntaje(2);
-        try {
-            jugador.utilizarMultiplicador(3);
-        }catch(RuntimeException e){
-            errorLanzado = true;
-        }
-        assertTrue(errorLanzado);
+        assertThrows(RuntimeException.class, ()->jugador.utilizarMultiplicador(3));
     }
 
     @Test
@@ -94,7 +87,6 @@ public class JugadorTest {
     @Test
     public void test07AlUtilizarExclusividadTresVeceElJugadorLanzaError(){
         //Inicializacion
-        boolean errorLanzado = false;
         ArrayList<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new RespuestaIncorrecta("asd"));
         respuestas.add(new RespuestaCorrecta("qwe"));
@@ -106,12 +98,7 @@ public class JugadorTest {
         assertEquals(1,jugador.getUsosExclusividad());
         jugador.utilizarExclusividad(vof);
         assertEquals(0,jugador.getUsosExclusividad());
-        try{
-            jugador.utilizarExclusividad(vof);
-        }catch(RuntimeException e){
-            errorLanzado = true;
-        }
-        assertTrue(errorLanzado);
+        assertThrows(RuntimeException.class, ()->jugador.utilizarExclusividad(vof));
 
     }
 }
