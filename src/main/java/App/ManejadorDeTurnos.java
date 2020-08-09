@@ -2,6 +2,7 @@ package App;
 
 
 import Jugador.Jugador;
+import LayoutsUI.PuntajesActuales;
 import Preguntas.*;
 import java.util.ArrayList;
 
@@ -20,13 +21,17 @@ public class ManejadorDeTurnos {
         this.preguntas=preguntas;
         jugadorActual=0;
         rondaActual=0;
+        preguntaActual = preguntas.get(rondaActual);
     }
 
     public void update(){
-        preguntaActual.calcularPuntajeIndividual(jugadores.get(jugadorActual).responderPregunta());
-        if (jugadorActual == jugadores.size()-1){
+        if (jugadorActual!=0) {
+            preguntaActual.calcularPuntajeIndividual(jugadores.get(jugadorActual).responderPregunta());
+            jugadorActual++;
+        }
+        if (jugadorActual == jugadores.size()){
             aumentarPuntajesJugadores();
-            siguienteRonda();
+            mostrarPuntajes();
         }
         else {
             siguienteTurno(preguntaActual);
@@ -40,15 +45,15 @@ public class ManejadorDeTurnos {
         }
     }
 
-    private void siguienteRonda(){
+    private void mostrarPuntajes(){
         jugadorActual=0;
         rondaActual++;
         preguntaActual = preguntas.get(rondaActual);
-        siguienteTurno(preguntaActual);
+        KahootApp.getStage().getScene().setRoot(PuntajesActuales.getLayout(jugadores, rondaActual));
     }
 
     private void siguienteTurno(Pregunta preguntaActual){
-        //KahootApp.getStage().getScene().root(algo mandando la pregunta y el jugador);
+        //KahootApp.getStage().getScene().setRoot(algo mandando la pregunta y el jugador);
     }
 
 }

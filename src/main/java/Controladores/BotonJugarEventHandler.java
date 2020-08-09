@@ -33,10 +33,7 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
         KahootApp.iniciarJuego(jugadores);
         KahootApp.update();
 
-        /*CAMBIARLO, ES TENTATIVO.
-        ArrayList<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(jugador1);
-        jugadores.add(jugador2);
+        /*
         ArrayList<Respuesta> respuestasPosibles = new ArrayList<>();
         respuestasPosibles.add(new RespuestaCorrecta("Verdadero"));
         respuestasPosibles.add(new RespuestaIncorrecta("Falso"));

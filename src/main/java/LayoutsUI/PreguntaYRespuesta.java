@@ -1,5 +1,6 @@
 package LayoutsUI;
 
+import Controladores.UpdateEventHandler;
 import Preguntas.Pregunta;
 import Respuestas.Respuesta;
 import Controladores.AniadirRespuestaEventHandler;
@@ -47,6 +48,11 @@ public class PreguntaYRespuesta{
         panelRespuestas.setSpacing(25);
         panelRespuestas.setAlignment(Pos.CENTER);
         base_layout.getChildren().add(panelRespuestas);
+
+        Button botonEnviar = new Button("Enviar Respuestas");
+        botonEnviar.setOnAction(new UpdateEventHandler());
+        base_layout.getChildren().add(botonEnviar);
+
         return layout;
     }
 

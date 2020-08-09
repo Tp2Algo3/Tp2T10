@@ -2,6 +2,7 @@ package App;
 
 import Jugador.Jugador;
 import LayoutsUI.InicioJuego;
+import LayoutsUI.PuntajesActuales;
 import Preguntas.Pregunta;
 import javafx.application.Application;
 import javafx.scene.Scene;
