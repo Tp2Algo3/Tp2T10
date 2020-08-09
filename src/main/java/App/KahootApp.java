@@ -2,19 +2,18 @@ package App;
 
 import Jugador.Jugador;
 import LayoutsUI.InicioJuego;
-import LayoutsUI.PuntajesActuales;
 import Preguntas.Pregunta;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class KahootApp extends Application {
 
     private static Stage stage;
     private static ManejadorDeTurnos manejadorDeTurnos;
-    private static ArrayList<Pregunta> preguntas;
 
     public static void main (String[] args) {
         launch(args);
@@ -35,11 +34,17 @@ public class KahootApp extends Application {
     }
 
     public static void iniciarJuego(ArrayList<Jugador> jugadores){
-        preguntas = LectorDeArchivos.leerPreguntas();
+        CargadorDePreguntas cargadorDePreguntas = new LectorDeArchivos();
+        ArrayList<Pregunta> preguntas = cargadorDePreguntas.leerPreguntas();
         manejadorDeTurnos = new ManejadorDeTurnos(jugadores, preguntas);
     }
 
     public static void update(){
-        manejadorDeTurnos.update();
+        manejadorDeTurnos.siguienteFase();
+    }
+
+    public static void definirPuestos(ArrayList<Jugador> jugadores){
+        Collections.sort(jugadores);
+        //Llamar a la UI final del juego
     }
 }

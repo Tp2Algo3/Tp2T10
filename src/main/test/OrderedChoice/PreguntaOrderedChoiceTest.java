@@ -22,6 +22,7 @@ public class PreguntaOrderedChoiceTest {
     PreguntaOrderedChoice preguntaOC;
     RespuestaOrdenada respuestaOrdenada;
     ArrayList<Integer> puntajes;
+    ArrayList<ArrayList<Respuesta>> respuestasJugadores;
 
 
     @Test
@@ -32,6 +33,7 @@ public class PreguntaOrderedChoiceTest {
         puntajeClasico = new PuntajeClasico();
         respuestasPosibles = new ArrayList<>();
         respuestIngresadasJ1 = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         // Creo las respuestas y las aniado
         for (int i = 0; i < 3; i++) {
@@ -44,8 +46,8 @@ public class PreguntaOrderedChoiceTest {
         preguntaOC = new PreguntaOrderedChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta.");
 
         respuestIngresadasJ1 = jugador1.responderPregunta();
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ1);
-        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestIngresadasJ1);
+        puntajes = preguntaOC.definirPuntajesDeJugadores(respuestasJugadores);
         jugador1.aumentarPuntaje(puntajes.get(0));
 
         assertEquals(1, jugador1.getPuntos());
@@ -58,6 +60,7 @@ public class PreguntaOrderedChoiceTest {
         jugador1 = new Jugador("Joel2");
         puntajeClasico = new PuntajeClasico();
         respuestasPosibles = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         // El jugador pone la respuesta en el orden correcto
         respuestaOrdenada = new RespuestaOrdenada("Soy una opcion", 1);
@@ -78,8 +81,8 @@ public class PreguntaOrderedChoiceTest {
         preguntaOC = new PreguntaOrderedChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta.");
 
         respuestIngresadasJ1 = jugador1.responderPregunta();
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ1);
-        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestIngresadasJ1);
+        puntajes = preguntaOC.definirPuntajesDeJugadores(respuestasJugadores);
         jugador1.aumentarPuntaje(puntajes.get(0));
 
         assertEquals(0, jugador1.getPuntos());
@@ -92,6 +95,7 @@ public class PreguntaOrderedChoiceTest {
         jugador1 = new Jugador("Joel3");
         puntajeClasico = new PuntajeClasico();
         respuestasPosibles = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         // Creo las respuestas y las aniado
         for (int i = 0; i < 3; i++) {
@@ -109,8 +113,8 @@ public class PreguntaOrderedChoiceTest {
         preguntaOC = new PreguntaOrderedChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta.");
 
         respuestIngresadasJ1 = jugador1.responderPregunta();
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ1);
-        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestIngresadasJ1);
+        puntajes = preguntaOC.definirPuntajesDeJugadores(respuestasJugadores);
         jugador1.aumentarPuntaje(puntajes.get(0));
 
         assertEquals(0, jugador1.getPuntos());
@@ -124,6 +128,7 @@ public class PreguntaOrderedChoiceTest {
         puntajeClasico = new PuntajeClasico();
         respuestasPosibles = new ArrayList<>();
         respuestIngresadasJ1 = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         // Creo las respuestas y las aniado
         for (int i = 0; i < 3; i++) {
@@ -142,10 +147,9 @@ public class PreguntaOrderedChoiceTest {
         respuestIngresadasJ1 = jugador1.responderPregunta();
         respuestIngresadasJ2 = jugador2.responderPregunta();
 
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ1);
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ2);
-
-        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestIngresadasJ1);
+        respuestasJugadores.add(respuestIngresadasJ2);
+        puntajes = preguntaOC.definirPuntajesDeJugadores(respuestasJugadores);
         jugador1.aumentarPuntaje(puntajes.get(0));
         jugador2.aumentarPuntaje(puntajes.get(1));
 
@@ -161,6 +165,7 @@ public class PreguntaOrderedChoiceTest {
         puntajeClasico = new PuntajeClasico();
         respuestasPosibles = new ArrayList<>();
         respuestIngresadasJ1 = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         // Creo las respuestas y las aniado
         for (int i = 0; i < 3; i++) {
@@ -183,10 +188,9 @@ public class PreguntaOrderedChoiceTest {
         respuestIngresadasJ1 = jugador1.responderPregunta();
         respuestIngresadasJ2 = jugador2.responderPregunta();
 
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ1);
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ2);
-
-        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestIngresadasJ1);
+        respuestasJugadores.add(respuestIngresadasJ2);
+        puntajes = preguntaOC.definirPuntajesDeJugadores(respuestasJugadores);
 
         jugador1.aumentarPuntaje(puntajes.get(0));
         jugador2.aumentarPuntaje(puntajes.get(1));
@@ -203,6 +207,7 @@ public class PreguntaOrderedChoiceTest {
         puntajeClasico = new PuntajeClasico();
         respuestasPosibles = new ArrayList<>();
         respuestIngresadasJ1 = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         // Creo las respuestas y las aniado
         for (int i = 0; i < 3; i++) {
@@ -222,10 +227,9 @@ public class PreguntaOrderedChoiceTest {
         respuestIngresadasJ1 = jugador1.responderPregunta();
         respuestIngresadasJ2 = jugador2.responderPregunta();
 
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ1);
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ2);
-
-        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestIngresadasJ1);
+        respuestasJugadores.add(respuestIngresadasJ2);
+        puntajes = preguntaOC.definirPuntajesDeJugadores(respuestasJugadores);
         jugador1.aumentarPuntaje(puntajes.get(0));
         jugador2.aumentarPuntaje(puntajes.get(1));
 
@@ -241,6 +245,7 @@ public class PreguntaOrderedChoiceTest {
         puntajeClasico = new PuntajeClasico();
         respuestasPosibles = new ArrayList<>();
         respuestIngresadasJ1 = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         // Creo las respuestas y las aniado
         for (int i = 0; i < 3; i++) {
@@ -264,10 +269,9 @@ public class PreguntaOrderedChoiceTest {
         respuestIngresadasJ1 = jugador1.responderPregunta();
         respuestIngresadasJ2 = jugador2.responderPregunta();
 
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ1);
-        preguntaOC.calcularPuntajeIndividual(respuestIngresadasJ2);
-
-        puntajes = preguntaOC.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestIngresadasJ1);
+        respuestasJugadores.add(respuestIngresadasJ2);
+        puntajes = preguntaOC.definirPuntajesDeJugadores(respuestasJugadores);
 
         jugador1.aumentarPuntaje(puntajes.get(0));
         jugador2.aumentarPuntaje(puntajes.get(1));
@@ -275,7 +279,5 @@ public class PreguntaOrderedChoiceTest {
         assertEquals(4, jugador1.getPuntos());
         assertEquals(0, jugador2.getPuntos());
     }
-
-
 
 }

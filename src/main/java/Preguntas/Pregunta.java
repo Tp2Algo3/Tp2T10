@@ -1,6 +1,8 @@
 package Preguntas;
 
 import java.util.ArrayList;
+
+import Excepciones.PuntajeInvalidoExcepcion;
 import Puntajes.Puntaje;
 import Puntajes.PuntajePenalizacion;
 import Respuestas.Respuesta;
@@ -24,17 +26,17 @@ public abstract class Pregunta {
         this.exclusividadesPuntaje = new ArrayList<>();
     }
 
-    public void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasDelUsuario) {
+    protected void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasDelUsuario) {
         int cantRespuestasCorrectasDelUsuario, cantRespuestasCorrectasDeLaPregunta;
 
         cantRespuestasCorrectasDeLaPregunta =(int) respuestasPosibles
                 .stream()
-                .filter(respuesta -> respuesta.esCorrecta())
+                .filter(Respuesta::esCorrecta)
                 .count();
 
         cantRespuestasCorrectasDelUsuario =(int) respuestasDelUsuario
                 .stream()
-                .filter(respuesta -> respuesta.esCorrecta())
+                .filter(Respuesta::esCorrecta)
                 .count();
 
         puntajesJugadores.add(this.tipoPuntaje
@@ -44,7 +46,10 @@ public abstract class Pregunta {
                 .usuarioContestoErroneamente(respuestasDelUsuario.size(), cantRespuestasCorrectasDelUsuario));
     }
 
-    public ArrayList<Integer> definirPuntajesDeJugadores(){
+    public ArrayList<Integer> definirPuntajesDeJugadores(ArrayList<ArrayList<Respuesta>> respuestasJugadores){
+        for (ArrayList<Respuesta> respuestasJugador: respuestasJugadores){
+            calcularPuntajeIndividual(respuestasJugador);
+        }
         for(ExclusividadPuntaje exclusividad: exclusividadesPuntaje){
             exclusividad.multiplicarPuntos(puntajesJugadores,jugadoresContestaronCorrectamente);
         }
@@ -56,7 +61,7 @@ public abstract class Pregunta {
         if (tipoPuntaje.admiteExclusividad()) {
             exclusividadesPuntaje.add(new ExclusividadPuntaje());
         }
-        else{ throw new IllegalArgumentException("Preguntas con penalizacion no pueden tener exclusividad de puntaje."); }
+        else{ throw new PuntajeInvalidoExcepcion("Preguntas con penalizacion no pueden tener exclusividad de puntaje."); }
 
     }
 

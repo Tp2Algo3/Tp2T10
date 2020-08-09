@@ -10,10 +10,10 @@ import ErrorHandler.ErrorHandler;
 
 import java.util.ArrayList;
 
-public class Jugador {
+public class Jugador implements Comparable<Jugador>{
 
     private int puntaje;
-    private String nombre;
+    private final String nombre;
     private Multiplicador multiplicadorActual;
     private ArrayList<Multiplicador> multiplicadores;
     private int usosRestantesExclusividadPuntajes;
@@ -31,7 +31,10 @@ public class Jugador {
     }
 
     public ArrayList<Respuesta> responderPregunta(){
-        ArrayList<Respuesta> clonRespuestas = (ArrayList<Respuesta>) respuestasElegidas.clone();
+        ArrayList<Respuesta> clonRespuestas = new ArrayList<>();
+        for (Respuesta respuesta: respuestasElegidas){
+            clonRespuestas.add(respuesta.clone());
+        }
         respuestasElegidas.clear();
         return clonRespuestas;
     }
@@ -73,6 +76,17 @@ public class Jugador {
         }
     }
 
+    @Override
+    public int compareTo(Jugador jugador) {
+        if (puntaje < jugador.getPuntos()){
+            return -1;
+        }
+        else if (puntaje > jugador.getPuntos()){
+            return 1;
+        }
+        return 0;
+    }
+
     public int getPuntos(){
         return this.puntaje;
     }
@@ -82,5 +96,6 @@ public class Jugador {
 
     //SOLO PARA FINALIDAD DE TESTING Y UI
     public int getUsosExclusividad() { return this.usosRestantesExclusividadPuntajes;}
+
 
 }

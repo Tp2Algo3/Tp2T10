@@ -2,6 +2,7 @@ package Preguntas;
 
 import Puntajes.Puntaje;
 import Respuestas.Respuesta;
+import Respuestas.RespuestaGroup;
 
 import java.util.ArrayList;
 
@@ -14,11 +15,11 @@ public class PreguntaGroupChoice extends Pregunta{
     }
 
     @Override
-    public void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasUsuario){
+    protected void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasUsuario){
 
         int cantRespuestasCorrectasDelUsuario=(int) respuestasUsuario
                 .stream()
-                .filter(respuesta -> respuesta.esCorrecta())
+                .filter(Respuesta::esCorrecta)
                 .count();
 
         int cantRespuestasCorrectasDeLaPregunta = respuestasPosibles.size();

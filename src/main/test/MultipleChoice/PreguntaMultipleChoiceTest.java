@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.mockito.Mockito.mock;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PreguntaMultipleChoiceTest {
@@ -30,6 +31,7 @@ public class PreguntaMultipleChoiceTest {
     Jugador jugador;
     Jugador jugador2;
     ArrayList<Integer> puntajes;
+    ArrayList<ArrayList<Respuesta>> respuestasJugadores;
 
 
     @Test
@@ -38,6 +40,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -48,8 +51,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(1,puntajes.get(0));
     }
 
@@ -59,6 +62,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -72,8 +76,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(0,puntajes.get(0));
     }
 
@@ -83,6 +87,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -94,8 +99,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(0,puntajes.get(0));
     }
 
@@ -105,6 +110,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeParcial = new PuntajeParcial();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -115,8 +121,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(respuestasIngresadas.size(),puntajes.get(0));
     }
 
@@ -126,6 +132,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeParcial = new PuntajeParcial();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 2 ; i++){
@@ -137,8 +144,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(respuestasIngresadas.size(),puntajes.get(0));
     }
 
@@ -148,6 +155,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeParcial = new PuntajeParcial();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         respuestaCorrecta = new RespuestaCorrecta("Soy Correcta");
@@ -158,8 +166,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajeParcial, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(0,puntajes.get(0));
     }
 
@@ -169,6 +177,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajePenalizacion = new PuntajePenalizacion();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         respuestaCorrecta = new RespuestaCorrecta("Soy Correcta");
@@ -179,8 +188,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(-1,puntajes.get(0));
     }
 
@@ -190,6 +199,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajePenalizacion = new PuntajePenalizacion();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i=0; i<3; i++){
@@ -201,8 +211,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de la pregunta y assert
         MChoice = new PreguntaOpcionMultiple(puntajePenalizacion, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(0,puntajes.get(0));
     }
 
@@ -214,6 +224,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
         jugador = new Jugador("nombre");
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -224,8 +235,8 @@ public class PreguntaMultipleChoiceTest {
 
         //Creación de la pregunta y suma al jugador
         MChoice = new PreguntaOpcionMultiple(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        MChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
         jugador.aumentarPuntaje(puntajes.get(0));
 
         //Assert
@@ -239,6 +250,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasJ1 = new ArrayList<>();
         respuestasJ2 = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         //Genero las respuestas de la pregunta y de los jugadores
         for (int i=0; i<2; i++) {
@@ -254,9 +266,9 @@ public class PreguntaMultipleChoiceTest {
         jugador.utilizarExclusividad(MChoice);
 
         //Calculo de Puntajes
-        MChoice.calcularPuntajeIndividual(respuestasJ1);
-        MChoice.calcularPuntajeIndividual(respuestasJ2);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasJ1);
+        respuestasJugadores.add(respuestasJ2);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
 
         //Assert
         assertEquals(0,puntajes.get(0));
@@ -271,6 +283,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasJ1 = new ArrayList<>();
         respuestasJ2 = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         //Genero las respuestas de la pregunta y de los jugadores
         for (int i=0; i<2; i++) {
@@ -290,9 +303,9 @@ public class PreguntaMultipleChoiceTest {
         jugador2.utilizarExclusividad(MChoice);
 
         //Calculo de Puntajes
-        MChoice.calcularPuntajeIndividual(respuestasJ1);
-        MChoice.calcularPuntajeIndividual(respuestasJ2);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasJ1);
+        respuestasJugadores.add(respuestasJ2);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
 
         //Assert
         assertEquals(4,puntajes.get(0));
@@ -306,6 +319,7 @@ public class PreguntaMultipleChoiceTest {
         respuestasJ1 = new ArrayList<>();
         respuestasJ2 = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
+        respuestasJugadores = new ArrayList<>();
 
         //Genero las respuestas de la pregunta y de los jugadores
         for (int i=0; i<2; i++) {
@@ -324,9 +338,9 @@ public class PreguntaMultipleChoiceTest {
         jugador.utilizarExclusividad(MChoice);
 
         //Calculo de Puntajes
-        MChoice.calcularPuntajeIndividual(respuestasJ1);
-        MChoice.calcularPuntajeIndividual(respuestasJ2);
-        puntajes = MChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasJ1);
+        respuestasJugadores.add(respuestasJ2);
+        puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
 
         //Assert
         assertEquals(2,puntajes.get(0));

@@ -1,5 +1,6 @@
 package Grupo;
 
+import Respuestas.Respuesta;
 import Respuestas.RespuestaGroup;
 
 import java.util.ArrayList;
@@ -15,7 +16,12 @@ public class Grupo {
     }
 
     public boolean poseeRespuesta(RespuestaGroup respuesta){
-        return respuestasPertenecientes.contains(respuesta);
+        for (Respuesta respuestaPerteneciente: respuestasPertenecientes) {
+            if (respuestaPerteneciente.getContenido().equals(respuesta.getContenido())){
+                return true;
+            }
+        }
+        return false;
     }
 
     //Para fines de UI

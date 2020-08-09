@@ -16,7 +16,7 @@ public class PreguntaOrderedChoice extends Pregunta{
 
 
     @Override
-    public void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasDelUsuario) {
+    protected void calcularPuntajeIndividual(ArrayList<Respuesta> respuestasDelUsuario) {
         int cantRespuestasCorrectasDelUsuario = 0;
 
         for (int i = 0; i < respuestasDelUsuario.size(); i++) {

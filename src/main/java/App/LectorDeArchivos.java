@@ -5,9 +5,10 @@ import Respuestas.Respuesta;
 
 import java.util.ArrayList;
 
-public class LectorDeArchivos {
+public class LectorDeArchivos implements CargadorDePreguntas{
 
-    public static ArrayList<Pregunta> leerPreguntas(){
+    @Override
+    public ArrayList<Pregunta> leerPreguntas(){
         //While !termineDeLeer
         ArrayList<Respuesta> respuestas = leerRespuestas();
         //CrearPregunta
@@ -16,7 +17,7 @@ public class LectorDeArchivos {
         return null;
     }
 
-    private static ArrayList<Respuesta> leerRespuestas(){
+    private ArrayList<Respuesta> leerRespuestas(){
         return null;
     }
 

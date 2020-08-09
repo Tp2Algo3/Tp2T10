@@ -4,56 +4,83 @@ package App;
 import Jugador.Jugador;
 import LayoutsUI.PuntajesActuales;
 import Preguntas.*;
+import Respuestas.Respuesta;
 import java.util.ArrayList;
 
 
 
 public class ManejadorDeTurnos {
 
-    private ArrayList<Jugador> jugadores;
-    private ArrayList<Pregunta> preguntas;
-    int jugadorActual;
-    int rondaActual;
-    Pregunta preguntaActual;
+    private final ArrayList<Jugador> jugadores;
+    private final ArrayList<Pregunta> preguntas;
+    private int jugadorActual;
+    private int rondaActual;
+    private Pregunta preguntaActual;
+    private ArrayList<ArrayList<Respuesta>> respuestasJugadores;
 
     public ManejadorDeTurnos(ArrayList<Jugador> jugadores, ArrayList<Pregunta> preguntas){
         this.jugadores=jugadores;
         this.preguntas=preguntas;
-        jugadorActual=0;
+        jugadorActual=-1;
         rondaActual=0;
         preguntaActual = preguntas.get(rondaActual);
+        respuestasJugadores = new ArrayList<>();
     }
 
-    public void update(){
-        if (jugadorActual!=0) {
-            preguntaActual.calcularPuntajeIndividual(jugadores.get(jugadorActual).responderPregunta());
-            jugadorActual++;
+    public void siguienteFase(){
+        if (jugadorActual>=0){
+            aniadirRespuestasJugador();
         }
-        if (jugadorActual == jugadores.size()){
-            aumentarPuntajesJugadores();
-            mostrarPuntajes();
+        if (quedanJugadoresPorJugar()){
+            siguienteTurno();
         }
-        else {
-            siguienteTurno(preguntaActual);
+        else{
+            finDeRonda();
+            avanzarDeRonda();
         }
+    }
+
+    private boolean quedanJugadoresPorJugar(){
+        return jugadorActual<jugadores.size()-1;
+    }
+
+    private void finDeRonda(){
+        aumentarPuntajesJugadores();
+        mostrarPuntajes();
     }
 
     private void aumentarPuntajesJugadores(){
-        ArrayList<Integer> puntajesRonda = preguntaActual.definirPuntajesDeJugadores();
+        ArrayList<Integer> puntajesRonda = preguntaActual.definirPuntajesDeJugadores(respuestasJugadores);
         for (int i=0; i<jugadores.size(); i++){
             jugadores.get(i).aumentarPuntaje(puntajesRonda.get(i));
         }
     }
 
     private void mostrarPuntajes(){
-        jugadorActual=0;
-        rondaActual++;
-        preguntaActual = preguntas.get(rondaActual);
         KahootApp.getStage().getScene().setRoot(PuntajesActuales.getLayout(jugadores, rondaActual));
     }
 
-    private void siguienteTurno(Pregunta preguntaActual){
+    private void avanzarDeRonda(){
+        jugadorActual=-1;
+        rondaActual++;
+        if (rondaActual > preguntas.size()-1){
+            finDelJuego();
+        }
+        preguntaActual = preguntas.get(rondaActual);
+    }
+
+    private void siguienteTurno(){
+        jugadorActual++;
         //KahootApp.getStage().getScene().setRoot(algo mandando la pregunta y el jugador);
+
+    }
+
+    private void aniadirRespuestasJugador(){
+        respuestasJugadores.add(jugadores.get(jugadorActual).responderPregunta());
+    }
+
+    private void finDelJuego(){
+        KahootApp.definirPuestos(jugadores);
     }
 
 }

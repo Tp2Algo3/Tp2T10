@@ -19,6 +19,7 @@ public class PreguntaGroupChoiceTest {
     ArrayList<Respuesta> respuestasIngresadas;
     ArrayList<Respuesta> respuestasIngresadasJ1;
     ArrayList<Respuesta> respuestasIngresadasJ2;
+    ArrayList<ArrayList<Respuesta>> respuestasJugadores;
     PuntajeClasico puntajeClasico;
     RespuestaGroup respuestaGroup;
     PreguntaGroupChoice pregGroupChoice;
@@ -36,6 +37,7 @@ public class PreguntaGroupChoiceTest {
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
         grupo1 = new Grupo("Grupo n1", new ArrayList<>());
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -49,8 +51,8 @@ public class PreguntaGroupChoiceTest {
 
         //Creación de la pregunta y assert
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes=pregGroupChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores(respuestasJugadores);
 
         assertEquals(1,puntajes.get(0));
     }
@@ -63,6 +65,7 @@ public class PreguntaGroupChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -77,8 +80,8 @@ public class PreguntaGroupChoiceTest {
 
         //Creación de la pregunta y assert
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(0,puntajes.get(0));
     }
 
@@ -90,6 +93,7 @@ public class PreguntaGroupChoiceTest {
         puntajeClasico = new PuntajeClasico();
         grupo1 = new Grupo("Grupo n1", new ArrayList<>());
         grupo2 = new Grupo("Grupo n2", new ArrayList<>());
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -103,8 +107,8 @@ public class PreguntaGroupChoiceTest {
 
         //Creación de la pregunta y assert
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(0,puntajes.get(0));
     }
 
@@ -114,6 +118,7 @@ public class PreguntaGroupChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -125,25 +130,25 @@ public class PreguntaGroupChoiceTest {
 
         //Creación de la pregunta y assert
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadas);
-        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadas);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores(respuestasJugadores);
         assertEquals(0,puntajes.get(0));
     }
 
     @Test
     public void test05UsarExclusividadCuandoSoloUnJugadorContestaBienMultiplicaLosPuntos(){
-        respuestasIngresadasJ1 = new ArrayList<>();
         respuestasIngresadasJ2 = new ArrayList<>();
         jugador = new Jugador("nombre");
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
         grupo1 = new Grupo("Grupo n1", new ArrayList<>());
         grupo2 = new Grupo("Grupo n2", new ArrayList<>());
+        respuestasJugadores = new ArrayList<>();
 
         //Un jugador contesta
         for (int i = 0 ; i < 3 ; i++){
             respuestaGroup = new RespuestaGroup("Soy correcta");
-            respuestasIngresadasJ1.add(respuestaGroup);
+            jugador.aniadirRespuesta(respuestaGroup);
             respuestasIngresadasJ2.add(respuestaGroup);
             respuestasPosibles.add(respuestaGroup);
             grupo1.aniadirRespuesta(respuestaGroup);
@@ -153,16 +158,15 @@ public class PreguntaGroupChoiceTest {
         //Creo la pregunta
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
         jugador.utilizarExclusividad(pregGroupChoice);
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ1);
+        respuestasJugadores.add(jugador.responderPregunta());
 
         //El segundo jugador contesta
         ((RespuestaGroup)respuestasIngresadasJ2.get(2)).cambiarGrupo(grupo2);
 
 
         //se carga la respuesta del segundo jugador
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ2);
-
-        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadasJ2);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores(respuestasJugadores);
 
         //Assert
         assertEquals(2,puntajes.get(0));
@@ -179,11 +183,12 @@ public class PreguntaGroupChoiceTest {
         puntajeClasico = new PuntajeClasico();
         grupo1 = new Grupo("Grupo n1", new ArrayList<>());
         grupo2 = new Grupo("Grupo n2", new ArrayList<>());
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
             respuestaGroup = new RespuestaGroup("Soy correcta");
-            respuestasIngresadasJ1.add(respuestaGroup);
+            jugador.aniadirRespuesta(respuestaGroup);
             respuestasIngresadasJ2.add(respuestaGroup);
             respuestasPosibles.add(respuestaGroup);
             grupo1.aniadirRespuesta(respuestaGroup);
@@ -194,17 +199,17 @@ public class PreguntaGroupChoiceTest {
         pregGroupChoice = new PreguntaGroupChoice(puntajeClasico, respuestasPosibles, "Soy una pregunta");
         jugador.utilizarExclusividad(pregGroupChoice);
         jugador2.utilizarExclusividad(pregGroupChoice);
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ1);
+        respuestasJugadores.add(jugador.responderPregunta());
 
         //Calculo de puntajes individuales y final
         ((RespuestaGroup)respuestasIngresadasJ2.get(2)).cambiarGrupo(grupo2);
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ2);
-        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
-
+        respuestasJugadores.add(respuestasIngresadasJ2);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores(respuestasJugadores);
         //Assert
         assertEquals(4,puntajes.get(0));
         assertEquals(0,puntajes.get(1));
     }
+
     @Test
     public void test07UsarUnaExclusividadCuandoAmbosJugadoresContestanBienNoDaPuntos(){
         respuestasIngresadasJ1 = new ArrayList<>();
@@ -213,6 +218,7 @@ public class PreguntaGroupChoiceTest {
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
         grupo1 = new Grupo("Grupo n1", new ArrayList<>());
+        respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
         for (int i = 0 ; i < 3 ; i++){
@@ -230,9 +236,9 @@ public class PreguntaGroupChoiceTest {
 
 
         //Calculo de puntajes individuales y final
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ1);
-        pregGroupChoice.calcularPuntajeIndividual(respuestasIngresadasJ2);
-        puntajes = pregGroupChoice.definirPuntajesDeJugadores();
+        respuestasJugadores.add(respuestasIngresadasJ1);
+        respuestasJugadores.add(respuestasIngresadasJ2);
+        puntajes = pregGroupChoice.definirPuntajesDeJugadores(respuestasJugadores);
 
         //Assert
         assertEquals(0,puntajes.get(0));

@@ -1,6 +1,6 @@
 package Respuestas;
 
-public abstract class Respuesta {
+public abstract class Respuesta implements Cloneable{
 
     private String respuesta;
 
@@ -12,5 +12,15 @@ public abstract class Respuesta {
 
     public String getContenido(){
         return respuesta;
+    }
+
+    public Respuesta clone(){
+        Object clon;
+        try {
+            clon = super.clone();
+        }catch(CloneNotSupportedException excepcion){
+            throw new RuntimeException("No se puede clonar al objeto.");
+        }
+        return (Respuesta)clon;
     }
 }
