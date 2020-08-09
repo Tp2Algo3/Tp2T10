@@ -2,6 +2,7 @@ package App;
 
 
 import Jugador.Jugador;
+import LayoutsUI.PreguntaYRespuesta;
 import LayoutsUI.PuntajesActuales;
 import Preguntas.*;
 import Respuestas.Respuesta;
@@ -63,14 +64,16 @@ public class ManejadorDeTurnos {
     private void avanzarDeRonda(){
         jugadorActual=-1;
         rondaActual++;
-        if (rondaActual > preguntas.size()-1){
+        if (rondaActual >= preguntas.size()-1){
             finDelJuego();
+            return;
         }
-        preguntaActual = preguntas.get(rondaActual);
+            preguntaActual = preguntas.get(rondaActual);
     }
 
     private void siguienteTurno(){
         jugadorActual++;
+        KahootApp.getStage().getScene().setRoot(PreguntaYRespuesta.getLayout(preguntaActual, preguntaActual.getRespuestas(), jugadores));
         //KahootApp.getStage().getScene().setRoot(algo mandando la pregunta y el jugador);
 
     }

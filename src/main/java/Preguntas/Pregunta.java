@@ -65,6 +65,10 @@ public abstract class Pregunta {
 
     }
 
+    public ArrayList<Respuesta> getRespuestas(){
+        return respuestasPosibles;
+    }
+
     public String getContenido(){
         return contenido;
     }

@@ -16,11 +16,11 @@ public class PreguntaVerdaderoOFalso extends Pregunta{
             esVoF = false;
         }
         //Una debe ser veradero
-        if (respuesta1.getContenido().toUpperCase().equals("VERDADERO") || respuesta1.getContenido().toUpperCase().equals("FALSO")){
+        if ((respuesta1.getContenido().toLowerCase()).equals("verdadero") || (respuesta1.getContenido().toLowerCase()).equals("falso")){
             esVoF = false;
         }
         //Una debe ser falso
-        if(respuesta2.getContenido().toUpperCase().equals("VERDADERO") || respuesta2.getContenido().toUpperCase().equals("FALSO")){
+        if((respuesta2.getContenido().toLowerCase()).equals("verdadero") || (respuesta2.getContenido().toLowerCase()).equals("falso")){
             esVoF = false;
         }
         return esVoF;
@@ -30,8 +30,10 @@ public class PreguntaVerdaderoOFalso extends Pregunta{
         super(tipoPuntaje, respuestasPosibles, pregunta);
         if(respuestasPosibles.size() != 2)
             throw new IllegalArgumentException("Cantidad de respuestas posibles inválida. Deben ser 2. Pregunta VerdaderoOFalso.");
-        if(!respuestasSonVoF(respuestasPosibles))
+        /*if(!respuestasSonVoF(respuestasPosibles))
             throw new IllegalArgumentException("Las únicas respuestas permitidas son Verdadero o Falso, y sin repetirlas.");
+
+         */
     }
 
 }

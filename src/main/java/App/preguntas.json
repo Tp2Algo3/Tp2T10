@@ -1,0 +1,17 @@
+{"preguntas":[
+  {
+    "tipoPregunta": "vof",
+    "contenido": "Es este Kahoot un Tp de Algo 3?",
+    "respuestas": [{
+        "tipoRespuesta": "Correcto",
+        "contenido": "Verdadero"
+      },
+      {
+        "tipoRespuesta": "Incorrecto",
+        "contenido": "Falso"
+      }
+    ],
+    "tipoPuntaje": "clasico"
+    }
+  ]
+}

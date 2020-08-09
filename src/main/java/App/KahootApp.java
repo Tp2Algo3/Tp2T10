@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -34,8 +35,13 @@ public class KahootApp extends Application {
     }
 
     public static void iniciarJuego(ArrayList<Jugador> jugadores){
-        CargadorDePreguntas cargadorDePreguntas = new LectorDeArchivos();
-        ArrayList<Pregunta> preguntas = cargadorDePreguntas.leerPreguntas();
+        CargadorDePreguntas cargadorDePreguntas = new LectorDeArchivosJSON();
+        ArrayList<Pregunta> preguntas = null;
+        try {
+            preguntas = cargadorDePreguntas.leerPreguntas();
+        }catch(FileNotFoundException error){
+
+        }
         manejadorDeTurnos = new ManejadorDeTurnos(jugadores, preguntas);
     }
 
