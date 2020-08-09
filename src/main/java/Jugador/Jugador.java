@@ -52,16 +52,19 @@ public class Jugador implements Comparable<Jugador>{
         this.multiplicadorActual = new MultiplicadorDefecto();
     }
 
-    public void utilizarMultiplicador(Class potenciadorAUsar) {
+    public void utilizarMultiplicador(int id) {
         Multiplicador potenciador = multiplicadores
                 .stream()
-                .filter(pot -> pot.getClass() == potenciadorAUsar)
+                .filter(pot -> pot.getId() == id)
                 .findFirst()
                 .orElse(null);
 
         if (potenciador != null) {
             multiplicadorActual = potenciador;
             multiplicadores.remove(potenciador);
+        }
+        else{
+            throw new RuntimeException("El jugador no posee el multiplicador con el id indicado.");
         }
     }
 
@@ -73,6 +76,9 @@ public class Jugador implements Comparable<Jugador>{
                 ErrorHandler.cerrarPrograma(excepcionArgumento);
             }
             usosRestantesExclusividadPuntajes--;
+        }
+        else{
+            throw new RuntimeException("No quedan usos de exclusividad en el jugador.");
         }
     }
 

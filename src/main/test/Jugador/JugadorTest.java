@@ -5,13 +5,12 @@ import Puntajes.PuntajeClasico;
 import Respuestas.Respuesta;
 import Respuestas.RespuestaCorrecta;
 import Respuestas.RespuestaIncorrecta;
-import Potenciadores.MultiplicadorPorDos;
-import Potenciadores.MultiplicadorPorTres;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JugadorTest {
 
@@ -46,19 +45,23 @@ public class JugadorTest {
     @Test
     public void test04UnJugadorUtilizaUnPotenciadorYEsteSeUtiliza(){
         jugador = new Jugador("Jugador");
-        jugador.utilizarMultiplicador(MultiplicadorPorDos.class);
+        jugador.utilizarMultiplicador(2);
         jugador.aumentarPuntaje(2);
         assertEquals(4,jugador.getPuntos());
     }
 
     @Test
     public void test05UnJugadorQuiereUtilizarUnPotenciadorQueNoTieneYNoSeLeUtiliza(){
+        boolean errorLanzado = false;
         jugador = new Jugador("Jugador");
-        jugador.utilizarMultiplicador(MultiplicadorPorTres.class);
+        jugador.utilizarMultiplicador(3);
         jugador.aumentarPuntaje(2);
-        jugador.utilizarMultiplicador(MultiplicadorPorTres.class);
-        jugador.aumentarPuntaje(2);
-        assertEquals(8,jugador.getPuntos());
+        try {
+            jugador.utilizarMultiplicador(3);
+        }catch(RuntimeException e){
+            errorLanzado = true;
+        }
+        assertTrue(errorLanzado);
     }
 
     @Test
@@ -86,7 +89,29 @@ public class JugadorTest {
         assertEquals(1,jugador.getUsosExclusividad());
         jugador.utilizarExclusividad(vof);
         assertEquals(0,jugador.getUsosExclusividad());
+    }
+
+    @Test
+    public void test07AlUtilizarExclusividadTresVeceElJugadorLanzaError(){
+        //Inicializacion
+        boolean errorLanzado = false;
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(new RespuestaIncorrecta("asd"));
+        respuestas.add(new RespuestaCorrecta("qwe"));
+        jugador = new Jugador("Juancito");
+        PreguntaVerdaderoOFalso vof = new PreguntaVerdaderoOFalso(new PuntajeClasico(), respuestas, "Hola");
+
+        //Act Y Assert
+        jugador.utilizarExclusividad(vof);
+        assertEquals(1,jugador.getUsosExclusividad());
         jugador.utilizarExclusividad(vof);
         assertEquals(0,jugador.getUsosExclusividad());
+        try{
+            jugador.utilizarExclusividad(vof);
+        }catch(RuntimeException e){
+            errorLanzado = true;
+        }
+        assertTrue(errorLanzado);
+
     }
 }
