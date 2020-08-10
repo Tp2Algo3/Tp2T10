@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import Respuestas.RespuestaCorrecta;
 import com.google.gson.*;
-import org.json.*;
 
 public class LectorDeArchivosJSON implements CargadorDePreguntas{
 
