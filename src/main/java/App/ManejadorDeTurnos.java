@@ -48,6 +48,7 @@ public class ManejadorDeTurnos {
     private void finDeRonda(){
         aumentarPuntajesJugadores();
         mostrarPuntajes();
+        respuestasJugadores.clear();
     }
 
     private void aumentarPuntajesJugadores(){
@@ -73,7 +74,9 @@ public class ManejadorDeTurnos {
 
     private void siguienteTurno(){
         jugadorActual++;
-        KahootApp.getStage().getScene().setRoot(PreguntaYRespuesta.getLayout(preguntaActual, preguntaActual.getRespuestas(), jugadores));
+        KahootApp.getStage().getScene().setRoot
+                (PreguntaYRespuesta.getLayout(preguntaActual, preguntaActual.getRespuestas(),
+                        jugadores, jugadores.get(jugadorActual)));
         //KahootApp.getStage().getScene().setRoot(algo mandando la pregunta y el jugador);
 
     }

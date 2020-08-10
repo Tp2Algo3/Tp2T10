@@ -1,17 +1,71 @@
 {"preguntas":[
   {
     "tipoPregunta": "vof",
-    "contenido": "Es este Kahoot un Tp de Algo 3?",
+    "contenido": "Es este Kahoot un Tp de Algo 3?\n(clasico)",
     "respuestas": [{
-        "tipoRespuesta": "Correcto",
-        "contenido": "Verdadero"
-      },
+      "tipoRespuesta": "Correcto",
+      "contenido": "Verdadero"
+    },
       {
         "tipoRespuesta": "Incorrecto",
         "contenido": "Falso"
       }
     ],
     "tipoPuntaje": "clasico"
-    }
-  ]
+  },
+  {
+    "tipoPregunta": "vof",
+    "contenido": "2 + 2 = 4.\n(penalizacion)",
+    "respuestas": [{
+      "tipoRespuesta": "Correcto",
+      "contenido": "Verdadero"
+    },
+      {
+        "tipoRespuesta": "Incorrecto",
+        "contenido": "Falso"
+      }
+    ],
+    "tipoPuntaje": "penalizacion"
+  },
+  {
+    "tipoPregunta": "mchoice",
+    "contenido": "Elegir los numeros pares.\n(parcial)",
+    "respuestas": [{
+      "tipoRespuesta": "Correcto",
+      "contenido": "2"
+    },
+      {
+        "tipoRespuesta": "Incorrecto",
+        "contenido": "5"
+      },
+      {
+        "tipoRespuesta": "Correcto",
+        "contenido": "6"
+      }
+    ],
+    "tipoPuntaje": "parcial"
+  },
+  {
+    "tipoPregunta": "ochoice",
+    "contenido": "Ordenar de menor a mayor.\n(clasico)",
+    "respuestas": [{
+      "tipoRespuesta": "Ordered",
+      "contenido": "2",
+      "posicion": 1
+    },
+      {
+        "tipoRespuesta": "Ordered",
+        "contenido": "1",
+        "posicion": 0
+      },
+      {
+        "tipoRespuesta": "Ordered",
+        "contenido": "5",
+        "posicion": 2
+      }
+    ],
+    "tipoPuntaje": "clasico"
+  }
+
+]
 }

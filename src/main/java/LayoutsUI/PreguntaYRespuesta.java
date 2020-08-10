@@ -18,7 +18,8 @@ import java.util.ArrayList;
 
 public class PreguntaYRespuesta{
 
-    public static StackPane getLayout(Pregunta pregunta, ArrayList<Respuesta> respuestas, ArrayList<Jugador> jugadores){
+    public static StackPane getLayout(Pregunta pregunta, ArrayList<Respuesta> respuestas,
+                                      ArrayList<Jugador> jugadores, Jugador jugadorActual){
         StackPane layout = new StackPane();
         VBox base_layout = new VBox();
         HBox jugadores_box = new HBox();
@@ -42,7 +43,7 @@ public class PreguntaYRespuesta{
         VBox panelRespuestas = new VBox();
         for (Respuesta respuesta: respuestas){
             Button boton = new Button(respuesta.getContenido());
-            boton.setOnAction(new AniadirRespuestaEventHandler(boton, respuesta, jugadores.get(0)));
+            boton.setOnAction(new AniadirRespuestaEventHandler(boton, respuesta, jugadorActual));
             panelRespuestas.getChildren().add(boton);
         }
         panelRespuestas.setSpacing(25);

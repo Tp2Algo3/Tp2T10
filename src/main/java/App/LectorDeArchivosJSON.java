@@ -18,10 +18,12 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
     @Override
     public ArrayList<Pregunta> leerPreguntas() throws FileNotFoundException {
         ArrayList<Pregunta> preguntas = new ArrayList<>();
+
         JsonParser parser = new JsonParser();
-        Object objeto = parser.parse(new FileReader("C:\\Users\\franc\\Desktop\\Facu Franco\\Algo3\\Java\\Tp2T10\\src\\main\\java\\App\\preguntas.json"));
+        Object objeto = parser.parse(new FileReader("src/main/java/App/preguntas.json"));
         JsonElement elementoJSON = (JsonElement) objeto;
         JsonObject objetoJSON = elementoJSON.getAsJsonObject();
+
         JsonArray arrayJSON = (JsonArray) objetoJSON.get("preguntas");
         for (Object objetoDeArray: arrayJSON) {
             preguntas.add(generarPregunta(objetoDeArray));
@@ -32,6 +34,7 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
     private Pregunta generarPregunta(Object objeto){
         JsonObject objetoJSON = (JsonObject) objeto;
         JsonElement tipoPregunta = objetoJSON.get("tipoPregunta");
+
         if (tipoPregunta.getAsString().equals("vof")){
             return generarVoF(objetoJSON);
         }
@@ -51,6 +54,7 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
         Puntaje tipoPuntaje = null;
         String contenido = objetoJSON.get("contenido").getAsString();
         String tipoPuntajeString = objetoJSON.get("tipoPuntaje").getAsString();
+
         switch (tipoPuntajeString) {
             case "clasico":
                 tipoPuntaje = new PuntajeClasico();
@@ -67,6 +71,7 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
         Puntaje tipoPuntaje = null;
         String contenido = objetoJSON.get("contenido").getAsString();
         String tipoPuntajeString = objetoJSON.get("tipoPuntaje").getAsString();
+
         switch (tipoPuntajeString) {
             case "clasico":
                 tipoPuntaje = new PuntajeClasico();
