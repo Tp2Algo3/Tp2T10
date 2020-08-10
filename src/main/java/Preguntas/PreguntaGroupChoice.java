@@ -1,12 +1,14 @@
 package Preguntas;
 
+import Grupo.Grupo;
 import Puntajes.Puntaje;
 import Respuestas.Respuesta;
-import Respuestas.RespuestaGroup;
 
 import java.util.ArrayList;
 
 public class PreguntaGroupChoice extends Pregunta{
+
+    private ArrayList<Grupo> gruposPosibles;
 
     public PreguntaGroupChoice(Puntaje tipoPuntaje, ArrayList<Respuesta> respuestasPosibles, String pregunta){
         super(tipoPuntaje, respuestasPosibles, pregunta);
@@ -28,5 +30,9 @@ public class PreguntaGroupChoice extends Pregunta{
 
         jugadoresContestaronCorrectamente.add(!this.tipoPuntaje.usuarioContestoErroneamente(respuestasUsuario.size(),cantRespuestasCorrectasDelUsuario));
 
+    }
+
+    public void setGruposPosibles(ArrayList<Grupo> gruposPosibles) {
+        this.gruposPosibles = gruposPosibles;
     }
 }

@@ -1,5 +1,6 @@
 package App;
 
+import Grupo.Grupo;
 import Preguntas.*;
 import Puntajes.*;
 import Respuestas.*;
@@ -50,26 +51,54 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
         Puntaje tipoPuntaje = null;
         String contenido = objetoJSON.get("contenido").getAsString();
         String tipoPuntajeString = objetoJSON.get("tipoPuntaje").getAsString();
-        if (tipoPuntajeString.equals("clasico")){
-            tipoPuntaje = new PuntajeClasico();
-        }
-        else if (tipoPuntajeString.equals("penalizacion")){
-            tipoPuntaje = new PuntajePenalizacion();
+        switch (tipoPuntajeString) {
+            case "clasico":
+                tipoPuntaje = new PuntajeClasico();
+                break;
+            case "penalizacion":
+                tipoPuntaje = new PuntajePenalizacion();
+                break;
         }
         ArrayList<Respuesta> respuestas = generarRespuestas(objetoJSON.get("respuestas").getAsJsonArray());
         return new PreguntaVerdaderoOFalso(tipoPuntaje,respuestas,contenido);
     }
 
     private PreguntaOpcionMultiple generarMultipleChoice(JsonObject objetoJSON){
-        return null;
+        Puntaje tipoPuntaje = null;
+        String contenido = objetoJSON.get("contenido").getAsString();
+        String tipoPuntajeString = objetoJSON.get("tipoPuntaje").getAsString();
+        switch (tipoPuntajeString) {
+            case "clasico":
+                tipoPuntaje = new PuntajeClasico();
+                break;
+            case "penalizacion":
+                tipoPuntaje = new PuntajePenalizacion();
+                break;
+            case "parcial":
+                tipoPuntaje = new PuntajeParcial();
+                break;
+        }
+        ArrayList<Respuesta> respuestas = generarRespuestas(objetoJSON.get("respuestas").getAsJsonArray());
+        return new PreguntaOpcionMultiple(tipoPuntaje,respuestas,contenido);
+
     }
 
     private PreguntaGroupChoice generarGroupChoice(JsonObject objetoJSON){
-        return null;
+        Puntaje tipoPuntaje = new PuntajeClasico();
+        String contenido = objetoJSON.get("contenido").getAsString();
+        ArrayList lista= generarGruposYRespuestas(objetoJSON.get("grupos").getAsJsonArray());
+        ArrayList<Grupo> gruposPosibles = (ArrayList<Grupo>)lista.get(0);
+        ArrayList<Respuesta> respuestas = (ArrayList<Respuesta>)lista.get(1);
+        PreguntaGroupChoice pregunta = new PreguntaGroupChoice(tipoPuntaje,respuestas,contenido);
+        pregunta.setGruposPosibles(gruposPosibles);
+        return pregunta;
     }
 
     private PreguntaOrderedChoice generarOrderedChoice(JsonObject objetoJSON){
-        return null;
+        Puntaje tipoPuntaje = new PuntajeClasico();
+        String contenido = objetoJSON.get("contenido").getAsString();
+        ArrayList<Respuesta> respuestas = generarRespuestas(objetoJSON.get("respuestas").getAsJsonArray());
+        return new PreguntaOrderedChoice(tipoPuntaje,respuestas,contenido);
     }
 
     private ArrayList<Respuesta> generarRespuestas(JsonArray arrayJSON){
@@ -86,11 +115,31 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
             else if (tipoRespuesta.equals("Ordered")){
                 respuestas.add(new RespuestaOrdenada(objetoJSON.get("contenido").getAsString(),objetoJSON.get("posicion").getAsInt()));
             }
-            else if (tipoRespuesta.equals("Group")){
-                respuestas = null; //CAMBIAR ESTO.
-            }
         }
         return respuestas;
+    }
+
+    private ArrayList generarGruposYRespuestas(JsonArray arrayGruposJson){
+        ArrayList listaGeneral = new ArrayList();
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
+        for (Object objeto: arrayGruposJson){
+            JsonObject objetoJSON = (JsonObject) objeto;
+            String nombre = objetoJSON.get("nombre").getAsString();
+            JsonArray respuestasGrupo = objetoJSON.get("respuestas").getAsJsonArray();
+            for (JsonElement respuestaJElement: respuestasGrupo){
+                RespuestaGroup respuesta = generarRespuestaGroup(respuestaJElement.getAsJsonObject());
+                respuestas.add(respuesta);
+            }
+        }
+        listaGeneral.add(grupos);
+        listaGeneral.add(respuestas);
+        return listaGeneral;
+    }
+
+    private RespuestaGroup generarRespuestaGroup(JsonObject respuesta){
+        String contenido = respuesta.get("contenido").getAsString();
+        return new RespuestaGroup("contenido");
     }
 
 }
