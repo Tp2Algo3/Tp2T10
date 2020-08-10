@@ -20,7 +20,7 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
         ArrayList<Pregunta> preguntas = new ArrayList<>();
 
         JsonParser parser = new JsonParser();
-        Object objeto = parser.parse(new FileReader("src/main/java/App/preguntas.json"));
+        Object objeto = parser.parse(new FileReader("src/main/resources/preguntas.json"));
         JsonElement elementoJSON = (JsonElement) objeto;
         JsonObject objetoJSON = elementoJSON.getAsJsonObject();
 
