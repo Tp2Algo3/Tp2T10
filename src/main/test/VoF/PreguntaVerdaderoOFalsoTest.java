@@ -36,8 +36,8 @@ public class PreguntaVerdaderoOFalsoTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico =  new PuntajeClasico();
-        respuestaCorrecta = new RespuestaCorrecta("Soy Correcta");
-        respuestaIncorrecta = new RespuestaIncorrecta("Soy incorrecta");
+        respuestaCorrecta = new RespuestaCorrecta("verdadero");
+        respuestaIncorrecta = new RespuestaIncorrecta("falso");
         respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
@@ -58,8 +58,8 @@ public class PreguntaVerdaderoOFalsoTest {
         respuestasPosibles = new ArrayList<>();
         respuestasIngresadas = new ArrayList<>();
         puntajeClasico =  new PuntajeClasico();
-        respuestaIncorrecta = new RespuestaIncorrecta("Soy incorrecta");
-        respuestaCorrecta = new RespuestaCorrecta("Soy correcta");
+        respuestaIncorrecta = new RespuestaIncorrecta("falso");
+        respuestaCorrecta = new RespuestaCorrecta("verdadero");
         respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
@@ -80,8 +80,8 @@ public class PreguntaVerdaderoOFalsoTest {
         respuestasPosibles = new ArrayList<>();
         respuestasIngresadas = new ArrayList<>();
         puntajeClasico =  new PuntajeClasico();
-        respuestaIncorrecta = new RespuestaIncorrecta ("Soy incorrecta");
-        respuestaCorrecta = new RespuestaCorrecta ("Soy correcta");
+        respuestaIncorrecta = new RespuestaIncorrecta ("falso");
+        respuestaCorrecta = new RespuestaCorrecta ("verdadero");
         respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
@@ -101,8 +101,8 @@ public class PreguntaVerdaderoOFalsoTest {
         respuestasPosibles = new ArrayList<>();
         respuestasIngresadas = new ArrayList<>();
         puntajePenalizacion =  new PuntajePenalizacion();
-        respuestaIncorrecta = new RespuestaIncorrecta ("Soy incorrecta");
-        respuestaCorrecta = new RespuestaCorrecta ("Soy correcta");
+        respuestaIncorrecta = new RespuestaIncorrecta ("falso");
+        respuestaCorrecta = new RespuestaCorrecta ("verdadero");
         respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
@@ -122,8 +122,8 @@ public class PreguntaVerdaderoOFalsoTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico =  new PuntajeClasico();
-        respuestaCorrecta = new RespuestaCorrecta ("Soy Correcta");
-        respuestaIncorrecta = new RespuestaIncorrecta ("Soy Incorrecta");
+        respuestaCorrecta = new RespuestaCorrecta ("falso");
+        respuestaIncorrecta = new RespuestaIncorrecta ("verdadero");
         jugador = new Jugador("Heliodoro");
         respuestasJugadores = new ArrayList<>();
 
@@ -145,8 +145,8 @@ public class PreguntaVerdaderoOFalsoTest {
         jugador = new Jugador("Pedro");
         jugador2 = new Jugador("Jacinto");
         respuestasPosibles = new ArrayList<>();
-        respuestaCorrecta = new RespuestaCorrecta("Correctooo");
-        respuestaIncorrecta = new RespuestaIncorrecta("Incorrectisimo");
+        respuestaCorrecta = new RespuestaCorrecta("verdadero");
+        respuestaIncorrecta = new RespuestaIncorrecta("falso");
         respuestasJugadores = new ArrayList<>();
 
         jugador.aniadirRespuesta(respuestaCorrecta);
@@ -170,8 +170,8 @@ public class PreguntaVerdaderoOFalsoTest {
         jugador = new Jugador("Pedro");
         jugador2 = new Jugador("Jacinto");
         respuestasPosibles = new ArrayList<>();
-        respuestaCorrecta = new RespuestaCorrecta("Correctooo");
-        respuestaIncorrecta = new RespuestaIncorrecta("Incorrectisimo");
+        respuestaCorrecta = new RespuestaCorrecta("verdadero");
+        respuestaIncorrecta = new RespuestaIncorrecta("falso");
         respuestasJugadores = new ArrayList<>();
 
         jugador.aniadirRespuesta(respuestaCorrecta);
@@ -195,8 +195,8 @@ public class PreguntaVerdaderoOFalsoTest {
         jugador = new Jugador("Pedro");
         jugador2 = new Jugador("Jacinto");
         respuestasPosibles = new ArrayList<>();
-        respuestaCorrecta = new RespuestaCorrecta("Correctooo");
-        respuestaIncorrecta = new RespuestaIncorrecta("Incorrectisimo");
+        respuestaCorrecta = new RespuestaCorrecta("verdadero");
+        respuestaIncorrecta = new RespuestaIncorrecta("falso");
         respuestasJugadores = new ArrayList<>();
 
         jugador.aniadirRespuesta(respuestaCorrecta);

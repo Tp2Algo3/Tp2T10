@@ -73,8 +73,8 @@ public class JugadorTest {
     public void test07AlUtilizarExclusividadElJugadorPierdeUnUsoDelMismo(){
         //Inicializacion
         ArrayList<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(new RespuestaIncorrecta("asd"));
-        respuestas.add(new RespuestaCorrecta("qwe"));
+        respuestas.add(new RespuestaIncorrecta("falso"));
+        respuestas.add(new RespuestaCorrecta("verdadero"));
         jugador = new Jugador("Juancito");
         PreguntaVerdaderoOFalso vof = new PreguntaVerdaderoOFalso(new PuntajeClasico(), respuestas, "Hola");
 
@@ -89,8 +89,8 @@ public class JugadorTest {
     public void test07AlUtilizarExclusividadTresVeceElJugadorLanzaError(){
         //Inicializacion
         ArrayList<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(new RespuestaIncorrecta("asd"));
-        respuestas.add(new RespuestaCorrecta("qwe"));
+        respuestas.add(new RespuestaIncorrecta("falso"));
+        respuestas.add(new RespuestaCorrecta("verdadero"));
         jugador = new Jugador("Juancito");
         PreguntaVerdaderoOFalso vof = new PreguntaVerdaderoOFalso(new PuntajeClasico(), respuestas, "Hola");
 
