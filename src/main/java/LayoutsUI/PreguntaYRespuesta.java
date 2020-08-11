@@ -5,6 +5,7 @@ import LayoutsUI.Boxes.JugadoresConSusPuntajes;
 import LayoutsUI.Boxes.ModificadoresPuntajeBox;
 import LayoutsUI.Boxes.PreguntaBox;
 import LayoutsUI.Boxes.RespuestasBox;
+import LayoutsUI.Timer.TimerBox;
 import Preguntas.Pregunta;
 import Jugador.Jugador;
 import Preguntas.PreguntaOrderedChoice;
@@ -29,12 +30,16 @@ public class PreguntaYRespuesta{
         VBox base_layout = new VBox();
 
         HBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
+        TimerBox tiempo_box = new TimerBox(60);
         HBox panelPregunta = new PreguntaBox(pregunta.getContenido());
         VBox panelRespuestas = new RespuestasBox(pregunta.getRespuestas(), jugadorActual);
         Button botonEnviar = new BotonContinuar("Enviar Respuestas");
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);
 
         base_layout.getChildren().add(jugadores_box);
+        // Temporizador
+        base_layout.getChildren().add(tiempo_box);
+
         base_layout.getChildren().add(panelPregunta);
         base_layout.getChildren().add(panelRespuestas);
         base_layout.getChildren().add(botonEnviar);
@@ -42,6 +47,8 @@ public class PreguntaYRespuesta{
         base_layout.setSpacing(40);
         base_layout.setAlignment(Pos.CENTER);
         layout.getChildren().add(base_layout);
+
+        tiempo_box.arrancar();
 
         return layout;
     }
