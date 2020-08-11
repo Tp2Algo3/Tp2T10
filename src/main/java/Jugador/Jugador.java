@@ -7,10 +7,11 @@ import Potenciadores.MultiplicadorPorTres;
 import Preguntas.Pregunta;
 import Respuestas.Respuesta;
 import ErrorHandler.ErrorHandler;
+import PatronObserver.Observado;
 
 import java.util.ArrayList;
 
-public class Jugador implements Comparable<Jugador>{
+public class Jugador extends Observado implements Comparable<Jugador> {
 
     private int puntaje;
     private final String nombre;
@@ -35,16 +36,25 @@ public class Jugador implements Comparable<Jugador>{
         for (Respuesta respuesta: respuestasElegidas){
             clonRespuestas.add(respuesta.clone());
         }
-        respuestasElegidas.clear();
         return clonRespuestas;
+    }
+
+    public ArrayList<Respuesta> getRespuestasElegidas(){
+        return respuestasElegidas;
+    }
+
+    public void borrarRespuestas(){
+        respuestasElegidas.clear();
     }
 
     public void eliminarRespuesta(Respuesta respuestaARemover){
         respuestasElegidas.remove(respuestaARemover);
+        notificar();
     }
 
     public void aniadirRespuesta(Respuesta respuesta){
         respuestasElegidas.add(respuesta);
+        notificar();
     }
 
     public void aumentarPuntaje(int puntajeASumar){

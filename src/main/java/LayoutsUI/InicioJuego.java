@@ -1,6 +1,8 @@
 package LayoutsUI;
 
 import Controladores.BotonJugarEventHandler;
+import LayoutsUI.Botones.BotonJugar;
+import LayoutsUI.Labels.TituloInicio;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -18,25 +20,23 @@ public class InicioJuego{
         ArrayList<TextField> nombresJugadores = new ArrayList<>();
         StackPane layout = new StackPane();
         VBox vertical_box = new VBox();
-        Label label = new Label("Bienvenidos al Kahoot! del grupo T10.");
-        label.setFont(new Font("Arial", 30));
-        label.setPadding(new Insets(100,0,100,0));
+        Label label = new TituloInicio();
 
         HBox jugador1 = generar_hbox_jugador(1);
         HBox jugador2 = generar_hbox_jugador(2);
 
-        Button boton_empezar = new Button("Jugar");
         nombresJugadores.add((TextField) jugador1.getChildren().get(1));
         nombresJugadores.add((TextField) jugador2.getChildren().get(1));
-        boton_empezar.setOnAction(new BotonJugarEventHandler(nombresJugadores));
-        boton_empezar.setPrefSize(100,50);
-        HBox caja_boton = generar_hbox_boton(boton_empezar);
+        Button botonEmpezar = new BotonJugar(nombresJugadores);
+
+        HBox caja_boton = generar_hbox_boton(botonEmpezar);
 
         vertical_box.setAlignment(Pos.TOP_CENTER);
         vertical_box.getChildren().add(label);
         vertical_box.getChildren().add(jugador1);
         vertical_box.getChildren().add(jugador2);
         vertical_box.getChildren().add(caja_boton);
+
         layout.getChildren().add(vertical_box);
         layout.setPrefSize(800,600);
         return layout;

@@ -1,5 +1,6 @@
 package Controladores;
 
+import PatronObserver.Observer;
 import Respuestas.Respuesta;
 import Jugador.Jugador;
 import javafx.event.ActionEvent;
@@ -9,7 +10,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 
-public class AniadirRespuestaEventHandler implements EventHandler<ActionEvent> {
+public class AniadirRespuestaEventHandler implements EventHandler<ActionEvent>{
 
     private Button boton;
     private Respuesta respuesta;

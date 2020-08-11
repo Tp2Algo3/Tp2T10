@@ -56,6 +56,9 @@ public class ManejadorDeTurnos {
         for (int i=0; i<jugadores.size(); i++){
             jugadores.get(i).aumentarPuntaje(puntajesRonda.get(i));
         }
+        for (Jugador jugador: jugadores){
+            jugador.borrarRespuestas();
+        }
     }
 
     private void mostrarPuntajes(){
@@ -75,14 +78,14 @@ public class ManejadorDeTurnos {
     private void siguienteTurno(){
         jugadorActual++;
         KahootApp.getStage().getScene().setRoot
-                (PreguntaYRespuesta.getLayout(preguntaActual, preguntaActual.getRespuestas(),
-                        jugadores, jugadores.get(jugadorActual)));
+                (PreguntaYRespuesta.getLayout(preguntaActual, jugadores, jugadores.get(jugadorActual)));
         //KahootApp.getStage().getScene().setRoot(algo mandando la pregunta y el jugador);
 
     }
 
     private void aniadirRespuestasJugador(){
         respuestasJugadores.add(jugadores.get(jugadorActual).responderPregunta());
+
     }
 
     private void finDelJuego(){

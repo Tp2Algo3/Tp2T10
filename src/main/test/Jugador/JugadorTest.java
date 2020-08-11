@@ -62,7 +62,8 @@ public class JugadorTest {
         jugador = new Jugador("Jugador");
         respuesta = new RespuestaCorrecta("Soy Correcta");
         jugador.aniadirRespuesta(respuesta);
-        jugador.responderPregunta(); //Se resetea
+        jugador.responderPregunta();
+        jugador.borrarRespuestas();
         jugador.aniadirRespuesta(respuesta);
         jugador.aniadirRespuesta(respuesta);
         assertEquals(2,jugador.responderPregunta().size());

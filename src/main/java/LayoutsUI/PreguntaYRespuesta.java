@@ -1,6 +1,8 @@
 package LayoutsUI;
 
 import Controladores.UpdateEventHandler;
+import LayoutsUI.HBoxes.JugadoresConSusPuntajes;
+import LayoutsUI.Labels.LabelPregunta;
 import Preguntas.Pregunta;
 import Respuestas.Respuesta;
 import Controladores.AniadirRespuestaEventHandler;
@@ -18,30 +20,22 @@ import java.util.ArrayList;
 
 public class PreguntaYRespuesta{
 
-    public static StackPane getLayout(Pregunta pregunta, ArrayList<Respuesta> respuestas,
-                                      ArrayList<Jugador> jugadores, Jugador jugadorActual){
+    public static StackPane getLayout(Pregunta pregunta, ArrayList<Jugador> jugadores, Jugador jugadorActual){
         StackPane layout = new StackPane();
         VBox base_layout = new VBox();
-        HBox jugadores_box = new HBox();
-        for (Jugador jugador: jugadores){
-            Label label_j = new Label(jugador.getNombre() + ": " + jugador.getPuntos());
-            jugadores_box.getChildren().add(label_j);
-        }
-        jugadores_box.setSpacing(600);
-        jugadores_box.setAlignment(Pos.CENTER);
+        HBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
         base_layout.getChildren().add(jugadores_box);
         layout.getChildren().add(base_layout);
 
         HBox panelPregunta = new HBox();
-        Label pregunta_texto = new Label(pregunta.getContenido());
-        pregunta_texto.setFont(new Font("Arial", 20));
-        pregunta_texto.setPadding(new Insets(100,0,100,0));
-        panelPregunta.getChildren().add(pregunta_texto);
+        Label preguntaTexto = new LabelPregunta(pregunta.getContenido());
+
+        panelPregunta.getChildren().add(preguntaTexto);
         panelPregunta.setAlignment(Pos.CENTER);
         base_layout.getChildren().add(panelPregunta);
 
         VBox panelRespuestas = new VBox();
-        for (Respuesta respuesta: respuestas){
+        for (Respuesta respuesta: pregunta.getRespuestas()){
             Button boton = new Button(respuesta.getContenido());
             boton.setOnAction(new AniadirRespuestaEventHandler(boton, respuesta, jugadorActual));
             panelRespuestas.getChildren().add(boton);
