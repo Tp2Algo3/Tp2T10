@@ -64,7 +64,6 @@ public class Jugador extends Observado implements Comparable<Jugador> {
     }
 
     public void utilizarMultiplicador(int id) {
-        notificar();
         if (multiplicadorActual.getId() == 1) {
             Multiplicador potenciador = multiplicadores
                     .stream()
@@ -82,6 +81,7 @@ public class Jugador extends Observado implements Comparable<Jugador> {
         else{
             throw new RuntimeException("Ya hay un multiplicador en uso.");
         }
+        notificar();
     }
 
     public void utilizarExclusividad(Pregunta pregunta){
@@ -112,6 +112,8 @@ public class Jugador extends Observado implements Comparable<Jugador> {
     public int getPuntos(){
         return this.puntaje;
     }
+
+    public Multiplicador getMultiplicadorActual(){return multiplicadorActual;}
 
     //Para finalidad de UI
     public ArrayList<Multiplicador> getMultiplicadores(){ return this.multiplicadores; }
