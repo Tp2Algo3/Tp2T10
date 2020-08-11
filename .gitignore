@@ -1,4 +1,5 @@
 .idea/
 target/
+src/target
 .settings/
 *.iml
