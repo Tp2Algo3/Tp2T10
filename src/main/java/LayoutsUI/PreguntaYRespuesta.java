@@ -7,6 +7,7 @@ import LayoutsUI.Boxes.PreguntaBox;
 import LayoutsUI.Boxes.RespuestasBox;
 import Preguntas.Pregunta;
 import Jugador.Jugador;
+import Preguntas.PreguntaOrderedChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -18,6 +19,12 @@ import java.util.ArrayList;
 public class PreguntaYRespuesta{
 
     public static StackPane getLayout(Pregunta pregunta, ArrayList<Jugador> jugadores, Jugador jugadorActual){
+
+        // Esto hay que cambiarlo
+        if (pregunta.getClass() == PreguntaOrderedChoice.class) {
+            return LayoutOrderedChoice.getLayout(pregunta, jugadores, jugadorActual);
+        }
+
         StackPane layout = new StackPane();
         VBox base_layout = new VBox();
 

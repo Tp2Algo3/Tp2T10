@@ -68,7 +68,7 @@ public class ManejadorDeTurnos {
     private void avanzarDeRonda(){
         jugadorActual=-1;
         rondaActual++;
-        if (rondaActual >= preguntas.size()-1){
+        if (rondaActual >= preguntas.size()){
             finDelJuego();
             return;
         }
