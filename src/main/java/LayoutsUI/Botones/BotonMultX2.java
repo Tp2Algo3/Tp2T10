@@ -12,7 +12,7 @@ public class BotonMultX2 extends Button implements Observer {
     public BotonMultX2(Jugador jugador){
         super("x2");
         this.jugador = jugador;
-        setOnAction(new MultiplicadorEventHandler(jugador, this, 2));
+        setOnAction(new MultiplicadorEventHandler(jugador, 2));
         jugador.agregarObservador(this);
     }
 

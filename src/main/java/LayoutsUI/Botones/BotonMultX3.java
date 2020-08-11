@@ -12,7 +12,7 @@ public class BotonMultX3 extends Button implements Observer {
     public BotonMultX3(Jugador jugador){
         super("x3");
         this.jugador = jugador;
-        setOnAction(new MultiplicadorEventHandler(jugador, this, 3));
+        setOnAction(new MultiplicadorEventHandler(jugador, 3));
         jugador.agregarObservador(this);
     }
 

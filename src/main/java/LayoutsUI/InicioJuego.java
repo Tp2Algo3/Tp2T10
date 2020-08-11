@@ -1,6 +1,5 @@
 package LayoutsUI;
 
-import Controladores.BotonJugarEventHandler;
 import LayoutsUI.Botones.BotonJugar;
 import LayoutsUI.Labels.TituloInicio;
 import javafx.geometry.Insets;
@@ -9,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 

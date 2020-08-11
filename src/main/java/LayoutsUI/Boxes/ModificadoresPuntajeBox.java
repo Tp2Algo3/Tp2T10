@@ -6,7 +6,6 @@ import LayoutsUI.Botones.BotonMultX2;
 import LayoutsUI.Botones.BotonMultX3;
 import Potenciadores.Multiplicador;
 import Preguntas.Pregunta;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;

@@ -11,9 +11,6 @@ import Puntajes.PuntajePenalizacion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.mockito.Mockito.mock;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PreguntaMultipleChoiceTest {

@@ -1,19 +1,11 @@
 package Controladores;
 
-import Preguntas.PreguntaVerdaderoOFalso;
-import Puntajes.PuntajeClasico;
-import Respuestas.Respuesta;
-import Respuestas.RespuestaCorrecta;
-import Respuestas.RespuestaIncorrecta;
 import Jugador.Jugador;
 import App.KahootApp;
-import LayoutsUI.PreguntaYRespuesta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BotonJugarEventHandler implements EventHandler<ActionEvent> {

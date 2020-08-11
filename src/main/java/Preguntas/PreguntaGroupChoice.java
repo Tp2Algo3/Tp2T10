@@ -35,4 +35,6 @@ public class PreguntaGroupChoice extends Pregunta{
     public void setGruposPosibles(ArrayList<Grupo> gruposPosibles) {
         this.gruposPosibles = gruposPosibles;
     }
+
+    public ArrayList<Grupo> getGrupos(){return gruposPosibles;}
 }

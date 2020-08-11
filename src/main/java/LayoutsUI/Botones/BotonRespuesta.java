@@ -5,12 +5,8 @@ import Controladores.EliminarRespuestaEventHandler;
 import Jugador.Jugador;
 import PatronObserver.Observer;
 import Respuestas.Respuesta;
-import javafx.css.Style;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
+
 
 public class BotonRespuesta extends Button implements Observer {
 

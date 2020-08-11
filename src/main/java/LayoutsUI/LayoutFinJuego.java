@@ -1,7 +1,6 @@
 package LayoutsUI;
 
 import Jugador.Jugador;
-import LayoutsUI.Boxes.JugadoresConSusPuntajes;
 import LayoutsUI.Boxes.PuestosVBox;
 import LayoutsUI.Labels.TablaPuestosLabel;
 import javafx.geometry.Pos;

@@ -1,6 +1,6 @@
 package Controladores;
 
-import App.KahootApp;
+
 import Jugador.Jugador;
 import Preguntas.Pregunta;
 import javafx.event.ActionEvent;

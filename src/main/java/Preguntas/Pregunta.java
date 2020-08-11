@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import Excepciones.PuntajeInvalidoExcepcion;
 import Puntajes.Puntaje;
-import Puntajes.PuntajePenalizacion;
 import Respuestas.Respuesta;
 import Potenciadores.ExclusividadPuntaje;
 
