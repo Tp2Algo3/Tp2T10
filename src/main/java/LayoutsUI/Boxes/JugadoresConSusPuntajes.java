@@ -1,4 +1,4 @@
-package LayoutsUI.HBoxes;
+package LayoutsUI.Boxes;
 
 import Jugador.Jugador;
 import javafx.geometry.Pos;

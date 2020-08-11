@@ -2,6 +2,7 @@ package App;
 
 import Jugador.Jugador;
 import LayoutsUI.InicioJuego;
+import LayoutsUI.LayoutFinJuego;
 import Preguntas.Pregunta;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -51,6 +52,6 @@ public class KahootApp extends Application {
 
     public static void definirPuestos(ArrayList<Jugador> jugadores){
         Collections.sort(jugadores);
-        //Llamar a la UI final del juego
+        stage.getScene().setRoot(LayoutFinJuego.getLayout(jugadores));
     }
 }

@@ -29,6 +29,7 @@ public class Jugador extends Observado implements Comparable<Jugador> {
         this.multiplicadores.add(new MultiplicadorPorDos());
         this.multiplicadores.add(new MultiplicadorPorTres());
         this.usosRestantesExclusividadPuntajes = 2;
+        this.observadores = new ArrayList<>();
     }
 
     public ArrayList<Respuesta> responderPregunta(){
@@ -63,18 +64,23 @@ public class Jugador extends Observado implements Comparable<Jugador> {
     }
 
     public void utilizarMultiplicador(int id) {
-        Multiplicador potenciador = multiplicadores
-                .stream()
-                .filter(pot -> pot.getId() == id)
-                .findFirst()
-                .orElse(null);
+        notificar();
+        if (multiplicadorActual.getId() == 1) {
+            Multiplicador potenciador = multiplicadores
+                    .stream()
+                    .filter(pot -> pot.getId() == id)
+                    .findFirst()
+                    .orElse(null);
 
-        if (potenciador != null) {
-            multiplicadorActual = potenciador;
-            multiplicadores.remove(potenciador);
+            if (potenciador != null) {
+                multiplicadorActual = potenciador;
+                multiplicadores.remove(potenciador);
+            } else {
+                throw new RuntimeException("El jugador no posee el multiplicador con el id indicado.");
+            }
         }
         else{
-            throw new RuntimeException("El jugador no posee el multiplicador con el id indicado.");
+            throw new RuntimeException("Ya hay un multiplicador en uso.");
         }
     }
 
@@ -95,10 +101,10 @@ public class Jugador extends Observado implements Comparable<Jugador> {
     @Override
     public int compareTo(Jugador jugador) {
         if (puntaje < jugador.getPuntos()){
-            return -1;
+            return 1;
         }
         else if (puntaje > jugador.getPuntos()){
-            return 1;
+            return -1;
         }
         return 0;
     }
@@ -106,6 +112,9 @@ public class Jugador extends Observado implements Comparable<Jugador> {
     public int getPuntos(){
         return this.puntaje;
     }
+
+    //Para finalidad de UI
+    public ArrayList<Multiplicador> getMultiplicadores(){ return this.multiplicadores; }
 
     //Para finalidad de UI
     public String getNombre() { return this.nombre;}

@@ -72,4 +72,6 @@ public abstract class Pregunta {
     public String getContenido(){
         return contenido;
     }
+
+    public Puntaje getTipoPuntaje(){return tipoPuntaje;}
 }
