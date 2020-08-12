@@ -1,7 +1,7 @@
 package Controladores;
 
-import Jugador.Jugador;
-import App.KahootApp;
+import Modelo.Jugador.Jugador;
+import Vista.KahootApp;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;

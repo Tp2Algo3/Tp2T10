@@ -1,6 +1,6 @@
 package Controladores;
 
-import Jugador.Jugador;
+import Modelo.Jugador.Jugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

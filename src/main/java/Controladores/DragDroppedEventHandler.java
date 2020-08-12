@@ -3,11 +3,11 @@ package Controladores;
 import javafx.event.EventHandler;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import Grupo.Grupo;
-import Jugador.Jugador;
-import LayoutsUI.Botones.BotonRespuestaGrupo;
-import LayoutsUI.Boxes.GrupoVBox;
-import Respuestas.RespuestaGroup;
+import Modelo.Grupo.Grupo;
+import Modelo.Jugador.Jugador;
+import Vista.Botones.BotonRespuestaGrupo;
+import Vista.Boxes.GrupoVBox;
+import Modelo.Respuestas.RespuestaGroup;
 
 public class DragDroppedEventHandler implements EventHandler<DragEvent> {
 

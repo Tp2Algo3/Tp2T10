@@ -1,8 +1,8 @@
 package Controladores;
 
 
-import Jugador.Jugador;
-import Preguntas.Pregunta;
+import Modelo.Jugador.Jugador;
+import Modelo.Preguntas.Pregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

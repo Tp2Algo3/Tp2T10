@@ -1,13 +1,9 @@
 package Controladores;
 
-import App.KahootApp;
-import LayoutsUI.Botones.BotonRespuestaGrupo;
+import Vista.Botones.BotonRespuestaGrupo;
 import javafx.event.EventHandler;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
-import LayoutsUI.Boxes.GrupoVBox;
 
 public class DragDoneEventHandler implements EventHandler<DragEvent> {
     

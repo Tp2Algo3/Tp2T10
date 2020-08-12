@@ -1,6 +1,6 @@
 package Respuesta;
 
-import Respuestas.RespuestaOrdenada;
+import Modelo.Respuestas.RespuestaOrdenada;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

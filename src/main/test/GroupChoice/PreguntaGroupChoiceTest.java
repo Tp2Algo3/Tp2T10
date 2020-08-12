@@ -1,11 +1,11 @@
 package GroupChoice;
 
-import Grupo.Grupo;
-import Preguntas.PreguntaGroupChoice;
-import Puntajes.PuntajeClasico;
-import Respuestas.Respuesta;
-import Respuestas.RespuestaGroup;
-import Jugador.Jugador;
+import Modelo.Grupo.Grupo;
+import Modelo.Preguntas.PreguntaGroupChoice;
+import Modelo.Puntajes.PuntajeClasico;
+import Modelo.Respuestas.Respuesta;
+import Modelo.Respuestas.RespuestaGroup;
+import Modelo.Jugador.Jugador;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class PreguntaGroupChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
-        grupo1 = new Grupo("Grupo n1", new ArrayList<>());
+        grupo1 = new Grupo("Modelo.Grupo n1", new ArrayList<>());
         respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
@@ -60,8 +60,8 @@ public class PreguntaGroupChoiceTest {
     @Test
     public void test02AcertarParcialmenteUnGroupChoiceNoTeDaElPunto(){
         //Inicialización
-        grupo1 = new Grupo("Grupo n1", new ArrayList<>());
-        grupo2 = new Grupo("Grupo n2", new ArrayList<>());
+        grupo1 = new Grupo("Modelo.Grupo n1", new ArrayList<>());
+        grupo2 = new Grupo("Modelo.Grupo n2", new ArrayList<>());
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
@@ -91,8 +91,8 @@ public class PreguntaGroupChoiceTest {
         respuestasIngresadas = new ArrayList<>();
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
-        grupo1 = new Grupo("Grupo n1", new ArrayList<>());
-        grupo2 = new Grupo("Grupo n2", new ArrayList<>());
+        grupo1 = new Grupo("Modelo.Grupo n1", new ArrayList<>());
+        grupo2 = new Grupo("Modelo.Grupo n2", new ArrayList<>());
         respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
@@ -141,8 +141,8 @@ public class PreguntaGroupChoiceTest {
         jugador = new Jugador("nombre");
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
-        grupo1 = new Grupo("Grupo n1", new ArrayList<>());
-        grupo2 = new Grupo("Grupo n2", new ArrayList<>());
+        grupo1 = new Grupo("Modelo.Grupo n1", new ArrayList<>());
+        grupo2 = new Grupo("Modelo.Grupo n2", new ArrayList<>());
         respuestasJugadores = new ArrayList<>();
 
         //Un jugador contesta
@@ -181,8 +181,8 @@ public class PreguntaGroupChoiceTest {
         jugador2 = new Jugador("J2");
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
-        grupo1 = new Grupo("Grupo n1", new ArrayList<>());
-        grupo2 = new Grupo("Grupo n2", new ArrayList<>());
+        grupo1 = new Grupo("Modelo.Grupo n1", new ArrayList<>());
+        grupo2 = new Grupo("Modelo.Grupo n2", new ArrayList<>());
         respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas
@@ -217,7 +217,7 @@ public class PreguntaGroupChoiceTest {
         jugador = new Jugador("nombre");
         respuestasPosibles = new ArrayList<>();
         puntajeClasico = new PuntajeClasico();
-        grupo1 = new Grupo("Grupo n1", new ArrayList<>());
+        grupo1 = new Grupo("Modelo.Grupo n1", new ArrayList<>());
         respuestasJugadores = new ArrayList<>();
 
         //Carga de respuestas

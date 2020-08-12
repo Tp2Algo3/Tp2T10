@@ -1,6 +1,6 @@
 package Exclusividad;
 
-import Potenciadores.ExclusividadPuntaje;
+import Modelo.Potenciadores.ExclusividadPuntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

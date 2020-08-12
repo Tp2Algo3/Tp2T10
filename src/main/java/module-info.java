@@ -3,5 +3,5 @@ module Tp2T10 {
     requires javafx.controls;
     requires java.desktop;
     requires gson;
-    exports App to javafx.graphics;
+    exports Vista to javafx.graphics;
 }

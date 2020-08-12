@@ -1,17 +1,17 @@
 package VoF;
 
-import Preguntas.Pregunta;
-import Preguntas.PreguntaVerdaderoOFalso;
-import Respuestas.Respuesta;
-import Respuestas.RespuestaCorrecta;
-import Respuestas.RespuestaIncorrecta;
-import Puntajes.PuntajeClasico;
-import Puntajes.PuntajePenalizacion;
+import Modelo.Preguntas.Pregunta;
+import Modelo.Preguntas.PreguntaVerdaderoOFalso;
+import Modelo.Respuestas.Respuesta;
+import Modelo.Respuestas.RespuestaCorrecta;
+import Modelo.Respuestas.RespuestaIncorrecta;
+import Modelo.Puntajes.PuntajeClasico;
+import Modelo.Puntajes.PuntajePenalizacion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import Jugador.Jugador;
+import Modelo.Jugador.Jugador;
 
 public class PreguntaVerdaderoOFalsoTest {
 

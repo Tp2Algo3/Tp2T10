@@ -1,7 +1,7 @@
 package Respuesta;
 
-import Respuestas.RespuestaGroup;
-import Grupo.Grupo;
+import Modelo.Respuestas.RespuestaGroup;
+import Modelo.Grupo.Grupo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

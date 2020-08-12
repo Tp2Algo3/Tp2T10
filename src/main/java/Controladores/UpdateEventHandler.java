@@ -1,6 +1,6 @@
 package Controladores;
 
-import App.KahootApp;
+import Vista.KahootApp;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

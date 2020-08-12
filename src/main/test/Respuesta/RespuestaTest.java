@@ -1,8 +1,8 @@
 package Respuesta;
 
-import Respuestas.Respuesta;
-import Respuestas.RespuestaCorrecta;
-import Respuestas.RespuestaIncorrecta;
+import Modelo.Respuestas.Respuesta;
+import Modelo.Respuestas.RespuestaCorrecta;
+import Modelo.Respuestas.RespuestaIncorrecta;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

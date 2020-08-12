@@ -1,13 +1,13 @@
 package MultipleChoice;
 
-import Preguntas.PreguntaOpcionMultiple;
-import Respuestas.Respuesta;
-import Respuestas.RespuestaCorrecta;
-import Respuestas.RespuestaIncorrecta;
-import Jugador.Jugador;
-import Puntajes.PuntajeClasico;
-import Puntajes.PuntajeParcial;
-import Puntajes.PuntajePenalizacion;
+import Modelo.Preguntas.PreguntaOpcionMultiple;
+import Modelo.Respuestas.Respuesta;
+import Modelo.Respuestas.RespuestaCorrecta;
+import Modelo.Respuestas.RespuestaIncorrecta;
+import Modelo.Jugador.Jugador;
+import Modelo.Puntajes.PuntajeClasico;
+import Modelo.Puntajes.PuntajeParcial;
+import Modelo.Puntajes.PuntajePenalizacion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -262,7 +262,7 @@ public class PreguntaMultipleChoiceTest {
         //Activo Exclusividad
         jugador.utilizarExclusividad(MChoice);
 
-        //Calculo de Puntajes
+        //Calculo de Modelo.Puntajes
         respuestasJugadores.add(respuestasJ1);
         respuestasJugadores.add(respuestasJ2);
         puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
@@ -299,7 +299,7 @@ public class PreguntaMultipleChoiceTest {
         jugador.utilizarExclusividad(MChoice);
         jugador2.utilizarExclusividad(MChoice);
 
-        //Calculo de Puntajes
+        //Calculo de Modelo.Puntajes
         respuestasJugadores.add(respuestasJ1);
         respuestasJugadores.add(respuestasJ2);
         puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
@@ -334,7 +334,7 @@ public class PreguntaMultipleChoiceTest {
         //Activo Exclusividad
         jugador.utilizarExclusividad(MChoice);
 
-        //Calculo de Puntajes
+        //Calculo de Modelo.Puntajes
         respuestasJugadores.add(respuestasJ1);
         respuestasJugadores.add(respuestasJ2);
         puntajes = MChoice.definirPuntajesDeJugadores(respuestasJugadores);
