@@ -1,10 +1,8 @@
 package Controladores;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.layout.VBox;
 import Grupo.Grupo;
 import Jugador.Jugador;
 import LayoutsUI.Botones.BotonRespuestaGrupo;
@@ -26,11 +24,12 @@ public class DragDroppedEventHandler implements EventHandler<DragEvent> {
         boolean success = false;
         if (db.hasString()) {
             BotonRespuestaGrupo botonRespuesta = (BotonRespuestaGrupo)event.getGestureSource();
-
             botonRespuesta.setPanelGrupo(panelGrupo);
+
             Grupo grupo = panelGrupo.getGrupo();
             RespuestaGroup respuestaGrupo =(RespuestaGroup) botonRespuesta.getRespuesta();
             respuestaGrupo.cambiarGrupo(grupo);
+
             Jugador jugadorActual = botonRespuesta.getJugadorActual(); 
             jugadorActual.aniadirRespuesta(respuestaGrupo);
 

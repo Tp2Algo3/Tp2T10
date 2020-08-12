@@ -5,6 +5,7 @@ import Controladores.EliminarRespuestaEventHandler;
 import Jugador.Jugador;
 import PatronObserver.Observer;
 import Respuestas.Respuesta;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 
 
@@ -18,7 +19,10 @@ public class BotonRespuesta extends Button implements Observer {
         super(respuesta.getContenido());
         this.jugadorActual = jugadorActual;
         this.respuesta = respuesta;
+        
         setOnAction(new AniadirRespuestaEventHandler(respuesta, jugadorActual));
+        setCursor(Cursor.HAND);
+
         jugadorActual.agregarObservador(this);
         this.styleOriginal = getStyle();
     }

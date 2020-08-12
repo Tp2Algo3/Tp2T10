@@ -9,6 +9,6 @@ public class LabelPregunta extends Label {
     public LabelPregunta(String contenido){
         super(contenido);
         setFont(new Font("Arial", 20));
-        setPadding(new Insets(100,0,100,0));
+        setPadding(new Insets(50,0,50,0));
     }
 }

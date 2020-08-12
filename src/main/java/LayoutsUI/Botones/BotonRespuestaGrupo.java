@@ -1,5 +1,6 @@
 package LayoutsUI.Botones;
 
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import Controladores.AniadirRespuestaEventHandler;
 import Controladores.DragDetectedEventHandler;
@@ -22,50 +23,57 @@ public class BotonRespuestaGrupo extends Button implements Observer{
     private final Respuesta respuesta;
     private final String styleOriginal;
     private HBox panelRespuestas;
-    private HBox panelGruposTotales;
     private GrupoVBox panelGrupo;
 
-    public BotonRespuestaGrupo(Respuesta respuesta, Jugador jugadorActual, HBox panelRespuestas, HBox panelGruposTotales) {
+    public BotonRespuestaGrupo(Respuesta respuesta, Jugador jugadorActual, HBox panelRespuestas) {
         super(respuesta.getContenido());
         this.jugadorActual = jugadorActual;
         this.respuesta = respuesta;
-        this.panelGruposTotales = panelGruposTotales;
         this.panelRespuestas = panelRespuestas;
 
-        setOnDragDetected(new DragDetectedEventHandler(this));
-        setOnDragDone(new DragDoneEventHandler(this));
+        setSiSePuedeArrastrar();
         
         jugadorActual.agregarObservador(this);
         this.styleOriginal = getStyle();
+        setCursor(Cursor.CLOSED_HAND);
     }
 
     @Override
     public void actualizar() {
-        // panelGrupo.getChildren().add(botonRespuesta);    <----- se tiene que hacer aca
 
         if(jugadorActual.getRespuestasElegidas().contains(respuesta)) {
             // El jugador acaba de aniadir una respuesta
-            setStyle("-fx-background-color: #69CFBF; -fx-text-fill: #000000");
+            // setStyle("-fx-background-color: #69CFBF; -fx-text-fill: #000000");
             if (panelGrupo != null && !panelGrupo.getChildren().contains(this)) {
                 panelGrupo.getChildren().add(this);
             }
             panelRespuestas.getChildren().remove(this);
-            setOnAction(new EliminarRespuestaEventHandler(respuesta, jugadorActual));
-            setOnDragDetected(null);
-            setOnDragDone(null);
+            setCursor(Cursor.HAND);
+            setNoSePuedeArrastrar();
+
         }
         else{
             // El jugador acacba de remover una respuesta
-            setStyle(styleOriginal);
             if (panelGrupo != null) {
                 panelGrupo.getChildren().remove(this);
             }
             if (!panelRespuestas.getChildren().contains(this)) {
                 panelRespuestas.getChildren().add(this);
+                setCursor(Cursor.CLOSED_HAND);
             }
-            setOnDragDetected(new DragDetectedEventHandler(this));
-            setOnDragDone(new DragDoneEventHandler(this));
+            setSiSePuedeArrastrar();
         }
+    }
+
+    private void setSiSePuedeArrastrar(){
+        setOnDragDetected(new DragDetectedEventHandler(this));
+        setOnDragDone(new DragDoneEventHandler(this));  
+    }
+
+    private void setNoSePuedeArrastrar() {
+        setOnAction(new EliminarRespuestaEventHandler(respuesta, jugadorActual));
+        setOnDragDetected(null);
+        setOnDragDone(null);
     }
 
     public Respuesta getRespuesta(){

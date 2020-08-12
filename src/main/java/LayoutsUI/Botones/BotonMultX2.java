@@ -3,6 +3,7 @@ package LayoutsUI.Botones;
 import Controladores.MultiplicadorEventHandler;
 import Jugador.Jugador;
 import PatronObserver.Observer;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 
 public class BotonMultX2 extends Button implements Observer {
@@ -12,7 +13,10 @@ public class BotonMultX2 extends Button implements Observer {
     public BotonMultX2(Jugador jugador){
         super("x2");
         this.jugador = jugador;
+
         setOnAction(new MultiplicadorEventHandler(jugador, 2));
+        setCursor(Cursor.HAND);
+
         jugador.agregarObservador(this);
     }
 

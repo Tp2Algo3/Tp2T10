@@ -1,10 +1,8 @@
 package Controladores;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class DragOverEventHandler implements EventHandler<DragEvent> {

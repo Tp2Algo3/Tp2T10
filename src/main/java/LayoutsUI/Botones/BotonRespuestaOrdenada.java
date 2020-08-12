@@ -6,6 +6,7 @@ import Jugador.Jugador;
 import PatronObserver.Observer;
 import Respuestas.Respuesta;
 import javafx.css.Style;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -30,6 +31,8 @@ public class BotonRespuestaOrdenada extends Button implements Observer {
         this.panelRespuestas = panelRespuestas;
 
         setOnAction(new AniadirRespuestaEventHandler(respuesta, jugadorActual));
+        setCursor(Cursor.HAND);
+
         jugadorActual.agregarObservador(this);
         this.styleOriginal = getStyle();
     }

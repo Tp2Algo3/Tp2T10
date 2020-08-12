@@ -68,7 +68,7 @@
   },
   {
     "tipoPregunta": "gchoice",
-    "contenido": "Poner en los grupos correspondientes.",
+    "contenido": "Arrastrar a los grupos correspondientes.",
     "grupos":[
       {
       "nombre": "Nombre mujeres",

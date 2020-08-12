@@ -1,6 +1,7 @@
 package LayoutsUI.Botones;
 
 import Controladores.BotonJugarEventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -11,5 +12,6 @@ public class BotonJugar extends Button {
         super("Jugar");
         setOnAction(new BotonJugarEventHandler(nombresJugadores));
         setPrefSize(100,50);
+        setCursor(Cursor.HAND);
     }
 }

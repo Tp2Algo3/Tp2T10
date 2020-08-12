@@ -3,6 +3,7 @@ package LayoutsUI;
 import Controladores.UpdateEventHandler;
 import Jugador.Jugador;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -26,6 +27,7 @@ public class PuntajesActuales {
         }
         verticalBox.setSpacing(100);
         Button botonContinuar = new Button("Continuar");
+        botonContinuar.setCursor(Cursor.HAND);
         botonContinuar.setOnAction(new UpdateEventHandler());
         verticalBox.getChildren().add(botonContinuar);
         verticalBox.setAlignment(Pos.CENTER);
