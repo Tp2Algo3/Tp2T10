@@ -42,7 +42,7 @@ public class LayoutOrderedChoice {
         HBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
         HBox panelPregunta = new PreguntaBox(pregunta.getContenido());
         // VBox panelRespuestas = new RespuestasBox(pregunta.getRespuestas(), jugadorActual);
-        Button botonEnviar = new BotonContinuar("Enviar Modelo.Respuestas");
+        Button botonEnviar = new BotonContinuar("Enviar Respuestas");
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);
 
         
