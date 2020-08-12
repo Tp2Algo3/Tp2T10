@@ -11,6 +11,7 @@ import LayoutsUI.Boxes.PreguntaBox;
 import LayoutsUI.Boxes.RespuestasBox;
 import Preguntas.Pregunta;
 import Respuestas.Respuesta;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -26,8 +27,8 @@ public class LayoutOrderedChoice {
 
         HBox respuestasOrdenadas = new HBox();
         respuestasOrdenadas.setSpacing(20);
-        respuestasOrdenadas.setAlignment(Pos.BOTTOM_CENTER);
-        respuestasOrdenadas.setPrefSize(300, 100);
+        respuestasOrdenadas.setAlignment(Pos.CENTER);
+        // HBox.setMargin(respuestasOrdenadas, new Insets(0, 0, 0, 0));
 
         VBox panelRespuestas = new VBox();
         panelRespuestas.setSpacing(25);

@@ -65,6 +65,28 @@
       }
     ],
     "tipoPuntaje": "clasico"
+  },
+  {
+    "tipoPregunta": "gchoice",
+    "contenido": "Poner en los grupos correspondientes.",
+    "grupos":[
+      {
+      "nombre": "Nombre mujeres",
+      "respuestas": [
+        {"contenido": "Cecilia"},
+        {"contenido": "Ruperta"},
+        {"contenido": "Alejandra"}
+        ] 
+      },
+      {
+        "nombre": "Nombre hombres",
+        "respuestas":[
+          {"contenido": "Manolo"},
+          {"contenido": "Roberto"},
+          {"contenido": "ASVALDO"}
+        ]  
+      }
+    ]
   }
 
 ]

@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 import Respuestas.RespuestaCorrecta;
+// import sun.text.normalizer.NormalizerBase;
+
 import com.google.gson.*;
 
 public class LectorDeArchivosJSON implements CargadorDePreguntas{
@@ -91,8 +93,10 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
         Puntaje tipoPuntaje = new PuntajeClasico();
         String contenido = objetoJSON.get("contenido").getAsString();
         ArrayList lista= generarGruposYRespuestas(objetoJSON.get("grupos").getAsJsonArray());
+
         ArrayList<Grupo> gruposPosibles = (ArrayList<Grupo>)lista.get(0);
         ArrayList<Respuesta> respuestas = (ArrayList<Respuesta>)lista.get(1);
+        
         PreguntaGroupChoice pregunta = new PreguntaGroupChoice(tipoPuntaje,respuestas,contenido);
         pregunta.setGruposPosibles(gruposPosibles);
         return pregunta;
@@ -130,11 +134,16 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
         for (Object objeto: arrayGruposJson){
             JsonObject objetoJSON = (JsonObject) objeto;
             String nombre = objetoJSON.get("nombre").getAsString();
+
+            ArrayList<RespuestaGroup> respuestasDelGrupo = new ArrayList<>();
+
             JsonArray respuestasGrupo = objetoJSON.get("respuestas").getAsJsonArray();
             for (JsonElement respuestaJElement: respuestasGrupo){
                 RespuestaGroup respuesta = generarRespuestaGroup(respuestaJElement.getAsJsonObject());
                 respuestas.add(respuesta);
+                respuestasDelGrupo.add(respuesta);
             }
+            grupos.add(new Grupo(nombre, respuestasDelGrupo));
         }
         listaGeneral.add(grupos);
         listaGeneral.add(respuestas);
@@ -143,7 +152,7 @@ public class LectorDeArchivosJSON implements CargadorDePreguntas{
 
     private RespuestaGroup generarRespuestaGroup(JsonObject respuesta){
         String contenido = respuesta.get("contenido").getAsString();
-        return new RespuestaGroup("contenido");
+        return new RespuestaGroup(contenido);
     }
 
 }

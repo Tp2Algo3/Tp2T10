@@ -6,6 +6,7 @@ import LayoutsUI.Boxes.ModificadoresPuntajeBox;
 import LayoutsUI.Boxes.PreguntaBox;
 import LayoutsUI.Boxes.RespuestasBox;
 import Preguntas.Pregunta;
+import Preguntas.PreguntaGroupChoice;
 import Jugador.Jugador;
 import Preguntas.PreguntaOrderedChoice;
 import javafx.geometry.Pos;
@@ -23,6 +24,9 @@ public class PreguntaYRespuesta{
         // Esto hay que cambiarlo
         if (pregunta.getClass() == PreguntaOrderedChoice.class) {
             return LayoutOrderedChoice.getLayout(pregunta, jugadores, jugadorActual);
+        }
+        if (pregunta.getClass() == PreguntaGroupChoice.class) {
+            return LayoutGroupChoice.getLayout((PreguntaGroupChoice) pregunta, jugadores, jugadorActual);
         }
 
         StackPane layout = new StackPane();
