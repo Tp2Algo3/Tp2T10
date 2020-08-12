@@ -36,7 +36,7 @@ public class PreguntaYRespuesta{
 
         HBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
         TimerBox tiempo_box = new TimerBox(temporizador);
-        HBox panelPregunta = new PreguntaBox(pregunta.getContenido());
+        VBox panelPregunta = new PreguntaBox(pregunta);
         VBox panelRespuestas = new RespuestasBox(pregunta.getRespuestas(), jugadorActual);
         Button botonEnviar = new BotonContinuar("Enviar Respuestas");
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);

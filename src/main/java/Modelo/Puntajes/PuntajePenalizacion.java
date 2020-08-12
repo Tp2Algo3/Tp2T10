@@ -2,6 +2,10 @@ package Modelo.Puntajes;
 
 public class PuntajePenalizacion extends Puntaje{
 
+    public PuntajePenalizacion(){
+        this.nombre = "Puntaje Penalizacion";
+    }
+
     @Override
     public int calcularPuntaje(int respuestasCorrectasUsuario, int respuestasCorrectasPregunta, int cantRespuestasUsuario){
         if (usuarioContestoErroneamente(cantRespuestasUsuario,respuestasCorrectasUsuario))

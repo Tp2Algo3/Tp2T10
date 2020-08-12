@@ -26,7 +26,7 @@ public class LayoutGroupChoice {
         VBox base_layout = new VBox();
                 
         HBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
-        HBox panelPregunta = new PreguntaBox(pregunta.getContenido());
+        VBox panelPregunta = new PreguntaBox(pregunta);
         
         HBox panelGrupos = new HBox();
         for(Grupo grupito : pregunta.getGrupos()) {

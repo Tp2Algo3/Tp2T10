@@ -72,7 +72,7 @@ public class ManejadorDeTurnos{
             finDelJuego();
             return;
         }
-            preguntaActual = preguntas.get(rondaActual);
+        preguntaActual = preguntas.get(rondaActual);
     }
 
     private void siguienteTurno(){
@@ -86,6 +86,8 @@ public class ManejadorDeTurnos{
     }
 
     private void finDelJuego(){
+        temporizador.cancel();
+        temporizador.purge();
         KahootApp.definirPuestos(jugadores);
     }
 

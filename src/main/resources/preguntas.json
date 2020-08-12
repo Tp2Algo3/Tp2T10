@@ -1,7 +1,7 @@
 {"preguntas":[
   {
     "tipoPregunta": "vof",
-    "contenido": "Es este Kahoot un Tp de Algo 3?\n(clasico)",
+    "contenido": "Es este Kahoot un Tp de Algo 3?",
     "respuestas": [{
       "tipoRespuesta": "Correcto",
       "contenido": "Verdadero"
@@ -15,7 +15,7 @@
   },
   {
     "tipoPregunta": "vof",
-    "contenido": "2 + 2 = 4.\n(penalizacion)",
+    "contenido": "2 + 2 = 4.",
     "respuestas": [{
       "tipoRespuesta": "Correcto",
       "contenido": "Verdadero"
@@ -29,7 +29,7 @@
   },
   {
     "tipoPregunta": "mchoice",
-    "contenido": "Elegir los numeros pares.\n(parcial)",
+    "contenido": "Elegir los numeros pares.",
     "respuestas": [{
       "tipoRespuesta": "Correcto",
       "contenido": "2"
@@ -47,7 +47,7 @@
   },
   {
     "tipoPregunta": "ochoice",
-    "contenido": "Ordenar de menor a mayor.\n(clasico)",
+    "contenido": "Ordenar de menor a mayor.",
     "respuestas": [{
       "tipoRespuesta": "Ordered",
       "contenido": "2",
