@@ -9,6 +9,7 @@ import Modelo.Puntajes.PuntajeClasico;
 import Modelo.Puntajes.PuntajePenalizacion;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import Modelo.Jugador.Jugador;
@@ -214,5 +215,26 @@ public class PreguntaVerdaderoOFalsoTest {
         assertEquals(0,puntajes.get(1));
     }
 
+    @Test
+    public void test09LasRespuestasDeUnVoFSoloPuedenSerVerdaderoOFalso() {
+        respuestasPosibles = new ArrayList<>();
+        respuestaCorrecta = new RespuestaCorrecta("correcta");
+        respuestaIncorrecta = new RespuestaIncorrecta("falso");
+        respuestasPosibles.add(respuestaCorrecta);
+        respuestasPosibles.add(respuestaIncorrecta);
+        assertThrows(RuntimeException.class, () -> new PreguntaVerdaderoOFalso(new PuntajeClasico(),respuestasPosibles, "Soy un VOF"));
+    }
 
+    @Test
+    public void test10LasPreguntasVoFDebenTener2RespuestasSolamente() {
+        respuestasPosibles = new ArrayList<>();
+        respuestaCorrecta = new RespuestaCorrecta("verdadero");
+        respuestasPosibles.add(respuestaCorrecta);
+        assertThrows(RuntimeException.class, () -> new PreguntaVerdaderoOFalso(new PuntajeClasico(),respuestasPosibles, "Soy un VOF"));
+        respuestaIncorrecta = new RespuestaIncorrecta("falso");
+        respuestaIncorrecta = new RespuestaIncorrecta("falso");
+        respuestasPosibles.add(respuestaIncorrecta);
+        respuestasPosibles.add(respuestaIncorrecta);
+        assertThrows(RuntimeException.class, () -> new PreguntaVerdaderoOFalso(new PuntajeClasico(),respuestasPosibles, "Soy un VOF"));
+    }
 }

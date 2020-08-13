@@ -1,6 +1,7 @@
 package MultipleChoice;
 
 import Modelo.Preguntas.PreguntaOpcionMultiple;
+import Modelo.Preguntas.PreguntaOrderedChoice;
 import Modelo.Respuestas.Respuesta;
 import Modelo.Respuestas.RespuestaCorrecta;
 import Modelo.Respuestas.RespuestaIncorrecta;
@@ -8,8 +9,10 @@ import Modelo.Jugador.Jugador;
 import Modelo.Puntajes.PuntajeClasico;
 import Modelo.Puntajes.PuntajeParcial;
 import Modelo.Puntajes.PuntajePenalizacion;
+import Modelo.Respuestas.RespuestaOrdenada;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 
@@ -342,5 +345,18 @@ public class PreguntaMultipleChoiceTest {
         //Assert
         assertEquals(2,puntajes.get(0));
         assertEquals(0,puntajes.get(1));
+    }
+
+    @Test
+    public void test13LaMultipleChoiceDebeTenerEntre5Y2Respuestas() {
+        respuestasPosibles = new ArrayList<>();
+        respuestaCorrecta = new RespuestaCorrecta("Soy una respuesta");
+        respuestasPosibles.add(respuestaCorrecta);
+        assertThrows(RuntimeException.class, () -> new PreguntaOpcionMultiple(new PuntajeClasico(),respuestasPosibles, "Soy una pregunta"));
+        for (int i = 1; i < 6; i++) {
+            respuestaCorrecta = new RespuestaCorrecta("Soy una respuesta");
+            respuestasPosibles.add(respuestaCorrecta);
+        }
+        assertThrows(RuntimeException.class, () -> new PreguntaOpcionMultiple(new PuntajeClasico(),respuestasPosibles, "Soy un pregunta"));
     }
 }

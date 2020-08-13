@@ -1,12 +1,16 @@
 package OrderedChoice;
 
 import Modelo.Preguntas.PreguntaOrderedChoice;
+import Modelo.Preguntas.PreguntaVerdaderoOFalso;
 import Modelo.Puntajes.PuntajeClasico;
 import Modelo.Respuestas.Respuesta;
+import Modelo.Respuestas.RespuestaCorrecta;
+import Modelo.Respuestas.RespuestaIncorrecta;
 import Modelo.Respuestas.RespuestaOrdenada;
 import Modelo.Jugador.Jugador;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 
@@ -280,4 +284,16 @@ public class PreguntaOrderedChoiceTest {
         assertEquals(0, jugador2.getPuntos());
     }
 
+    @Test
+    public void test08LaOrderedChoiceDebeTenerEntre5Y2Respuestas() {
+        respuestasPosibles = new ArrayList<>();
+        respuestaOrdenada = new RespuestaOrdenada("Soy una opcion", 0);
+        respuestasPosibles.add(respuestaOrdenada);
+        assertThrows(RuntimeException.class, () -> new PreguntaOrderedChoice(new PuntajeClasico(),respuestasPosibles, "Soy una pregunta"));
+        for (int i = 1; i < 6; i++) {
+            respuestaOrdenada = new RespuestaOrdenada("Soy una opcion", i);
+            respuestasPosibles.add(respuestaOrdenada);
+        }
+        assertThrows(RuntimeException.class, () -> new PreguntaOrderedChoice(new PuntajeClasico(),respuestasPosibles, "Soy un pregunta"));
+    }
 }

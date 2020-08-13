@@ -2,15 +2,19 @@ package GroupChoice;
 
 import Modelo.Grupo.Grupo;
 import Modelo.Preguntas.PreguntaGroupChoice;
+import Modelo.Preguntas.PreguntaVerdaderoOFalso;
 import Modelo.Puntajes.PuntajeClasico;
 import Modelo.Respuestas.Respuesta;
+import Modelo.Respuestas.RespuestaCorrecta;
 import Modelo.Respuestas.RespuestaGroup;
 import Modelo.Jugador.Jugador;
+import Modelo.Respuestas.RespuestaIncorrecta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PreguntaGroupChoiceTest {
 
@@ -245,4 +249,16 @@ public class PreguntaGroupChoiceTest {
         assertEquals(0,puntajes.get(1));
     }
 
+    @Test
+    public void test08LasPreguntasGroupChoiceDebenTenerEntre2y6Respuestas() {
+        respuestasPosibles = new ArrayList<>();
+        respuestaGroup = new RespuestaGroup("Soy correcta");
+        respuestasPosibles.add(respuestaGroup);
+        assertThrows(RuntimeException.class, () -> new PreguntaGroupChoice(new PuntajeClasico(),respuestasPosibles, "Soy un VOF"));
+        for (int i=0; i < 6; i++){
+            respuestaGroup = new RespuestaGroup("Soy correcta");
+            respuestasPosibles.add(respuestaGroup);
+        }
+        assertThrows(RuntimeException.class, () -> new PreguntaGroupChoice(new PuntajeClasico(),respuestasPosibles, "Soy un VOF"));
+    }
 }
