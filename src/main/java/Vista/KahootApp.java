@@ -6,10 +6,7 @@ import Modelo.Turnos.ManejadorDeTurnos;
 import Modelo.Jugador.Jugador;
 import Modelo.Preguntas.Pregunta;
 import Modelo.Turnos.Temporizador;
-import Vista.Layouts.InicioJuego;
-import Vista.Layouts.LayoutFinJuego;
-import Vista.Layouts.PreguntaYRespuesta;
-import Vista.Layouts.PuntajesActuales;
+import Vista.Layouts.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -22,6 +19,7 @@ public class KahootApp extends Application {
 
     private static Stage stage;
     private static ManejadorDeTurnos manejadorDeTurnos;
+    private static boolean jugadorPresionoContinuar = false;
 
     public static void main (String[] args) {
         launch(args);
@@ -61,12 +59,22 @@ public class KahootApp extends Application {
         stage.getScene().setRoot(LayoutFinJuego.getLayout(jugadores));
     }
 
-    public static void mostrarPuntajes(ArrayList<Jugador> jugadores, int rondaActual){
-        stage.getScene().setRoot(PuntajesActuales.getLayout(jugadores, rondaActual));
+    public static void mostrarPuntajes(ArrayList<Jugador> jugadores, int rondaActual, ArrayList<Integer> puntajesRonda, int rondasTotales){
+        stage.getScene().setRoot(PuntajesActuales.getLayout(jugadores, rondaActual, puntajesRonda, rondasTotales));
     }
 
     public static void cambiarEscena(Pregunta preguntaActual, ArrayList<Jugador>jugadores, Jugador jugadorActual, Temporizador temporizador){
-        stage.getScene().setRoot
-                (PreguntaYRespuesta.getLayout(preguntaActual, jugadores, jugadorActual, temporizador));
+        if (jugadorPresionoContinuar) {
+            jugadorPresionoContinuar = false;
+            stage.getScene().setRoot
+                    (PreguntaYRespuesta.getLayout(preguntaActual, jugadores, jugadorActual, temporizador));
+        }
+        else{
+            stage.getScene().setRoot(IntermediarioTurnos.getLayout(jugadorActual, jugadores, preguntaActual, temporizador));
+        }
+    }
+
+    public static void setJugadorPresionoContinuar(){
+        jugadorPresionoContinuar=true;
     }
 }

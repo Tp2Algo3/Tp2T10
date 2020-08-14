@@ -3,6 +3,7 @@ package Vista.Layouts;
 import java.util.ArrayList;
 
 import Modelo.Jugador.Jugador;
+import Modelo.Respuestas.RespuestaGroup;
 import Modelo.Turnos.Temporizador;
 import Vista.Botones.BotonContinuar;
 import Vista.Botones.BotonRespuestaGrupo;
@@ -36,16 +37,7 @@ public class LayoutGroupChoice {
         panelGrupos.setSpacing(100);
         panelGrupos.setAlignment(Pos.CENTER);
 
-        HBox panelRespuestas = new HBox();
-        for (Respuesta respuesta : pregunta.getRespuestas()) {
-            Button boton = new BotonRespuestaGrupo(respuesta, jugadorActual, panelRespuestas);
-            panelRespuestas.getChildren().add(boton);
-        }
-        double alturaActual = panelRespuestas.getHeight();
-        double anchoActual = panelRespuestas.getWidth();
-        panelRespuestas.setSpacing(5);
-        panelRespuestas.setMinSize(anchoActual, alturaActual);
-        panelRespuestas.setAlignment(Pos.CENTER);
+        HBox panelRespuestas = new RespuestasGroupChoiceBox(pregunta.getRespuestas(), jugadorActual);
        
         Button botonEnviar = new BotonContinuar("Enviar Respuestas");
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);

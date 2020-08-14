@@ -1,9 +1,11 @@
 package Controladores;
 
 import Vista.Botones.BotonRespuestaGrupo;
+import Vista.Boxes.GrupoVBox;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
 
 public class DragDoneEventHandler implements EventHandler<DragEvent> {
     
@@ -18,12 +20,12 @@ public class DragDoneEventHandler implements EventHandler<DragEvent> {
 
         /* the drag and drop gesture ended */
         /* if the data was successfully moved, clear it */
-        // if (event.getTransferMode() == TransferMode.MOVE) {
+        /*if (event.getTransferMode() == TransferMode.MOVE) {
             
-        //     GrupoVBox panelGrupo = (GrupoVBox) event.getGestureTarget();
-        //     boton.setPanelGrupo(panelGrupo);
-        // }
-
+            GrupoVBox panelGrupo = (GrupoVBox) event.getGestureTarget();
+            boton.setPanelGrupo(panelGrupo);
+        }
+        */
         event.consume();
     }
 }

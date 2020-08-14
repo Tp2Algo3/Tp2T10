@@ -2,6 +2,7 @@ package Modelo.Turnos;
 
 
 import Modelo.Jugador.Jugador;
+import Modelo.Potenciadores.Multiplicador;
 import PatronObserver.Observado;
 import PatronObserver.Observer;
 import Vista.KahootApp;
@@ -50,19 +51,22 @@ public class ManejadorDeTurnos{
     }
 
     private void finDeRonda(){
-        aumentarPuntajesJugadores();
-        KahootApp.mostrarPuntajes(jugadores, rondaActual);
+        ArrayList<Integer> puntajesRonda = aumentarPuntajesJugadores();
+        KahootApp.mostrarPuntajes(jugadores, rondaActual, puntajesRonda, preguntas.size());
         respuestasJugadores.clear();
     }
 
-    private void aumentarPuntajesJugadores(){
+    private ArrayList<Integer> aumentarPuntajesJugadores(){
         ArrayList<Integer> puntajesRonda = preguntaActual.definirPuntajesDeJugadores(respuestasJugadores);
         for (int i=0; i<jugadores.size(); i++){
+            Multiplicador multiplicador = (jugadores.get(i).getMultiplicadorActual());
             jugadores.get(i).aumentarPuntaje(puntajesRonda.get(i));
+            puntajesRonda.set(i,multiplicador.multiplicarPuntos(puntajesRonda.get(i)));
         }
         for (Jugador jugador: jugadores){
             jugador.borrarRespuestas();
         }
+        return puntajesRonda;
     }
 
     private void avanzarDeRonda(){
