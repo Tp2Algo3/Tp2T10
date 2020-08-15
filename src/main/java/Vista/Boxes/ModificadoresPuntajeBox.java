@@ -6,6 +6,7 @@ import Vista.Botones.BotonMultX2;
 import Vista.Botones.BotonMultX3;
 import Modelo.Potenciadores.Multiplicador;
 import Modelo.Preguntas.Pregunta;
+import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class ModificadoresPuntajeBox extends HBox{
             }
         }
         setSpacing(20);
+        setAlignment(Pos.BOTTOM_CENTER);
     }
 
 }

@@ -1,7 +1,9 @@
 {"preguntas":[
+
+
   {
     "tipoPregunta": "vof",
-    "contenido": "Es este Kahoot un Tp de Algo 3?",
+    "contenido": "¿Es este Kahoot un Tp de Algoritmos y Programacion 3?",
     "respuestas": [{
       "tipoRespuesta": "Correcto",
       "contenido": "Verdadero"
@@ -13,9 +15,11 @@
     ],
     "tipoPuntaje": "clasico"
   },
+
+
   {
     "tipoPregunta": "vof",
-    "contenido": "2 + 2 = 4.",
+    "contenido": "¿2 + 2 = 4?",
     "respuestas": [{
       "tipoRespuesta": "Correcto",
       "contenido": "Verdadero"
@@ -27,6 +31,8 @@
     ],
     "tipoPuntaje": "penalizacion"
   },
+
+
   {
     "tipoPregunta": "mchoice",
     "contenido": "Elegir los numeros pares.",
@@ -45,6 +51,61 @@
     ],
     "tipoPuntaje": "parcial"
   },
+
+
+  {
+    "tipoPregunta": "mchoice",
+    "contenido": "¿Quienes son nuestros profesores de Algoritmos 3?",
+    "respuestas": [{
+      "tipoRespuesta": "Correcto",
+      "contenido": "Sebastián"
+    },
+      {
+        "tipoRespuesta": "Correcto",
+        "contenido": "Eugenio"
+      },
+      {
+        "tipoRespuesta": "Incorrecto",
+        "contenido": "Mariano Mendez"
+      },
+      {
+        "tipoRespuesta": "Incorrecto",
+        "contenido": "Fontela"
+      }
+    ],
+    "tipoPuntaje": "clasico"
+  },
+
+
+  {
+    "tipoPregunta": "mchoice",
+    "contenido": "¿Cuales de los siguientes tenistas son argentinos?",
+    "respuestas": [
+      {
+      "tipoRespuesta": "Correcto",
+      "contenido": "Del Potro"
+      },
+      {
+        "tipoRespuesta": "Incorrecto",
+        "contenido": "Djokovic"
+      },
+      {
+        "tipoRespuesta": "Incorrecto",
+        "contenido": "Nadal"
+      },
+      {
+        "tipoRespuesta": "Incorrecto",
+        "contenido": "Messi"
+      },
+      {
+        "tipoRespuesta": "Correcto",
+        "contenido": "Berlocq"
+      }
+    ],
+    "tipoPuntaje": "penalizacion"
+  },
+
+
   {
     "tipoPregunta": "ochoice",
     "contenido": "Ordenar de menor a mayor.",
@@ -66,6 +127,8 @@
     ],
     "tipoPuntaje": "clasico"
   },
+
+
   {
     "tipoPregunta": "gchoice",
     "contenido": "Arrastrar a los grupos correspondientes.",
@@ -83,7 +146,7 @@
         "respuestas":[
           {"contenido": "Manolo"},
           {"contenido": "Roberto"},
-          {"contenido": "ASVALDO"}
+          {"contenido": "Asvaldo"}
         ]  
       }
     ]

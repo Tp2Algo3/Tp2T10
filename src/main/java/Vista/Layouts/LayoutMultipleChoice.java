@@ -12,9 +12,8 @@ import Vista.Boxes.RespuestasMultipleBox;
 import Vista.Timer.TimerBox;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import Modelo.Jugador.Jugador;
 
 public class LayoutMultipleChoice {
@@ -40,7 +39,7 @@ public class LayoutMultipleChoice {
         base_layout.setSpacing(40);
         base_layout.setAlignment(Pos.CENTER);
         layout.getChildren().add(base_layout);
-
+        layout.setAlignment(Pos.CENTER);
         tiempo_box.arrancar();
 
         return layout;    
