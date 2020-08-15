@@ -18,16 +18,14 @@ public class DragDetectedEventHandler implements EventHandler<MouseEvent> {
     }
 
     public void handle(MouseEvent event) {
-        /* drag was detected, start a drag-and-drop gesture*/
-        /* allow any transfer mode */
-        Dragboard db = boton.startDragAndDrop(TransferMode.ANY);
+        Dragboard dragboard = boton.startDragAndDrop(TransferMode.ANY);
         
         /* Put a string on a dragboard */
-        ClipboardContent content = new ClipboardContent();
-        content.putString(boton.getText());
-        db.setContent(content);
+        ClipboardContent contenido = new ClipboardContent();
+        contenido.putString(boton.getText());
+        dragboard.setContent(contenido);
 
-        db.setDragView(new Text(boton.getText()).snapshot(null, null), event.getX(), event.getY());
+        //dragboard.setDragView(new Text(boton.getText()).snapshot(null, null), event.getX(), event.getY());
 
         event.consume();
     }
