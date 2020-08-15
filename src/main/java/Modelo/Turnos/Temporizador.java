@@ -11,7 +11,6 @@ import java.util.TimerTask;
 public class Temporizador extends Timer {
 
     private final TimerTask tarea;
-    private ArrayList<Observer> observers;
     private int tiempoActual;
     private final int duracion;
     private float porcentajeActual;
@@ -43,6 +42,8 @@ public class Temporizador extends Timer {
         return porcentajeActual;
     }
 
+    public int getTiempoActual(){return tiempoActual/1000;}
+
     public void agregarObservador(Observer observer){
         observadorIntermediario.agregarObservador(observer);
     }
@@ -52,13 +53,12 @@ public class Temporizador extends Timer {
     }
 
     public void iniciar(){
-        schedule(tarea,0,1000);
+        scheduleAtFixedRate(tarea,0,1000);
     }
 
     public Temporizador generarNuevoTemporizador(){
         cancel();
         purge();
-        Temporizador nuevo = new Temporizador(duracion);
-        return nuevo;
+        return new Temporizador(duracion);
     }
 }
