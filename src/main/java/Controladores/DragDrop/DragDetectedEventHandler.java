@@ -10,7 +10,7 @@ import javafx.scene.input.TransferMode;
 
 public class DragDetectedEventHandler implements EventHandler<MouseEvent> {
 
-    Button boton;
+    private Button boton;
 
     public DragDetectedEventHandler(Button boton) {
         this.boton = boton;
