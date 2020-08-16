@@ -1,5 +1,27 @@
 {"preguntas":[
 
+  {
+    "tipoPregunta": "gchoice",
+    "contenido": "Arrastrar a los grupos correspondientes.",
+    "grupos":[
+      {
+        "nombre": "Nombre mujeres",
+        "respuestas": [
+          {"contenido": "Cecilia"},
+          {"contenido": "Ruperta"},
+          {"contenido": "Alejandra"}
+        ]
+      },
+      {
+        "nombre": "Nombre hombres",
+        "respuestas":[
+          {"contenido": "Manolo"},
+          {"contenido": "Roberto"},
+          {"contenido": "Asvaldo"}
+        ]
+      }
+    ]
+  },
 
   {
     "tipoPregunta": "vof",
@@ -126,30 +148,6 @@
       }
     ],
     "tipoPuntaje": "clasico"
-  },
-
-
-  {
-    "tipoPregunta": "gchoice",
-    "contenido": "Arrastrar a los grupos correspondientes.",
-    "grupos":[
-      {
-      "nombre": "Nombre mujeres",
-      "respuestas": [
-        {"contenido": "Cecilia"},
-        {"contenido": "Ruperta"},
-        {"contenido": "Alejandra"}
-        ] 
-      },
-      {
-        "nombre": "Nombre hombres",
-        "respuestas":[
-          {"contenido": "Manolo"},
-          {"contenido": "Roberto"},
-          {"contenido": "Asvaldo"}
-        ]  
-      }
-    ]
   }
 
 ]

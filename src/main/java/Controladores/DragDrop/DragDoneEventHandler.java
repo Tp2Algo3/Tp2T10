@@ -20,12 +20,12 @@ public class DragDoneEventHandler implements EventHandler<DragEvent> {
 
         /* the drag and drop gesture ended */
         /* if the data was successfully moved, clear it */
-        /*if (event.getTransferMode() == TransferMode.MOVE) {
+        if (event.getTransferMode() == TransferMode.MOVE) {
             
             GrupoVBox panelGrupo = (GrupoVBox) event.getGestureTarget();
             boton.setPanelGrupo(panelGrupo);
         }
-        */
-        //event.consume();
+
+        event.consume();
     }
 }

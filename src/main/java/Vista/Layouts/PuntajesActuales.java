@@ -18,7 +18,7 @@ public class PuntajesActuales {
     public static StackPane getLayout(ArrayList<Jugador> jugadores, int rondaActual, ArrayList<Integer>puntajesSumados, int rondasTotales){
         StackPane layout = new StackPane();
         VBox verticalBox = new VBox();
-        Label titulo = new Label("Puntajes para la ronda " + (rondaActual+1) + "/" + (rondasTotales+1));
+        Label titulo = new Label("Puntajes para la ronda " + (rondaActual+1) + "/" + (rondasTotales));
         titulo.setFont(new Font("Arial", 30));
         titulo.setAlignment(Pos.CENTER);
         verticalBox.getChildren().add(titulo);
