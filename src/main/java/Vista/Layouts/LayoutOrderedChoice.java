@@ -45,13 +45,8 @@ public class LayoutOrderedChoice {
         Button botonEnviar = new BotonContinuar("Enviar Respuestas");
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);
 
-        
-        base_layout.getChildren().add(jugadores_box);
-        base_layout.getChildren().add(panelPregunta);
-        base_layout.getChildren().add(respuestasOrdenadas);
-        base_layout.getChildren().add(panelRespuestas);
-        base_layout.getChildren().add(botonEnviar);
-        base_layout.getChildren().add(panelMultiplicadores);
+
+        base_layout.getChildren().addAll(jugadores_box, panelPregunta, respuestasOrdenadas, panelRespuestas, botonEnviar, panelMultiplicadores);
         base_layout.setSpacing(40);
         base_layout.setAlignment(Pos.CENTER);
         layout.getChildren().add(base_layout);

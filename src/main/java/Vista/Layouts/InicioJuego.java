@@ -30,10 +30,7 @@ public class InicioJuego{
         HBox caja_boton = generar_hbox_boton(botonEmpezar);
 
         vertical_box.setAlignment(Pos.TOP_CENTER);
-        vertical_box.getChildren().add(label);
-        vertical_box.getChildren().add(jugador1);
-        vertical_box.getChildren().add(jugador2);
-        vertical_box.getChildren().add(caja_boton);
+        vertical_box.getChildren().addAll(label,jugador1,jugador2,caja_boton);
 
         layout.getChildren().add(vertical_box);
         layout.setPrefSize(800,600);

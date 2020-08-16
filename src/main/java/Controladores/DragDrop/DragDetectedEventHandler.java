@@ -6,7 +6,6 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.text.*;
 
 
 public class DragDetectedEventHandler implements EventHandler<MouseEvent> {
@@ -19,14 +18,9 @@ public class DragDetectedEventHandler implements EventHandler<MouseEvent> {
 
     public void handle(MouseEvent event) {
         Dragboard dragboard = boton.startDragAndDrop(TransferMode.ANY);
-        
-        /* Put a string on a dragboard */
         ClipboardContent contenido = new ClipboardContent();
         contenido.putString(boton.getText());
         dragboard.setContent(contenido);
-
-        //dragboard.setDragView(new Text(boton.getText()).snapshot(null, null), event.getX(), event.getY());
-
         event.consume();
     }
 }

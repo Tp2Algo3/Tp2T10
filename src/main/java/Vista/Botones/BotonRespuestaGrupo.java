@@ -3,7 +3,6 @@ package Vista.Botones;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import Controladores.DragDrop.DragDetectedEventHandler;
-import Controladores.DragDrop.DragDoneEventHandler;
 import Controladores.EliminarRespuestaEventHandler;
 import Modelo.Jugador.Jugador;
 import Vista.Boxes.GrupoVBox;
@@ -14,7 +13,6 @@ import javafx.scene.layout.HBox;
 public class BotonRespuestaGrupo extends Button implements Observer{
     private final Jugador jugadorActual;
     private final Respuesta respuesta;
-    private final String styleOriginal;
     private HBox panelRespuestas;
     private GrupoVBox panelGrupo;
 
@@ -27,7 +25,6 @@ public class BotonRespuestaGrupo extends Button implements Observer{
         setSiSePuedeArrastrar();
         
         jugadorActual.agregarObservador(this);
-        this.styleOriginal = getStyle();
         setCursor(Cursor.CLOSED_HAND);
     }
 
@@ -36,7 +33,6 @@ public class BotonRespuestaGrupo extends Button implements Observer{
 
         if(jugadorActual.getRespuestasElegidas().contains(respuesta)) {
             // El jugador acaba de aniadir una respuesta
-            // setStyle("-fx-background-color: #69CFBF; -fx-text-fill: #000000");
             if (panelGrupo != null && !panelGrupo.getChildren().contains(this)) {
                 panelGrupo.getChildren().add(this);
             }
@@ -60,13 +56,11 @@ public class BotonRespuestaGrupo extends Button implements Observer{
 
     private void setSiSePuedeArrastrar(){
         setOnDragDetected(new DragDetectedEventHandler(this));
-        setOnDragDone(new DragDoneEventHandler(this));  
     }
 
     private void setNoSePuedeArrastrar() {
         setOnAction(new EliminarRespuestaEventHandler(respuesta, jugadorActual));
         setOnDragDetected(null);
-        setOnDragDone(null);
     }
 
     public Respuesta getRespuesta(){

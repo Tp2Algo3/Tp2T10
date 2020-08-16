@@ -11,6 +11,7 @@ import Vista.Boxes.JugadoresConSusPuntajes;
 import Vista.Boxes.ModificadoresPuntajeBox;
 import Vista.Boxes.PreguntaBox;
 import Modelo.Respuestas.Respuesta;
+import Vista.Timer.TimerBox;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -41,17 +42,14 @@ public class LayoutGroupChoice {
        
         Button botonEnviar = new BotonContinuar("Enviar Respuestas");
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);
+        TimerBox timerBox = new TimerBox(temporizador);
 
-        
-        base_layout.getChildren().add(jugadores_box);
-        base_layout.getChildren().add(panelPregunta);
-        base_layout.getChildren().add(panelRespuestas);
-        base_layout.getChildren().add(panelGrupos);
-        base_layout.getChildren().add(botonEnviar);
-        base_layout.getChildren().add(panelMultiplicadores);
+        base_layout.getChildren().addAll(jugadores_box, panelPregunta, timerBox, panelRespuestas, panelGrupos, botonEnviar, panelMultiplicadores);
         base_layout.setSpacing(20);
         base_layout.setAlignment(Pos.CENTER);
         layout.getChildren().add(base_layout);
+
+        timerBox.arrancar();
 
         return layout;
     }
