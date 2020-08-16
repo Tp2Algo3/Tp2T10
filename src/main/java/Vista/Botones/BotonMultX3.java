@@ -2,6 +2,7 @@ package Vista.Botones;
 
 import Controladores.MultiplicadorEventHandler;
 import Modelo.Jugador.Jugador;
+import Modelo.Potenciadores.MultiplicadorPorTres;
 import PatronObserver.Observer;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -14,7 +15,7 @@ public class BotonMultX3 extends Button implements Observer {
         super("x3");
         this.jugador = jugador;
         
-        setOnAction(new MultiplicadorEventHandler(jugador, 3));
+        setOnAction(new MultiplicadorEventHandler(jugador, new MultiplicadorPorTres()));
         setCursor(Cursor.HAND);
 
         jugador.agregarObservador(this);
@@ -22,7 +23,7 @@ public class BotonMultX3 extends Button implements Observer {
 
     @Override
     public void actualizar(){
-        if(jugador.getMultiplicadorActual().getId()!=1) {
+        if(jugador.getMultiplicadorActual().getOrdenMultiplicidad()!=1) {
             setDisable(true);
         }
     }

@@ -1,13 +1,21 @@
 package Modelo.Potenciadores;
 
-public abstract class Multiplicador {
+public abstract class Multiplicador{
 
     protected int ordenMultiplicidad;
-    protected int id;
 
 
-    public int multiplicarPuntos(int puntos){
-        return ordenMultiplicidad*puntos;
+    public int multiplicarPuntos(int puntos) {
+        return ordenMultiplicidad * puntos;
     }
-    public int getId(){return id;}
+
+    public int getOrdenMultiplicidad(){
+        return ordenMultiplicidad;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (ordenMultiplicidad == (((Multiplicador)obj).getOrdenMultiplicidad()));
+    }
 }
+

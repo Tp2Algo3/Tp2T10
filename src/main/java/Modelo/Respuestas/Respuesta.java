@@ -1,5 +1,7 @@
 package Modelo.Respuestas;
 
+import Modelo.Excepciones.NoPuedoClonarException;
+
 public abstract class Respuesta implements Cloneable{
 
     private String respuesta;
@@ -19,7 +21,7 @@ public abstract class Respuesta implements Cloneable{
         try {
             clon = super.clone();
         }catch(CloneNotSupportedException excepcion){
-            throw new RuntimeException("No se puede clonar al objeto.");
+            throw new NoPuedoClonarException();
         }
         return (Respuesta)clon;
     }

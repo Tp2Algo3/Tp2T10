@@ -2,10 +2,9 @@ package Vista.Boxes;
 
 import java.util.ArrayList;
 
-import Controladores.CheckBoxEventHandlerSeleccionar;
+import Controladores.CheckBox.CheckBoxEventHandlerSeleccionar;
 import Modelo.Jugador.Jugador;
 import Modelo.Respuestas.Respuesta;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;

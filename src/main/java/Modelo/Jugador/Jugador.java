@@ -1,5 +1,8 @@
 package Modelo.Jugador;
 
+import Modelo.Excepciones.MultiplicadorEnUsoException;
+import Modelo.Excepciones.MultiplicadorNoDisponibleException;
+import Modelo.Excepciones.NoQuedanExclusividadesException;
 import Modelo.Potenciadores.Multiplicador;
 import Modelo.Potenciadores.MultiplicadorDefecto;
 import Modelo.Potenciadores.MultiplicadorPorDos;
@@ -63,11 +66,11 @@ public class Jugador extends Observado implements Comparable<Jugador> {
         this.multiplicadorActual = new MultiplicadorDefecto();
     }
 
-    public void utilizarMultiplicador(int id) {
-        if (multiplicadorActual.getId() == 1) {
+    public void utilizarMultiplicador(Multiplicador multiplicador) {
+        if (multiplicadorActual.getOrdenMultiplicidad() == 1) {
             Multiplicador potenciador = multiplicadores
                     .stream()
-                    .filter(pot -> pot.getId() == id)
+                    .filter(pot -> pot.equals(multiplicador))
                     .findFirst()
                     .orElse(null);
 
@@ -75,11 +78,11 @@ public class Jugador extends Observado implements Comparable<Jugador> {
                 multiplicadorActual = potenciador;
                 multiplicadores.remove(potenciador);
             } else {
-                throw new RuntimeException("El jugador no posee el multiplicador con el id indicado.");
+                throw new MultiplicadorNoDisponibleException();
             }
         }
         else{
-            throw new RuntimeException("Ya hay un multiplicador en uso.");
+            throw new MultiplicadorEnUsoException();
         }
         notificar();
     }
@@ -94,7 +97,7 @@ public class Jugador extends Observado implements Comparable<Jugador> {
             usosRestantesExclusividadPuntajes--;
         }
         else{
-            throw new RuntimeException("No quedan usos de exclusividad en el jugador.");
+            throw new NoQuedanExclusividadesException();
         }
     }
 

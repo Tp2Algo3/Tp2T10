@@ -1,6 +1,8 @@
 package JugadorTest;
 
 import Modelo.Jugador.Jugador;
+import Modelo.Potenciadores.MultiplicadorPorDos;
+import Modelo.Potenciadores.MultiplicadorPorTres;
 import Modelo.Preguntas.PreguntaVerdaderoOFalso;
 import Modelo.Puntajes.PuntajeClasico;
 import Modelo.Respuestas.Respuesta;
@@ -19,7 +21,7 @@ public class JugadorTest {
 
     @Test
     public void test01UnJugadorSumaUnaCantidadDePuntosYSeSumanASuPuntajeActual(){
-        jugador = new Jugador ("Modelo/Jugador");
+        jugador = new Jugador ("Jugador");
         jugador.aumentarPuntaje(10);
         assertEquals(10,jugador.getPuntos());
         jugador.aumentarPuntaje(5);
@@ -28,14 +30,14 @@ public class JugadorTest {
 
     @Test
     public void test02UnJugadorAniadeUnaRespuestaASuListaYSeAniadeCorrectamente(){
-        jugador = new Jugador ("Modelo/Jugador");
+        jugador = new Jugador ("Jugador");
         jugador.aniadirRespuesta(new RespuestaCorrecta("Respuesta"));
         assertEquals(1,(jugador.responderPregunta()).size());
     }
 
     @Test
     public void test03UnJugadorBorraUnaRespuestaDeSuListaYSeBorraCorrectamente(){
-        jugador = new Jugador ("Modelo/Jugador");
+        jugador = new Jugador ("Jugador");
         respuesta = new RespuestaCorrecta("Respuesta");
         jugador.aniadirRespuesta(respuesta);
         jugador.eliminarRespuesta(respuesta);
@@ -44,23 +46,23 @@ public class JugadorTest {
 
     @Test
     public void test04UnJugadorUtilizaUnPotenciadorYEsteSeUtiliza(){
-        jugador = new Jugador("Modelo/Jugador");
-        jugador.utilizarMultiplicador(2);
+        jugador = new Jugador("Jugador");
+        jugador.utilizarMultiplicador(new MultiplicadorPorDos());
         jugador.aumentarPuntaje(2);
         assertEquals(4,jugador.getPuntos());
     }
 
     @Test
     public void test05UnJugadorQuiereUtilizarUnPotenciadorQueNoTieneYNoSeLeUtiliza(){
-        jugador = new Jugador("Modelo/Jugador");
-        jugador.utilizarMultiplicador(3);
+        jugador = new Jugador("Jugador");
+        jugador.utilizarMultiplicador(new MultiplicadorPorTres());
         jugador.aumentarPuntaje(2);
-        assertThrows(RuntimeException.class, ()->jugador.utilizarMultiplicador(3));
+        assertThrows(RuntimeException.class, ()->jugador.utilizarMultiplicador(new MultiplicadorPorTres()));
     }
 
     @Test
     public void test06UnJugadorContestaLaPreguntaSuListaSeReseteaYPuedeAgregarNuevasRespuestas(){
-        jugador = new Jugador("Modelo/Jugador");
+        jugador = new Jugador("Jugador");
         respuesta = new RespuestaCorrecta("Soy Correcta");
         jugador.aniadirRespuesta(respuesta);
         jugador.responderPregunta();

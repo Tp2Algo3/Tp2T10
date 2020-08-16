@@ -1,4 +1,4 @@
-package Controladores;
+package Controladores.CheckBox;
 
 import Modelo.Jugador.Jugador;
 import Modelo.Respuestas.Respuesta;

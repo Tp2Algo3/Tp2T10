@@ -19,7 +19,7 @@ public class ModificadoresPuntajeBox extends HBox{
             getChildren().add(new BotonExclusividad(jugador, pregunta));
         }
         for (Multiplicador multiplicador: multiplicadores){
-            switch(multiplicador.getId()){
+            switch(multiplicador.getOrdenMultiplicidad()){
                 case 2:
                     getChildren().add(new BotonMultX2(jugador));
                     break;

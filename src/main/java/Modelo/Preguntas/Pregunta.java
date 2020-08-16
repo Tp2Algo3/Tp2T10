@@ -60,7 +60,7 @@ public abstract class Pregunta {
         if (tipoPuntaje.admiteExclusividad()) {
             exclusividadesPuntaje.add(new ExclusividadPuntaje());
         }
-        else{ throw new PuntajeInvalidoExcepcion("Modelo.Preguntas con penalizacion no pueden tener exclusividad de puntaje."); }
+        else{ throw new PuntajeInvalidoExcepcion("Preguntas con penalizacion no pueden tener exclusividad de puntaje."); }
 
     }
 

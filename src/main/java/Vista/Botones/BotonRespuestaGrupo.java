@@ -2,8 +2,8 @@ package Vista.Botones;
 
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import Controladores.DragDetectedEventHandler;
-import Controladores.DragDoneEventHandler;
+import Controladores.DragDrop.DragDetectedEventHandler;
+import Controladores.DragDrop.DragDoneEventHandler;
 import Controladores.EliminarRespuestaEventHandler;
 import Modelo.Jugador.Jugador;
 import Vista.Boxes.GrupoVBox;

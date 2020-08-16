@@ -1,4 +1,4 @@
-package Controladores;
+package Controladores.DragDrop;
 
 import Vista.Botones.BotonRespuestaGrupo;
 import Vista.Boxes.GrupoVBox;
@@ -26,6 +26,6 @@ public class DragDoneEventHandler implements EventHandler<DragEvent> {
             boton.setPanelGrupo(panelGrupo);
         }
         */
-        event.consume();
+        //event.consume();
     }
 }

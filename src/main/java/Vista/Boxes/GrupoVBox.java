@@ -1,11 +1,9 @@
 package Vista.Boxes;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
-import Controladores.DragDroppedEventHandler;
-import Controladores.DragOverEventHandler;
+import Controladores.DragDrop.DragDroppedEventHandler;
+import Controladores.DragDrop.DragOverEventHandler;
 import Modelo.Grupo.Grupo;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
