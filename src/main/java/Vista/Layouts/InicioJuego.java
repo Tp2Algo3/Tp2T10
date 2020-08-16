@@ -7,7 +7,11 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
 
@@ -31,15 +35,19 @@ public class InicioJuego{
 
         vertical_box.setAlignment(Pos.TOP_CENTER);
         vertical_box.getChildren().addAll(label,jugador1,jugador2,caja_boton);
+        vertical_box.setSpacing(20);
 
+        layout.setStyle("-fx-background-color: #ffe7b8");
         layout.getChildren().add(vertical_box);
-        layout.setPrefSize(800,600);
+        layout.setPrefSize(1024,768);
+
         return layout;
     }
 
     private static HBox generar_hbox_jugador(int num_jugador){
         String string_label = ("Jugador " + num_jugador + " : ");
         Label jug1_label = new Label (string_label);
+        jug1_label.setFont(Font.font("Arial", FontWeight.BOLD,12));
         String textFieldString = ("Nombre Jugador "+ num_jugador);
         TextField jugador1_nombre = new TextField(textFieldString);
         HBox jugador1 = new HBox();

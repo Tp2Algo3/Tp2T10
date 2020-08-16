@@ -22,18 +22,19 @@ public class LayoutMultipleChoice {
         StackPane layout = new StackPane();
         VBox base_layout = new VBox();
 
-        HBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
+        VBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
         TimerBox tiempo_box = new TimerBox(temporizador);
         VBox panelPregunta = new PreguntaBox(pregunta);
         VBox panelRespuestas = new RespuestasMultipleBox(pregunta.getRespuestas(), jugadorActual);
         Button botonEnviar = new BotonContinuar("Enviar Respuestas");
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);
 
-        base_layout.getChildren().addAll(jugadores_box, tiempo_box,panelPregunta,panelRespuestas,botonEnviar,panelMultiplicadores);
+        base_layout.getChildren().addAll(jugadores_box,tiempo_box,panelPregunta,panelRespuestas,botonEnviar,panelMultiplicadores);
         base_layout.setSpacing(40);
         base_layout.setAlignment(Pos.CENTER);
-        layout.getChildren().add(base_layout);
+        layout.getChildren().addAll(base_layout);
         layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-background-color: #fdf9e1");
         tiempo_box.arrancar();
 
         return layout;    

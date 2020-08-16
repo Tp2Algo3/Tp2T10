@@ -23,6 +23,7 @@ public class LayoutFinJuego {
         verticalLayout.setAlignment(Pos.TOP_CENTER);
         layout.getChildren().add(verticalLayout);
         layout.setAlignment(Pos.TOP_CENTER);
+        layout.setStyle("-fx-background-color: #fff7a9");
         return layout;
     }
 }

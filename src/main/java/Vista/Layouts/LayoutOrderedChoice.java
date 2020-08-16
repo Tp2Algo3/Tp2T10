@@ -27,7 +27,6 @@ public class LayoutOrderedChoice {
         HBox respuestasOrdenadas = new HBox();
         respuestasOrdenadas.setSpacing(20);
         respuestasOrdenadas.setAlignment(Pos.CENTER);
-        // HBox.setMargin(respuestasOrdenadas, new Insets(0, 0, 0, 0));
 
         VBox panelRespuestas = new VBox();
         panelRespuestas.setSpacing(25);
@@ -39,17 +38,17 @@ public class LayoutOrderedChoice {
             panelRespuestas.getChildren().add(botonRespOrdenada);
         }
        
-        HBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
+        VBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
         VBox panelPregunta = new PreguntaBox(pregunta);
-        // VBox panelRespuestas = new RespuestasBox(pregunta.getRespuestas(), jugadorActual);
         Button botonEnviar = new BotonContinuar("Enviar Respuestas");
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);
 
 
-        base_layout.getChildren().addAll(jugadores_box, panelPregunta, respuestasOrdenadas, panelRespuestas, botonEnviar, panelMultiplicadores);
+        base_layout.getChildren().addAll(jugadores_box,panelPregunta, respuestasOrdenadas, panelRespuestas, botonEnviar, panelMultiplicadores);
         base_layout.setSpacing(40);
         base_layout.setAlignment(Pos.CENTER);
-        layout.getChildren().add(base_layout);
+        layout.getChildren().addAll(base_layout);
+        layout.setStyle("-fx-background-color: #fdf9e1");
 
         return layout;
     }

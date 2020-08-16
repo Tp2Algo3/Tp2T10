@@ -26,6 +26,7 @@ public class IntermediarioTurnos {
         verticalBox.setSpacing(100);
         layout.getChildren().add(verticalBox);
         layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-background-color: #fdf9e1");
         return layout;
     }
 

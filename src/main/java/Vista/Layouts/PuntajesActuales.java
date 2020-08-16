@@ -32,6 +32,7 @@ public class PuntajesActuales {
         verticalBox.getChildren().add(botonContinuar);
         verticalBox.setAlignment(Pos.CENTER);
         layout.getChildren().add(verticalBox);
+        layout.setStyle("-fx-background-color: \t#fdf9e1");
         return layout;
     }
 

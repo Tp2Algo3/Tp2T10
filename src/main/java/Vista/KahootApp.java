@@ -1,5 +1,6 @@
 package Vista;
 
+import Controladores.ErrorHandler;
 import Modelo.Archivos.CargadorDePreguntas;
 import Modelo.Archivos.LectorDeArchivosJSON;
 import Modelo.Turnos.ManejadorDeTurnos;
@@ -9,6 +10,7 @@ import Modelo.Turnos.Temporizador;
 import Vista.Layouts.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -33,6 +35,7 @@ public class KahootApp extends Application {
     public void start(Stage stage) throws Exception {
         KahootApp.stage = stage;
         stage.setTitle("Kahoot!");
+        stage.getIcons().add(new Image("file:src/main/resources/icono.png"));
         Scene escena_inicial = new Scene(InicioJuego.getLayout());
         stage.setScene(escena_inicial);
         stage.show();
@@ -44,8 +47,8 @@ public class KahootApp extends Application {
         ArrayList<Pregunta> preguntas = null;
         try {
             preguntas = cargadorDePreguntas.leerPreguntas();
-        }catch(FileNotFoundException error){
-
+        }catch(FileNotFoundException ignored){
+            ErrorHandler.cerrarPrograma(new RuntimeException("No se encontro el archivo de preguntas.json"));
         }
         manejadorDeTurnos = new ManejadorDeTurnos(jugadores, preguntas);
     }

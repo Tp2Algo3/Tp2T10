@@ -7,6 +7,7 @@ import Modelo.Preguntas.PreguntaVerdaderoOFalso;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class LabelTipoPregunta extends Label {
 
@@ -23,7 +24,7 @@ public class LabelTipoPregunta extends Label {
         else{
             setText("Pregunta Group Choice");
         }
-        setFont(new Font("Arial", 20));
-        setTextFill(Color.VIOLET);
+        setFont(Font.font("Arial", FontWeight.BOLD,20));
+        setStyle("-fx-text-fill: #fdcf58");
     }
 }

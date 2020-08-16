@@ -27,7 +27,7 @@ public class LayoutGroupChoice {
         StackPane layout = new StackPane();
         VBox base_layout = new VBox();
                 
-        HBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
+        VBox jugadores_box = new JugadoresConSusPuntajes(jugadores);
         VBox panelPregunta = new PreguntaBox(pregunta);
         
         HBox panelGrupos = new HBox();
@@ -44,10 +44,11 @@ public class LayoutGroupChoice {
         HBox panelMultiplicadores = new ModificadoresPuntajeBox(jugadorActual, pregunta);
         TimerBox timerBox = new TimerBox(temporizador);
 
-        base_layout.getChildren().addAll(jugadores_box, panelPregunta, timerBox, panelRespuestas, panelGrupos, botonEnviar, panelMultiplicadores);
+        base_layout.getChildren().addAll(jugadores_box,panelPregunta, timerBox, panelRespuestas, panelGrupos, botonEnviar, panelMultiplicadores);
         base_layout.setSpacing(20);
         base_layout.setAlignment(Pos.CENTER);
-        layout.getChildren().add(base_layout);
+        layout.getChildren().addAll(base_layout);
+        layout.setStyle("-fx-background-color: #fdf9e1");
 
         timerBox.arrancar();
 
