@@ -1,5 +1,7 @@
 package Vista.Botones;
 
+import Controladores.DragDrop.MouseClickDragEventHandler;
+import Controladores.DragDrop.MouseReleaseDragDone;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import Controladores.DragDrop.DragDetectedEventHandler;
@@ -55,6 +57,8 @@ public class BotonRespuestaGrupo extends Button implements Observer{
     }
 
     private void setSiSePuedeArrastrar(){
+        setOnMouseClicked(new MouseClickDragEventHandler(this));
+        setOnMouseReleased(new MouseReleaseDragDone());
         setOnDragDetected(new DragDetectedEventHandler(this));
     }
 

@@ -8,19 +8,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 
 
-public class DragDetectedEventHandler implements EventHandler<MouseEvent> {
+public class MouseClickDragEventHandler implements EventHandler<MouseEvent> {
 
     private Button boton;
 
-    public DragDetectedEventHandler(Button boton) {
+    public MouseClickDragEventHandler(Button boton){
         this.boton = boton;
     }
 
-    public void handle(MouseEvent event) {
+    @Override
+    public void handle(MouseEvent mouseEvent) {
         Dragboard dragboard = boton.startDragAndDrop(TransferMode.ANY);
         ClipboardContent contenido = new ClipboardContent();
         contenido.putString(boton.getText());
         dragboard.setContent(contenido);
-        event.consume();
+        mouseEvent.setDragDetect(true);
     }
 }
