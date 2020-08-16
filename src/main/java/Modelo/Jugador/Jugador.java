@@ -19,9 +19,9 @@ public class Jugador extends Observado implements Comparable<Jugador> {
     private int puntaje;
     private final String nombre;
     private Multiplicador multiplicadorActual;
-    private ArrayList<Multiplicador> multiplicadores;
+    private final ArrayList<Multiplicador> multiplicadores;
     private int usosRestantesExclusividadPuntajes;
-    private ArrayList<Respuesta> respuestasElegidas;
+    private final ArrayList<Respuesta> respuestasElegidas;
 
     public Jugador(String nombre){
         this.puntaje = 0;
